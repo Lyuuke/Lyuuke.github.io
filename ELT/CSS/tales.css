@@ -1,0 +1,97 @@
+div#tale {
+    width: 600px;
+    padding: 50px 70px 50px 70px;
+    margin: auto;
+    text-align: left;
+    line-height: 1.8em;
+    font-family: "Source Han Serif SC", "Noto Serif CJK SC",
+        "Liberation Serif", "STZhongSong", serif;
+    background: #d4c8a7;
+    border-radius: 12px;
+    box-shadow: -3px -3px 20px 0px #bba479 inset,
+        5px 5px 10px #888;
+    -webkit-box-shadow: -3px -3px 20px 0px #bba479 inset,
+        5px 5px 10px #888;
+    color: #433a2d;
+}
+
+div#tale > header {
+    font-size: 150%;
+    color: #231f19;
+    font-weight: bold;
+}
+
+div#tale > header:before {
+    content: "「";
+    color: #433a2d;
+}
+
+div#tale > header:after {
+    content: "」";
+    color: #433a2d;
+}
+
+h1 {
+    padding-top: 0.75em;
+    padding-bottom: 0.3em;
+    text-align: center;
+    font-family: "Source Han Serif SC", "Noto Serif CJK SC",
+        "Liberation Serif", "STZhongSong", serif;
+    color: #231f19;
+    font-size: 125%;
+}
+
+h1:before {
+    content: "〖 ";
+    color: #433a2d;
+}
+
+h1:after {
+    content: " 〗";
+    color: #433a2d;
+}
+
+div#tale > p {
+    font-size: 90%;
+    letter-spacing: 0.1em;
+    text-indent: 2.2em;
+}
+
+i {
+    display: inline;
+    line-height: 1.8em;
+    font-style: normal;
+    font-family: "Gabriola", "Garamond",
+        "Adobe Kaiti Std", "STKaiti", "KaiTi", serif;
+}
+
+qt {
+    display: inline;
+    line-height: 1.8em;
+    font-family: "Gabriola", "Garamond",
+        "Adobe Kaiti Std", "STKaiti", "KaiTi", serif;
+}
+
+qt:before {
+    content: "「";
+}
+
+qt:after {
+    content: "」";
+}
+
+span.weathered {
+    text-shadow: 0px 0px 1px #433a2d;
+    color: transparent;
+}
+
+span.sWeathered {
+    text-shadow: 0px 0px 2px #433a2d;
+    color: transparent;
+}
+
+img.fullScene {
+    width: 600px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px #c0b38f;
+}
