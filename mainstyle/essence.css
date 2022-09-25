@@ -1,0 +1,83 @@
+body {
+	background-color: #dbac7d;
+}
+
+div#main, h1 {
+	font-family: "Source Han Serif SC", "Noto Serif CJK SC",
+	"Liberation Serif", "Palatino Linotype", "STZhongSong",
+	"FZShuSong-Z01S", "FZSong", "STSong", serif;
+}
+
+h3 {
+	font-family: "Myriad Pro", "Source Han Sans SC",
+	"Noto Sans CJK SC", "Lantinghei SC", "PingFang SC",
+	"Microsoft YaHei", sans-serif;
+}
+
+div#main {
+	line-height: 1.6em;
+	letter-spacing: 0.2em;
+	background-color: #f8f0e0;
+	font-weight: 500;
+	width: 48em;
+	margin: auto;
+	padding: 3em 5em 3em 5em;
+	box-shadow: .2em .2em .8em #46372d80;
+	text-align: justify;
+}
+
+h1 {
+	font-weight: 600;
+	text-align: center;
+	font-size: 240%;
+}
+
+h3 {
+	font-weight: 600;
+	font-size: 150%;
+}
+
+h1.frontpage {
+	color: #4b3552;
+	text-indent: .333em;
+	letter-spacing: .333em;
+	margin-bottom: 1.5em;
+}
+
+h3.frontpage {
+	color: #804058;
+	margin: 2em 0 0 0;
+	text-align: center;
+	text-indent: .2em;
+	letter-spacing: .2em;
+}
+
+div.entry {
+	background-color: #dbac7d;
+	background-size: contain;
+	background-repeat: no-repeat;
+	margin: .5em;
+	padding: .8em;
+	border-radius: .8em;
+	width: 9em;
+	height: 16em;
+	overflow: hidden;
+	text-align: center;
+	letter-spacing: 0;
+
+}
+
+div.entry > div.filling {
+	height: 10.5em;
+}
+
+div.entry > span {
+	font-size: 120%;
+	font-weight: 600;
+	color: white;
+	text-shadow: 0 0 .2em #46372d80;
+}
+
+table.contents {
+	margin: auto;
+}

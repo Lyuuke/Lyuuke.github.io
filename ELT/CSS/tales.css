@@ -65,18 +65,18 @@ i {
         "Adobe Kaiti Std", "STKaiti", "KaiTi", serif;
 }
 
-qt {
+qt, q {
     display: inline;
     line-height: 1.8em;
     font-family: "Gabriola", "Garamond",
         "Adobe Kaiti Std", "STKaiti", "KaiTi", serif;
 }
 
-qt:before {
+qt:before, q:before {
     content: "「";
 }
 
-qt:after {
+qt:after, q:after {
     content: "」";
 }
 
