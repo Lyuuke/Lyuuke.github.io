@@ -2,21 +2,21 @@ body {
 	background-color: #dbac7d;
 }
 
-div#main, h1 {
-	font-family: "Source Han Serif SC", "Noto Serif CJK SC",
-	"Liberation Serif", "Palatino Linotype", "STZhongSong",
-	"FZShuSong-Z01S", "FZSong", "STSong", serif;
+div#main, h1, h2 {
+	font-family: "Liberation Serif", "Palatino Linotype",
+	"Palatino", "Source Han Serif SC", "Noto Serif CJK SC",
+	"STZhongSong", "FZShuSong-Z01S", "FZSong", "STSong", serif;
 }
 
-h3 {
-	font-family: "Myriad Pro", "Source Han Sans SC",
+h3, a, b, div.asterism, div.back_shell {
+	font-family: "Myriad Pro", "Segoe UI", "Source Han Sans SC",
 	"Noto Sans CJK SC", "Lantinghei SC", "PingFang SC",
 	"Microsoft YaHei", sans-serif;
 }
 
 div#main {
 	line-height: 1.6em;
-	letter-spacing: 0.2em;
+	/*letter-spacing: 0.2em;*/
 	background-color: #f8f0e0;
 	font-weight: 500;
 	width: 48em;
@@ -26,15 +26,71 @@ div#main {
 	text-align: justify;
 }
 
+.ipa {
+	font-family: "Gentium Plus", "DejaVu Sans", "Lucida Sans Unicode",
+	sans-serif;
+	font-variant-ligatures: no-common-ligatures;
+	margin: 0 .2em 0 .2em;
+}
+
+div.back_shell {
+	display: inline-block;
+	width: 8em;
+	height: 10em;
+	padding: 1em;
+	overflow: hidden;
+	background-color: #f8f8f880;
+	border-radius: 1em;
+	position: fixed;
+	top: 1cm;
+	left: 1cm;
+	cursor: pointer;
+	text-align: center;
+	color: #804058;
+}
+
+a:link {
+	color: #804058;
+	text-decoration: none;
+	border-bottom: .1em dotted;
+}
+
+a:visited {
+	color: #726469;
+	text-decoration: none;
+	border-bottom: .1em dotted;
+}
+
+a:hover {
+	color: #726469;
+	text-decoration: none;
+	border-bottom: .1em solid;
+}
+
+a:active {
+	color: #726469;
+	text-decoration: none;
+	border-bottom: .1em solid;
+	background-color: #dbac7d44;
+}
+
 h1 {
 	font-weight: 600;
 	text-align: center;
 	font-size: 240%;
 }
 
+h2 {
+	font-weight: 600;
+	text-align: center;
+	font-size: 180%;
+}
+
 h3 {
 	font-weight: 600;
-	font-size: 150%;
+	font-size: 140%;
+	color: #4b3552;
+	margin-bottom: .75em;
 }
 
 h1.frontpage {
@@ -46,6 +102,7 @@ h1.frontpage {
 
 h3.frontpage {
 	color: #804058;
+	font-size: 150%;
 	margin: 2em 0 0 0;
 	text-align: center;
 	text-indent: .2em;
@@ -63,8 +120,13 @@ div.entry {
 	height: 16em;
 	overflow: hidden;
 	text-align: center;
-	letter-spacing: 0;
+	cursor: pointer;
+	box-shadow: .1em .1em .3em #46372d30;
+}
 
+span.asterism {
+	padding-left: 5em;
+	border-bottom: .1em solid #804058;
 }
 
 div.entry > div.filling {
@@ -80,4 +142,72 @@ div.entry > span {
 
 table.contents {
 	margin: auto;
+}
+
+abbr {
+	background-color: #dbac7d44;
+	text-decoration: none;
+	border-radius: .1em;
+	padding: 0 .1em 0 .1em;
+}
+
+abbr:after {
+	content: "[hover]";
+	color: #46372d;
+	vertical-align: super;
+	font-size: 60%;
+}
+
+div.zh_text abbr:after {
+	content: "[悬浮]";
+	color: #46372d;
+	vertical-align: super;
+	font-size: 60%;
+}
+
+b {
+	font-weight: 700;
+}
+
+b.plain {
+	font-weight: inherit;
+}
+
+div.zh_text q:before {
+    content: "「"
+}
+
+div.zh_text q:after {
+    content: "」";
+}
+
+div.zh_text em {
+    position: relative;
+    font-weight: inherit;
+    font-style: normal;
+}
+
+div.zh_text em:after {
+    position: absolute;
+    top: .65em;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    content: "・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・";
+}
+
+div.zh_text u {
+    text-decoration: none;
+    border-bottom-color: inherit;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+div.zh_text span.lit {
+    text-decoration: underline wavy;
+}
+
+div.zh_text p {
+	text-indent: 2em;
 }
