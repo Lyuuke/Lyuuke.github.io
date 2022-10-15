@@ -1,0 +1,27 @@
+body {
+    width: 800px;
+    padding: 50px;
+    margin: auto;
+    font-family: "Myriad Pro", "Arial", "Calibri", "Microsoft YaHei", "Apple LiGothic Medium", sans-serif
+}
+strong {
+    font-weight: bold;
+}
+.edit_font_color {
+    color: #f15;
+}
+.d_post_content {
+    border: 1px solid #888;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 20px;
+    line-height: 1.6em
+}
+.BDE_Image {
+    border: 1px solid #a0a0a0;
+    background-color: #e0e0e0;
+    box-shadow: 5px 5px 0px #bbb;
+    padding: 5px;
+    margin: 10px;
+}
