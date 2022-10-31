@@ -8,6 +8,8 @@ shorthand_table = {
     # <h3> === [Standalone line] | ...
     r"^[ \t]*-[ \t]+(.+?)[ \t]*$": (lambda x: "<h4>{}</h4>".format(x.group(1))),
     # <h4> === [Standalone line] - ...
+    ## STRUCTURE
+    r";;": (lambda x: "<br>"),
     ## FORMATS
     r'""(.*?)""': (lambda x: "<q>{}</q>".format(x.group(1))),
     # <q> === ""...""

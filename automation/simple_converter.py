@@ -16,4 +16,13 @@ class GehligMarkupProcessor:
 			se.__dict__[o] = options.get(o, v)
 
 	def segment_preprocess(se):
-		'''Not complete yet.'''
+		'''Segment processor.
+		'''
+		_cached = ""
+		_segment_cached = ""
+		lineskip_flag = False
+		# whether previous line is empty
+		for l in se.text.splitlines():
+			if l.strip() == "":
+				lineskip_flag = True
+
