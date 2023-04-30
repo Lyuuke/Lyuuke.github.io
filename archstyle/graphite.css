@@ -1,0 +1,79 @@
+body {
+	background-color: #161527;
+}
+
+div#main {
+	font-family: "Liberation Serif", "Palatino Linotype",
+	"Palatino", "Source Han Serif SC", "Noto Serif CJK SC",
+	"STZhongSong", "FZShuSong-Z01S", "FZSong", "STSong", serif;
+}
+
+div#main {
+	color: #dee2e5;
+	line-height: 1.6em;
+	font-weight: 500;
+	width: 48em;
+	margin: auto;
+	padding: 3em 5em 3em 5em;
+	text-align: justify;
+}
+
+b {
+	font-weight: 700;
+}
+
+div.zh_text em {
+    position: relative;
+    font-weight: inherit;
+    font-style: normal;
+}
+
+div.zh_text em:after {
+    position: absolute;
+    top: .65em;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    content: "・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・";
+}
+
+div.cotext {
+	text-align: center;
+	line-height: 2em;
+	letter-spacing: .35em;
+	font-size: 120%;
+}
+
+div.content span.slightlyblurry {
+	filter: blur(.5px);
+}
+
+div.content span.mildblurry {
+	filter: blur(1px);
+}
+
+div.content span.blurry {
+	filter: blur(1.5px);
+}
+
+.cloudy {
+	display: inline-block;
+	text-shadow: .3em .1em .3em #dee2e5c0,
+		-0.3em -0.1em .25em #dee2e5a0,
+		.1em -0.25em .2em #dee2e580,
+		0 0 1em #dee2e5;
+	color: #161527;
+	font-weight: 700;
+}
+
+.falling {
+	display: inline-block;
+	transform-origin: center;
+	transform: rotate(-15deg);
+	text-shadow: 0 -0.5em .2em #dee2e590,
+		0 -1em .25em #dee2e580,
+		0 -2em .35em #dee2e570,
+		0 -3em .45em #dee2e558,
+		0 -4em .6em #dee2e540;
+}
