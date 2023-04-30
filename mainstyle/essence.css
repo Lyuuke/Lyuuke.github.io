@@ -8,7 +8,8 @@ div#main, h1, h2 {
 	"STZhongSong", "FZShuSong-Z01S", "FZSong", "STSong", serif;
 }
 
-h3, a, b, div.asterism, div.back_shell {
+h3, a, b, div.asterism, div.back_shell, div.warningheader,
+div.severewarningheader, div.contentblock > .content, figcaption {
 	font-family: "Myriad Pro", "Segoe UI", "Source Han Sans SC",
 	"Noto Sans CJK SC", "Lantinghei SC", "PingFang SC",
 	"Microsoft YaHei", sans-serif;
@@ -31,6 +32,10 @@ div#main {
 	sans-serif;
 	font-variant-ligatures: no-common-ligatures;
 	margin: 0 .2em 0 .2em;
+}
+
+sup, sub {
+	line-height: 1em;
 }
 
 div.back_shell {
@@ -140,6 +145,18 @@ div.entry > span {
 	text-shadow: 0 0 .2em #46372d80;
 }
 
+div.coverbox {
+	margin-top: 5em;
+	margin-bottom: 5em;
+	display: flex;
+	justify-content: center;
+}
+
+div.coverbox > img {
+	width: 50%;
+	filter: drop-shadow(0 0 2em white);
+}
+
 table.contents {
 	margin: auto;
 }
@@ -210,4 +227,35 @@ div.zh_text span.lit {
 
 div.zh_text p {
 	text-indent: 2em;
+}
+
+div.contentblock {
+	text-align: justify;
+	background-color: #dbac7d44;
+	padding: .6em 1em .6em 1em;
+	margin: .5em 0 .5em 0;
+}
+
+div.contentblock > .content {
+	font-size: 90%;
+	line-height: 1.4em;
+	text-indent: 2em;
+}
+
+div.warningheader, div.severewarningheader {
+	font-size: 120%;
+	line-height: 1.2em;
+	margin: .2em 0 .2em 0;
+	padding: 0 0 0 .4em;
+	color: #804058;
+	font-weight: 600;
+	border-left: .3em solid #804058;
+}
+
+div.warningheader:before {
+	content: "🧭 ";
+}
+
+div.severewarningheader:before {
+	content: "🎛️ ";
 }

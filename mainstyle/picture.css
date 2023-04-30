@@ -1,0 +1,23 @@
+figure.majorpictureframe {
+	margin: .5em 4% .5em 4%;
+	padding: .6em;
+	text-align: center;
+	background-image: repeating-linear-gradient(
+		135deg, #dbac7d22 0, #dbac7d22 .4em,
+		#00000000 .4em, #00000000 .6em);
+}
+
+figure.majorpictureframe > img {
+	width: calc(100% - 2em);
+	filter: drop-shadow(0 0 .5em #dbac7d80);
+}
+
+figure.majorpictureframe > figcaption:before {
+	content: "【图】";
+	font-weight: 700;
+	color: #804058;
+}
+
+figure.majorpictureframe > figcaption {
+	font-size: 90%;
+}
