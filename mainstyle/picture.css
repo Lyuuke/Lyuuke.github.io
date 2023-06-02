@@ -4,7 +4,7 @@ figure.majorpictureframe {
 	text-align: center;
 	background-image: repeating-linear-gradient(
 		135deg, #dbac7d22 0, #dbac7d22 .4em,
-		#00000000 .4em, #00000000 .6em);
+		transparent .4em, transparent .6em);
 }
 
 figure.majorpictureframe > img {

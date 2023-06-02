@@ -1,15 +1,15 @@
 table.decl, table.common {
 	border-spacing: .2em;
-	color: #4b3552;
+	color: var(--deep-purple);
 }
 table.decl th, table.decl td, table.common th, table.common td {
 	text-align: center;
 	width: 7em;
 }
 table.decl th, table.common th {
-	background-color: #dbac7d44;
+	background-color: var(--wheat-44);
 }
 table.decl td, table.common td {
 	font-family: "Myriad Pro", "Segoe UI", sans-serif;
-	border-bottom: .1em solid #dbac7d44;
+	border-bottom: .1em solid var(--wheat-44);
 }

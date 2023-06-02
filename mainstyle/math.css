@@ -1,6 +1,6 @@
 .formula {
 	text-align: center;
-	background-color: #dbac7d44;
+	background-color: var(--wheat-44);
 	padding: .6em 0 .6em 0;
 }
 

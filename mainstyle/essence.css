@@ -1,5 +1,15 @@
+:root {
+    --deep-purple: #4b3552;
+    --vivid-purple: #804058;
+    --inactive-grey: #726469;
+    --wheat: #dbac7d;
+    --wheat-44: rgba(219, 172, 125, .2656);
+    --shadow-brown-80: rgba(70, 55, 45, .5);
+    --shadow-brown-30: rgba(70, 55, 45, .1875);
+}
+
 body {
-	background-color: #dbac7d;
+	background-color: var(--wheat);
 }
 
 div#main, h1, h2 {
@@ -23,7 +33,7 @@ div#main {
 	width: 48em;
 	margin: auto;
 	padding: 3em 5em 3em 5em;
-	box-shadow: .2em .2em .8em #46372d80;
+	box-shadow: .2em .2em .8em var(--shadow-brown-80);
 	text-align: justify;
 }
 
@@ -51,32 +61,32 @@ div.back_shell {
 	left: 1cm;
 	cursor: pointer;
 	text-align: center;
-	color: #804058;
+	color: var(--vivid-purple);
 }
 
 a:link {
-	color: #804058;
+	color: var(--vivid-purple);
 	text-decoration: none;
 	border-bottom: .1em dotted;
 }
 
 a:visited {
-	color: #726469;
+	color: var(--inactive-grey);
 	text-decoration: none;
 	border-bottom: .1em dotted;
 }
 
 a:hover {
-	color: #726469;
+	color: var(--inactive-grey);
 	text-decoration: none;
 	border-bottom: .1em solid;
 }
 
 a:active {
-	color: #726469;
+	color: var(--inactive-grey);
 	text-decoration: none;
 	border-bottom: .1em solid;
-	background-color: #dbac7d44;
+	background-color: var(--wheat-44);
 }
 
 h1 {
@@ -94,19 +104,19 @@ h2 {
 h3 {
 	font-weight: 600;
 	font-size: 140%;
-	color: #4b3552;
+	color: var(--deep-purple);
 	margin-bottom: .75em;
 }
 
 h1.frontpage {
-	color: #4b3552;
+	color: var(--deep-purple);
 	text-indent: .333em;
 	letter-spacing: .333em;
 	margin-bottom: 1.5em;
 }
 
 h3.frontpage {
-	color: #804058;
+	color: var(--vivid-purple);
 	font-size: 150%;
 	margin: 2em 0 0 0;
 	text-align: center;
@@ -115,7 +125,7 @@ h3.frontpage {
 }
 
 div.entry {
-	background-color: #dbac7d;
+	background-color: var(--wheat);
 	background-size: contain;
 	background-repeat: no-repeat;
 	margin: .5em;
@@ -126,12 +136,12 @@ div.entry {
 	overflow: hidden;
 	text-align: center;
 	cursor: pointer;
-	box-shadow: .1em .1em .3em #46372d30;
+	box-shadow: .1em .1em .3em var(--shadow-brown-30);
 }
 
 span.asterism {
 	padding-left: 5em;
-	border-bottom: .1em solid #804058;
+	border-bottom: .1em solid var(--vivid-purple);
 }
 
 div.entry > div.filling {
@@ -142,7 +152,7 @@ div.entry > span {
 	font-size: 120%;
 	font-weight: 600;
 	color: white;
-	text-shadow: 0 0 .2em #46372d80;
+	text-shadow: 0 0 .2em var(--shadow-brown-80);
 }
 
 div.coverbox {
@@ -162,7 +172,7 @@ table.contents {
 }
 
 abbr {
-	background-color: #dbac7d44;
+	background-color: var(--wheat-44);
 	text-decoration: none;
 	border-radius: .1em;
 	padding: 0 .1em 0 .1em;
@@ -231,7 +241,7 @@ div.zh_text p {
 
 div.contentblock {
 	text-align: justify;
-	background-color: #dbac7d44;
+	background-color: var(--wheat-44);
 	padding: .6em 1em .6em 1em;
 	margin: .5em 0 .5em 0;
 }
@@ -247,9 +257,9 @@ div.warningheader, div.severewarningheader {
 	line-height: 1.2em;
 	margin: .2em 0 .2em 0;
 	padding: 0 0 0 .4em;
-	color: #804058;
+	color: var(--vivid-purple);
 	font-weight: 600;
-	border-left: .3em solid #804058;
+	border-left: .3em solid var(--vivid-purple);
 }
 
 div.warningheader:before {
