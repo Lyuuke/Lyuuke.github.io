@@ -1,0 +1,26 @@
+div.coverbox {
+	margin-top: 5em;
+	margin-bottom: 5em;
+	display: flex;
+	justify-content: center;
+}
+
+div.coverboxinnercenter {
+	width: 50%;
+	opacity: 1;
+	transition-duration: .6s;
+}
+
+div.coverboxinnercenter:hover {
+	opacity: 0;
+	transition-duration: .6s;
+}
+
+div.coverboxinnerside {
+	width: 20%;
+}
+
+div.coverboxinnercenter > img {
+	width: 100%;
+	filter: drop-shadow(0 0 2em white);
+}

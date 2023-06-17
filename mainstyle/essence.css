@@ -155,18 +155,6 @@ div.entry > span {
 	text-shadow: 0 0 .2em var(--shadow-brown-80);
 }
 
-div.coverbox {
-	margin-top: 5em;
-	margin-bottom: 5em;
-	display: flex;
-	justify-content: center;
-}
-
-div.coverbox > img {
-	width: 50%;
-	filter: drop-shadow(0 0 2em white);
-}
-
 table.contents {
 	margin: auto;
 }

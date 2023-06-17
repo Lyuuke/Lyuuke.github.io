@@ -1,0 +1,354 @@
+:root {
+    --coverbrown: #a08f7a;
+    --deepcream: #c2af8d;
+    --darkochre: #897562;
+    --cementgray: #686966;
+    --cementshadow: #4c4d4a;
+    --textbrown0: #5b3529;
+    --textbrown1: #371d17;
+    --textbrown2: #1d0f0b;
+    --candidus: rgba(255, 253, 248, 0.35);
+    --seriftypes: "Liberation Serif", "Palatino Linotype",
+        "Palatino", "Source Han Serif SC", "Noto Serif CJK SC",
+        "STZhongSong", "FZShuSong-Z01S", "FZSong", "STSong", serif;
+    --sansseriftypes: "Myriad Pro", "Segoe UI", "Source Han Sans SC",
+        "Noto Sans CJK SC", "Lantinghei SC", "PingFang SC",
+        "Microsoft YaHei", sans-serif;
+}
+
+body {
+    background-color: var(--cementgray);
+    background-size: 6em auto;
+}
+
+#main {
+    width: 70em;
+    min-height: 50em;
+    padding: 0 4em 0 4em;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+img, #main div {
+    user-select: none;
+    user-drag: none;
+    -webkit-user-drag: none;
+}
+
+#navboxwrapper {
+    width: 40em;
+    height: 40em;
+    box-shadow: 0 0 1em var(--cementshadow);
+    overflow: hidden;
+    order: 2;
+    z-index: 3;
+}
+
+#navbox {
+    position: relative;
+    top: 0;
+    left: 0;
+    background-image: radial-gradient(
+        circle at 50% calc(50% + 15em), 
+        var(--deepcream) 0%, var(--deepcream) 12em,
+        var(--coverbrown) 12em, var(--coverbrown) 100%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s ease-in-out;
+    z-index: 25;
+}
+
+.navboxdoppel {
+    position: relative;
+    left: 0;
+    top: calc(-48em * 120 / 795);
+    width: 100%;
+    height: calc(100% * 720 / 3975);
+    transition: all 1s ease-in-out;
+    z-index: 30;
+}
+
+.frontpageimg {
+    width: 80%;
+    height: 50%;
+    background-image: url(../images/caupona_frontpageimg.png);
+    background-size: contain;
+    filter: sepia(0.3) hue-rotate(-5deg) drop-shadow(0 0 .5em
+        var(--darkochre));
+}
+
+.frontpagename {
+    width: 60%;
+    height: 22.5%;
+    background-size: contain;
+    filter: drop-shadow(0 0 .5em var(--darkochre));
+    transition: all 0.5s ease-in-out;
+}
+
+.frontpagename:hover {
+    transition: all 0.5s ease-in-out;
+}
+
+@keyframes movingwave {
+    0% { left: -8em; }
+    100% { left: 0; }
+}
+
+#frontpageunda1 {
+    position: absolute;
+    left: -8em;
+    bottom: 0;
+    width: 48em;
+    animation: movingwave 6s linear infinite;
+}
+
+#frontpageunda2 {
+    position: absolute;
+    left: 0em;
+    bottom: 0;
+    width: 48em;
+    animation: movingwave 9s linear infinite reverse;
+}
+
+#contentbox {
+    position: relative;
+    top: calc(-40em * 4695/3975);
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--deepcream);
+    z-index: 15;
+}
+
+@keyframes elevatealoft {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    40% {
+        opacity: 60%;
+    }
+    70% {
+        opacity: 60%
+    }
+    100% {
+        transform: translateY(-6em) rotate(180deg);
+        opacity: 0%;
+    }
+}
+
+.steamparticle {
+    width: 2em;
+    height: 2em;
+    opacity: 0;
+    position: absolute;
+    background-size: contain;
+}
+
+#particle1 {
+    left: 15.5em;
+    top: 3.5em;
+    animation: elevatealoft 6s ease-in-out infinite;
+}
+
+#particle2 {
+    left: 18em;
+    top: 0.5em;
+    animation: elevatealoft 6s ease-in-out infinite;
+    animation-delay: 1.25s;
+}
+
+#particle3 {
+    left: 20.5em;
+    top: 2em;
+    animation: elevatealoft 6s ease-in-out infinite;
+    animation-delay: 2.25s;
+}
+
+#particle4 {
+    left: 19.5em;
+    top: 1em;
+    animation: elevatealoft 6s ease-in-out infinite;
+    animation-delay: 4.5s;
+}
+
+.navbar {
+    width: 10em;
+    min-height: 40em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+#navbarleft {
+    order: 1;
+}
+
+#navbarright {
+    order: 3;
+}
+
+@keyframes expandingdesc {
+    0% {
+        max-width: 0;
+        width: 0;
+    }
+    100% { /* */ }
+}
+
+.navbarentry {
+    background-color: var(--darkochre);
+    background-size: contain;
+    box-shadow: 0 0 0.5em var(--cementshadow);
+    border: 0.35em solid var(--coverbrown);
+    width: 8em;
+    height: 8em;
+    filter: sepia(60%) hue-rotate(-5deg);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    z-index: 10;
+}
+
+#navbarright > .navbarentry:before,
+#navbarleft > .navbarentry:after {
+    display: none;
+    position: absolute;
+    line-height: 1em;
+    height: auto;
+    font-size: 120%;
+    color: var(--textbrown0);
+    font-family: var(--seriftypes);
+    text-shadow: 0 0 0.2em var(--candidus);
+    font-weight: 600;
+    /* white-space: nowrap; */
+    padding: 0.5em 0.3em 0.5em 0.3em;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+#navbarright > .navbarentry:hover:before,
+#navbarright > .activeentry:before {
+    left: 100%;
+    top: calc(-0.35em / 1.2);
+    /* font size is 1.2 times of .navbarentry */
+    background-image: linear-gradient(135deg,
+        var(--deepcream) 0%, var(--deepcream) calc(100% - .5em),
+        transparent calc(100% - .5em), transparent 100%);
+}
+
+#navbarleft > .navbarentry:hover:after,
+#navbarleft > .activeentry:after {
+    right: 100%;
+    bottom: calc(-0.35em / 1.2);
+    background-image: linear-gradient(135deg,
+        transparent 0%, transparent .5em,
+        var(--deepcream) .5em, var(--deepcream) 100%);
+}
+
+#navbarright > .navbarentry:hover:before,
+#navbarleft > .navbarentry:hover:after,
+#navbarright > .activeentry:before,
+#navbarleft > .activeentry:after {
+    display: block;
+    max-width: 1.2em;
+    transition: all 0.3s ease-in-out;
+    animation: expandingdesc 0.5s ease;
+}
+
+.navbarentry:hover, .activeentry {
+    background-color: var(--coverbrown);
+    transform: scale(1.25, 1.25);
+    border-color: var(--deepcream);
+    filter: none;
+    transition: all 0.3s ease-in-out;
+    z-index: 30;
+}
+
+.leftshift {
+    transform: translate(2.3em) rotate(45deg);
+}
+
+.rightshift {
+    transform: translate(-2.3em) rotate(45deg);
+}
+
+.leftshift:hover, .leftshift.activeentry {
+    transform: translate(2.3em) rotate(22.5deg) scale(1.5, 1.5);
+}
+
+.rightshift:hover, .rightshift.activeentry {
+    transform: translate(-2.3em) rotate(22.5deg) scale(1.5, 1.5);
+}
+
+.activeentry {
+    z-index: 50;
+    cursor: default;
+}
+
+@keyframes fade {
+    0% { filter: grayscale(0) sepia(60%) hue-rotate(-5deg); }
+    100% { filter: grayscale(0.8); }
+}
+
+.inactiveentry {
+    filter: grayscale(0.8);
+    animation: fade 1s ease-in-out;
+}
+
+.leftshift.inactiveentry {
+    transform: translate(2.3em) rotate(45deg) scale(0.9, 0.9);
+}
+
+.rightshift.inactiveentry {
+    transform: translate(-2.3em) rotate(45deg) scale(0.9, 0.9);
+}
+
+.leftshift.inactiveentry:hover {
+    transform: translate(2.3em) rotate(22.5deg);
+}
+
+.rightshift.inactiveentry:hover {
+    transform: translate(-2.3em) rotate(22.5deg);
+}
+
+#navbarentryl1:after { content: "简介"; }
+#navbarentryl2:after { content: "菜肴"; }
+#navbarentryl3:after { content: "饮品"; }
+#navbarentryl4:after { content: "沐浴"; }
+#navbarentryr1:before { content: "培育"; }
+#navbarentryr2:before { content: "装饰"; }
+#navbarentryr3:before { content: "探索"; }
+#navbarentryr4:before { content: "动力"; }
+
+#navbarentryl1 {
+    background-image: url(../images/caupona_frontpage_el_1.png);
+}
+#navbarentryl2 {
+    background-image: url(../images/caupona_frontpage_el_2.png);
+}
+#navbarentryl3 {
+    background-image: url(../images/caupona_frontpage_el_3.png);
+}
+#navbarentryl4 {
+    background-image: url(../images/caupona_frontpage_el_4.png);
+}
+#navbarentryr1 {
+    background-image: url(../images/caupona_frontpage_el_5.png);
+}
+#navbarentryr2 {
+    background-image: url(../images/caupona_frontpage_el_6.png);
+}
+#navbarentryr3 {
+    background-image: url(../images/caupona_frontpage_el_7.png);
+}
+#navbarentryr4 {
+    background-image: url(../images/caupona_frontpage_el_8.png);
+}
