@@ -33,7 +33,7 @@ function showContent(entryNum) {
         7: "images/frontpage_intro_7.png"
     }
     var bgColorSpec = {
-        0: "#414243",
+        0: "#897562",
         1: "#988d78",
         2: "#414243",
         3: "#6c7e84",

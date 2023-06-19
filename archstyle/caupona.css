@@ -7,6 +7,7 @@
     --textbrown0: #5b3529;
     --textbrown1: #371d17;
     --textbrown2: #1d0f0b;
+    --leadenwhite: #dde3e4;
     --candidus: rgba(255, 253, 248, 0.35);
     --seriftypes: "Liberation Serif", "Palatino Linotype",
         "Palatino", "Source Han Serif SC", "Noto Serif CJK SC",
@@ -23,7 +24,7 @@ body {
 
 #main {
     width: 70em;
-    min-height: 50em;
+    min-height: 42em;
     padding: 0 4em 0 4em;
     margin: auto;
     display: flex;
@@ -353,4 +354,66 @@ img, #main div {
 }
 #navbarentryr4 {
     background-image: url(../images/caupona_frontpage_el_8.png);
+}
+
+
+@keyframes blink {
+    0% { opacity: 0.75; }
+    100% { opacity: 0.35; }
+}
+
+#supportinfo {
+    position: relative;
+    top: -0.5em;
+    width: 40em;
+    margin: 1em auto;
+    font-family: var(--sansseriftypes);
+    color: var(--leadenwhite);
+    opacity: 0.75;
+    animation: blink 1s ease-in-out alternate infinite;
+}
+
+#supportinfo:hover {
+    opacity: 1;
+    animation: none;
+}
+
+#supportinfo b {
+    font-weight: 700;
+}
+
+#supportinfo > em {
+    display: inline-block;
+    font-style: normal;
+    font-weight: 700;
+    background-color: var(--leadenwhite);
+    color: var(--cementgray);
+    padding: 0.2em 0.5em;
+    margin: 0.1em;
+    box-shadow: 0 0 0.4em var(--cementshadow);
+}
+
+em > .wavyunderlined {
+    font-style: normal;
+    text-decoration: underline wavy var(--cementgray);
+}
+
+.wavyunderlined {
+    font-style: normal;
+    text-decoration: underline wavy var(--leadenwhite);
+}
+
+#supportinfo a,
+#supportinfo a:hover,
+#supportinfo a:active,
+#supportinfo a:visited {
+    color: var(--deepcream);
+    text-decoration: underline dashed var(--deepcream);
+}
+
+#supportinfo span.item {
+    display: inline-block;
+    padding: 0.2em 0.5em;
+    margin: 0.1em;
+    border-right: 0.15em solid var(--leadenwhite);
 }
