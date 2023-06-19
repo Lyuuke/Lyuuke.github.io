@@ -123,6 +123,8 @@ img, #main div {
     width: 100%;
     height: 100%;
     background-color: var(--deepcream);
+    background-size: contain;
+    transition: all 0.5s linear;
     z-index: 15;
 }
 
