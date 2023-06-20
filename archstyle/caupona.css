@@ -366,6 +366,7 @@ img, #main div {
     position: relative;
     top: -0.5em;
     width: 40em;
+    padding: 0 15em;
     margin: 1em auto;
     font-family: var(--sansseriftypes);
     color: var(--leadenwhite);
