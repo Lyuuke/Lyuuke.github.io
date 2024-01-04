@@ -21,3 +21,7 @@ figure.majorpictureframe > figcaption:before {
 figure.majorpictureframe > figcaption {
 	font-size: 90%;
 }
+
+figure.noshading {
+	background-image: none;
+}

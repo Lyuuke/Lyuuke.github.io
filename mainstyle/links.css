@@ -1,0 +1,21 @@
+div.linkrange {
+	display: flex;
+	justify-content: center;
+}
+
+div.linkrange > a {
+	display: inline-block;
+	width: 30pt;
+	margin: 12pt 6pt;
+	text-decoration: none;
+	border-bottom: none;
+}
+
+div.linkrange > a:active {
+	background-color: transparent;
+}
+
+div.linkrange img {
+	width: 100%;
+	filter: drop-shadow(0 0 5pt var(--shadow-brown-30));
+}

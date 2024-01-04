@@ -6,6 +6,8 @@
     --wheat-44: rgba(219, 172, 125, .2656);
     --shadow-brown-80: rgba(70, 55, 45, .5);
     --shadow-brown-30: rgba(70, 55, 45, .1875);
+    --cyan-green: #377954;
+    --leaf-gold: #b8841f;
 }
 
 body {
@@ -46,6 +48,11 @@ div#main {
 
 sup, sub {
 	line-height: 1em;
+}
+
+div.majorskip {
+	/* a separating vertical space */
+	min-height: 5em;
 }
 
 div.back_shell {
@@ -200,16 +207,10 @@ div.zh_text em {
     position: relative;
     font-weight: inherit;
     font-style: normal;
-}
-
-div.zh_text em:after {
-    position: absolute;
-    top: .65em;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    content: "・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・";
+    line-height: inherit;
+    text-emphasis-style: filled dot;
+    text-emphasis-position: under;
+    -webkit-text-emphasis-position: under;
 }
 
 div.zh_text u {
@@ -227,6 +228,17 @@ div.zh_text p {
 	text-indent: 2em;
 }
 
+div.zh_text span.punct {
+	/* punctuation */
+	display: inline-block;
+	position: relative;
+	left: -0.25em;
+	top: 0.15em;
+	width: 0;
+	overflow: visible;
+	color: var(--vivid-purple);
+}
+
 div.contentblock {
 	text-align: justify;
 	background-color: var(--wheat-44);
@@ -238,6 +250,27 @@ div.contentblock > .content {
 	font-size: 90%;
 	line-height: 1.4em;
 	text-indent: 2em;
+}
+
+div.shortintro {
+	text-align: center;
+	font-size: 120%;
+	letter-spacing: 0.2em;
+	line-height: 1.8em;
+	max-width: 70%;
+	margin: auto;
+}
+
+div.shortintro > p {
+	text-align: justify;
+	font-size: 90%;
+	letter-spacing: 0.1em;
+	line-height: 1.8em;
+	margin: 0.25em 0;
+}
+
+div.shortintro .nospacing {
+	letter-spacing: 0;
 }
 
 div.warningheader, div.severewarningheader {
