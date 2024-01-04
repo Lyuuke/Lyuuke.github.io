@@ -222,6 +222,7 @@ div.zh_text u {
 
 div.zh_text span.lit {
     text-decoration: underline wavy;
+    text-decoration-thickness: 0.8pt;
 }
 
 div.zh_text p {
