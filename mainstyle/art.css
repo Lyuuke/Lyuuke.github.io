@@ -46,6 +46,55 @@ div.divisionbody {
 	padding: .3em;
 }
 
+.divisionbody > table {
+	width: 100%;
+}
+
+.divisionbody > table td:first-child {
+	width: 25%;
+	text-align: center;
+}
+
+.divisionbody > table td:first-child > div {
+	display: inline-block;
+	position: relative;
+	font-weight: 500;
+	font-family: var(--sans-set);
+	line-height: 1em;
+	padding: 0.3em 0.5em;
+	margin-right: 1.2em;
+	background-color: var(--maincolor);
+	border-width: 1pt 0 1pt 1pt;
+	border-color: white;
+	border-style: solid;
+	color: var(--secondcolor);
+	z-index: 4;
+}
+
+.divisionbody > table td:first-child > div:after {
+	display: inline-block;
+	position: absolute;
+	left: calc(100% - 0.8em / sqrt(2));
+	top: calc(0.24em - 0.5pt);
+	height: calc(1.6em / sqrt(2));
+	width: calc(1.6em / sqrt(2));
+	content: "";
+	background-color: var(--maincolor);
+	border-width: 1pt 1pt 0 0;
+	border-color: white;
+	border-style: solid;
+	transform: rotate(45deg);
+	z-index: -1;
+}
+
+.divisionbody > table td:nth-child(2) {
+	width: 55%;
+}
+
+.divisionbody > table td:nth-child(3) {
+	width: 20%;
+}
+
 .nocontentfiller {
 	display: inline-block;
 	margin: auto;
