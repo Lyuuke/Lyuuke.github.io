@@ -8,6 +8,12 @@
     --shadow-brown-30: rgba(70, 55, 45, .1875);
     --cyan-green: #377954;
     --leaf-gold: #b8841f;
+    --serif-set: "Liberation Serif", "Palatino Linotype",
+		"Palatino", "Source Han Serif SC", "Noto Serif CJK SC",
+		"STZhongSong", "FZShuSong-Z01S", "FZSong", "STSong", serif;
+    --sans-set: "Myriad Pro", "Segoe UI", "Source Han Sans SC",
+		"Noto Sans CJK SC", "Lantinghei SC", "PingFang SC",
+		"Microsoft YaHei", sans-serif;
 }
 
 body {
@@ -15,16 +21,13 @@ body {
 }
 
 div#main, h1, h2 {
-	font-family: "Liberation Serif", "Palatino Linotype",
-	"Palatino", "Source Han Serif SC", "Noto Serif CJK SC",
-	"STZhongSong", "FZShuSong-Z01S", "FZSong", "STSong", serif;
+	font-family: var(--serif-set);
 }
 
-h3, a, b, div.asterism, div.back_shell, div.warningheader,
-div.severewarningheader, div.contentblock > .content, figcaption {
-	font-family: "Myriad Pro", "Segoe UI", "Source Han Sans SC",
-	"Noto Sans CJK SC", "Lantinghei SC", "PingFang SC",
-	"Microsoft YaHei", sans-serif;
+h3, h5, a, b, div.asterism, div.back_shell, div.warningheader,
+div.severewarningheader, div.noticeheader,
+div.contentblock > .content, figcaption {
+	font-family: var(--sans-set);
 }
 
 div#main {
@@ -50,8 +53,13 @@ sup, sub {
 	line-height: 1em;
 }
 
-div.majorskip {
+div.minorskip {
 	/* a separating vertical space */
+	min-height: 2.5em;
+}
+
+div.majorskip {
+	/* a taller separating vertical space */
 	min-height: 5em;
 }
 
@@ -115,6 +123,14 @@ h3 {
 	margin-bottom: .75em;
 }
 
+h5 {
+	font-weight: 600;
+	font-size: 120%;
+	color: var(--deep-purple);
+	font-variant: small-caps;
+	margin: 0.5em 0;
+}
+
 h1.frontpage {
 	color: var(--deep-purple);
 	text-indent: .333em;
@@ -174,17 +190,18 @@ abbr {
 }
 
 abbr:after {
-	content: "[hover]";
+	content: "[?]";
 	color: #46372d;
 	vertical-align: super;
 	font-size: 60%;
 }
 
+[lang="en"] abbr:after {
+	content: "[hover]";
+}
+
 div.zh_text abbr:after {
 	content: "[悬浮]";
-	color: #46372d;
-	vertical-align: super;
-	font-size: 60%;
 }
 
 b {
@@ -274,7 +291,8 @@ div.shortintro .nospacing {
 	letter-spacing: 0;
 }
 
-div.warningheader, div.severewarningheader {
+div.warningheader, div.severewarningheader,
+div.noticeheader {
 	font-size: 120%;
 	line-height: 1.2em;
 	margin: .2em 0 .2em 0;
@@ -290,4 +308,8 @@ div.warningheader:before {
 
 div.severewarningheader:before {
 	content: "🎛️ ";
+}
+
+div.noticeheader:before {
+	content: "🚩 ";
 }

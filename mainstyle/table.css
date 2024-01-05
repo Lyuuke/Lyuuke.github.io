@@ -2,14 +2,66 @@ table.decl, table.common {
 	border-spacing: .2em;
 	color: var(--deep-purple);
 }
+
 table.decl th, table.decl td, table.common th, table.common td {
 	text-align: center;
 	width: 7em;
 }
+
 table.decl th, table.common th {
 	background-color: var(--wheat-44);
 }
+
 table.decl td, table.common td {
 	font-family: "Myriad Pro", "Segoe UI", sans-serif;
 	border-bottom: .1em solid var(--wheat-44);
+}
+
+table.translation_3col {
+	width: 100%;
+}
+
+table.translation_3col p {
+	text-indent: 2em;
+	margin: 0.5em 0;
+}
+
+table.translation_3col td:not([lang="zh"]) > h5 + p {
+	text-indent: 0;
+}
+
+table.translation_3col td {
+	padding: 0.5em;
+	vertical-align: top;
+}
+
+table.translation_3col td:first-child {
+	width: 40%;
+	/*hyphens: auto;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;*/
+}
+
+table.translation_3col td:nth-child(2) {
+	width: 40%;
+}
+
+table.translation_3col td:nth-child(3) {
+	width: 20%;
+	font-size: 90%;
+	font-family: var(--sans-set);
+	line-height: 1.25em;
+	white-space: normal;
+	padding-top: 20pt;
+	background-color: var(--wheat-44)
+}
+
+table.translation_3col td:nth-child(3):before {
+	display: block;
+	position: relative;
+	height: 0;
+	top: -15pt;
+	font-size: 125%;
+	content: "疏注";
+	color: white;
 }
