@@ -1,21 +1,9 @@
-document.addEventListener(
-	"DOMContentLoaded",
-	function () {
-		var entries = document.getElementsByTagName("ipa")
-		for (ent = 0; ent < entries.length; ++ent) {
-			var thisEntry = entries[ent]
-			thisEntry.innerHTML = nebty(thisEntry.innerHTML)
-		}
-	}
-)
-
-
-function nebty(text) {
+function nebty(text, terminator = "\0") {
 
 	function getPrimary(rawChar) {
-		const TRIVIALS = "abcdefhijklmnopqrstuvwxyz-."
+		const TRIVIALS = "abcdefhijklmnopqrstuvwxyz-.=/#"
 		const NONTRIVIALS = {
-			// "G", "K", and "M" are held
+			// "G" and "M" are reserved
 			"g": "ɡ",
 			"A": "ɑ",
 			"B": "β",
@@ -26,6 +14,7 @@ function nebty(text) {
 			"H": "ɦ",
 			"I": "ɨ",
 			"J": "ʑ",
+			"K": "ꭓ",
 			"L": "ɭ",
 			"N": "ŋ",
 			"O": "ɔ",
@@ -43,8 +32,10 @@ function nebty(text) {
 			"|": "ǀ",
 			"?": "ʔ",
 			"@": "ə",
-			"=": "=",
-			"/": "/"
+			"^": "͡",
+			"%": "∅",
+			":": "ː",
+			"'": "ˈ"
 		}
 		if (TRIVIALS.includes(rawChar)) {
 			return rawChar
@@ -68,7 +59,7 @@ function nebty(text) {
 			"ɭ": {
 				"n": "ɳ", "t": "ʈ", "d": "ɖ", "ɹ": "ɻ",
 				"r": "ɽ", "ɗ": "ᶑ", "s": "ʂ", "z": "ʐ",
-				"ə": "ɚ", "ɜ": "ɝ", "ɬ": "ꞎ"
+				"ə": "ɚ", "ɜ": "ɝ", "ɬ": "ꞎ", "ɾ": "ʗ"
 			},
 			"j": {
 				"m": "ɱ", "n": "ɲ", "ɦ": "ɧ"
@@ -118,6 +109,12 @@ function nebty(text) {
 			},
 			"ᴇ": {
 				"o": "ɶ"
+			},
+			"p": {
+				"q": "ȹ"
+			},
+			"b": {
+				"d": "ȸ"
 			}
 		}
 		return (productTable[thatChar] || {})[thisChar] || ""
@@ -126,11 +123,11 @@ function nebty(text) {
 	function getTurned(char) {
 		const turnedTable = Object.assign(
 			Object.fromEntries(
-				Array.from("ɐqɔpəɟɓɥʞɯudɹʇnʌʍʎɒɜʖ").map(
-					(el, i) => [el, "abcdefɡhkmnprtuvwyɑɛʕ"[i]])
+				Array.from("ɐqɔpəɟɓɥʞɯudɹʇnʌʍʎɒɜʖяˌ").map(
+					(el, i) => [el, "abcdefɡhkmnprtuvwyɑɛʕʁˈ"[i]])
 			), Object.fromEntries(
-				Array.from("abcdefɡhkmnprtuvwyɑɛʕ").map(
-					(el, i) => [el, "ɐqɔpəɟɓɥʞɯudɹʇnʌʍʎɒɜʖ"[i]])
+				Array.from("abcdefɡhkmnprtuvwyɑɛʕʁˈ").map(
+					(el, i) => [el, "ɐqɔpəɟɓɥʞɯudɹʇnʌʍʎɒɜʖяˌ"[i]])
 			)
 		)
 		return turnedTable[char] || ""
@@ -155,6 +152,69 @@ function nebty(text) {
 				(el, i) => [el, "ᴀʙᴇɢʜɪʟɴʀʏɶ"[i]])
 		)
 		return smallCapTable[char] || ""
+	}
+
+	function toNonFullSized(fs) {
+		const nonFullSizedTable = Object.fromEntries(
+			Array.from("hɦwjɥɣmɱnɳɲŋɴlɭʟʕʋɻʔʁœəɵɸfθsʃɕʂxꭓ=7").map(
+				(el, i) => [el, "ʰʱʷʲᶣˠᵐᶬⁿᶯᶮᵑᶰˡᶩᶫˤᶹʵˀʶꟹᵊᶱᶲᶠᶿˢᶴᶝᶳˣᵡ˭˹"[i]])
+		)
+		var buffer = ""
+		for (var i = 0; i < fs.length; ++i) {
+			buffer += (nonFullSizedTable[fs[i]] || "")
+		}
+		return buffer
+	}
+
+	function toCombining(tkn) {
+		const combiningTable = {
+			"o": ["̊", "̥", "̥"],
+			"v": ["̌", "̬", "̬"],
+			"^": ["̂", "̭", "̂"],
+			":": ["̈", "̤", "̈"],
+			"~": ["̃", "̰", "̃"],
+			"|": ["̍", "̩", "̩"],
+			"[": ["͆", "̪", "̪"],
+			"]": ["̺", "̺", "̺"],
+			"u": ["̆", "̮", "̆"],
+			"n": ["̑", "̯", "̯"],
+			"7": ["̚", "̚", "̚"],
+			"3": ["̄", "̱", "̄"],
+			"-": ["̠", "̠", "̠"],
+			"+": ["̟", "̟", "̟"],
+			"T": ["̞", "̞", "̞"],
+			"L": ["̝", "̝", "̝"],
+			"4": ["́", "̗", "́"],
+			"2": ["̀", "̖", "̀"],
+			".": ["̇", "̣", "̣"],
+			"(": ["͑", "̜", "̜"],
+			")": ["͗", "̹", "̹"],
+			"#": ["̻", "̻", "̻"],
+			"x": ["̽", "͓", "̽"],
+			"5": ["̋", "̋", "̋"],
+			"1": ["̏", "̏", "̏"],
+			"m": ["̼", "̼", "̼"],
+			"w": ["̫", "̫", "̫"],
+			"<": ["͔", "͔", "͔"],
+			">": ["͕", "͕", "͕"],
+			"F": ["͈", "͈", "͈"],
+			"D": ["͊", "͊", "͊"],
+			"N": ["͋", "͋", "͋"],
+			"V": ["͌", "͌", "͌"],
+			"=": ["͇", "͇", "͇"]
+		}
+		var buffer = ""
+		var choice = -1
+		for (var i = 0; i < tkn.length; ++i) {
+			let token = tkn[i]
+			if ("`_".includes(token)) {
+				choice = (token == "`") ? 0 : 1
+			} else {
+				buffer += (combiningTable[token] || []).slice(choice)[0] || ""
+				choice = -1
+			}
+		}
+		return buffer
 	}
 
 	function applyUnaryOp(op, char) {
@@ -182,18 +242,39 @@ function nebty(text) {
 		}
 		switch (counter) {
 			case 1:
-				result = "͡"
-				break
-			case 2:
 				result = " "
 				break
-			case 3:
+			case 2:
 				result = "‿"
 				break
 			default:
-				result = ""
+				result = " ".repeat(counter - 1)
 		}
 		return [result, text]
+	}
+
+	function mergeNode() {
+		// nodeHeld -> textBuffer
+		if (nodeHeld) {
+			textBuffer += nodeHeld
+			nodeHeld = ""
+		}
+	}
+
+	function applyOpSpate() {
+		// #each opsHeld -> nodeHeld
+		while (opsHeld.length > 0) {
+			lastOp = opsHeld.pop()
+			nodeHeld = applyUnaryOp(lastOp, nodeHeld)
+		}
+	}
+
+	function applyMul() {
+		// <result of mul> -> nodeHeld
+		if (multiplierHeld) {
+			[multiplierHeld, nodeHeld] = ["",
+			getProduct(multiplierHeld, nodeHeld)]
+		}
 	}
 
 	var nodeHeld = ""
@@ -203,7 +284,7 @@ function nebty(text) {
 
 	while (text) {
 		[char, text] = [text[0], text.slice(1)]
-		if (" \t\r".includes(char)) {
+		if (" \t\n\r".includes(char)) {
 			continue
 		}
 		if ("!$+".includes(char)) {
@@ -212,49 +293,59 @@ function nebty(text) {
 		} else if (char == "*") {
 			[multiplierHeld, nodeHeld] = [nodeHeld, ""]
 		} else if (char == "(") {
-			if (nodeHeld) {
-				textBuffer += nodeHeld
-				nodeHeld = ""
-			}
-			[nodeHeld, text] = nebty(text)
-			while (opsHeld.length > 0) {
-				lastOp = opsHeld.pop()
-				nodeHeld = applyUnaryOp(lastOp, nodeHeld)
-			}
-			if (multiplierHeld) {
-				[multiplierHeld, nodeHeld] = ["",
-				getProduct(multiplierHeld, nodeHeld)]
-			}
-		} else if (char == ")") {
-			return [nodeHeld, text]
+			mergeNode()
+			;[nodeHeld, text] = nebty(text, ")")
+			applyOpSpate()
+			applyMul()
+		} else if (char == "[") {
+			mergeNode()
+			let fullSized
+			[fullSized, text] = nebty(text, "]")
+			textBuffer += toNonFullSized(fullSized)
+		} else if (char == "{") {
+			mergeNode()
+			nextClosingBrace = text.indexOf("}")
+			textBuffer += toCombining(text.slice(0, nextClosingBrace))
+			text = text.slice(nextClosingBrace + 1)
+		} else if (char == terminator) {
+			// depends on which kind of brackets are these in
+			mergeNode()
+			return [textBuffer, text]
 		} else if (char == "_") {
-			while (opsHeld.length > 0) {
-				lastOp = opsHeld.pop()
-				nodeHeld = applyUnaryOp(lastOp, nodeHeld)
-			}
-			textBuffer += nodeHeld
-			nodeHeld = ""
-			var scored
+			mergeNode()
+			let scored
 			[scored, text] = handleUnderscores(text)
 			textBuffer += scored
+		} else if (char == "`") {
+			mergeNode()
+			nextBacktick = text.indexOf("`")
+			switch (nextBacktick) {
+				case -1:
+					continue
+				case 0:
+					textBuffer += "`"
+					var slicer = 1
+					break
+				default:
+					textBuffer += text.slice(0, nextBacktick)
+					var slicer = nextBacktick
+			}
+			text = text.slice(nextBacktick + 1)
+		} else if (char == "G") {
+			// "G" + <raw char> -> make <raw char> unprocessed a node
+			// "G" stands for Glyph
+			mergeNode()
+			nodeHeld = text[0]
+			text = text.slice(1)
 		} else {
-			if (nodeHeld) {
-				textBuffer += nodeHeld
-				nodeHeld = ""
-			}
+			mergeNode()
 			nodeHeld = getPrimary(char)
-			while (opsHeld.length > 0) {
-				lastOp = opsHeld.pop()
-				nodeHeld = applyUnaryOp(lastOp, nodeHeld)
-			}
-			if (multiplierHeld) {
-				[multiplierHeld, nodeHeld] = ["",
-				getProduct(multiplierHeld, nodeHeld)]
-			}
+			applyOpSpate()
+			applyMul()
 		}
 
 	}
 	textBuffer += nodeHeld
-	return textBuffer
+	return [textBuffer, text]
 
 }

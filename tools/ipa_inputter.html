@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nebty 网页国际音标输入法</title>
+	<meta charset="utf-8">
+	<base href="../">
+	<link rel="stylesheet" type="text/css" href="./mainstyle/background.css">
+	<link rel="stylesheet" type="text/css" href="./mainstyle/essence.css">
+	<style type="text/css">
+		#inputterwrapper {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		#nebtyinput {
+			width: 60%;
+			height: 8em;
+			padding: 1em;
+			font-size: 120%;
+			white-space: pre-wrap;
+			overflow: auto;
+			font-family: monospace;
+			border: 0.1em dotted var(--vivid-purple);
+			background-color: var(--wheat-44);
+			color: var(--shadow-brown);
+		}
+
+		#refreshbutton {
+			margin: 1em;
+			padding: 0.5em 1em;
+			text-align: center;
+			width: 2em;
+			border-radius: 0.25em;
+			font-size: 140%;
+			font-family: var(--sans-set);
+			font-weight: 600;
+			color: white;
+			background-color: var(--deep-purple);
+		}
+
+		#refreshbutton:hover {
+			background-color: var(--vivid-purple);
+		}
+
+		#nebtyoutput {
+			width: 60%;
+			height: 8em;
+			padding: 1em;
+			font-size: 120%;
+			border: 0.1em solid var(--vivid-purple);
+			background-color: var(--wheat-44);
+			color: var(--shadow-brown);
+			background-image: repeating-linear-gradient(
+				135deg, transparent 0, transparent .4em,
+				#ffffff80 .4em, #ffffff80 .6em);
+		}
+	</style>
+	<script type="text/javascript" src="./scripts/nebty_ipa.js"></script>
+	<script type="text/javascript" src="./scripts/nebty_ipa_inputter.js"></script>
+</head>
+
+<body>
+	<div id="main">
+		<div class="back_shell" onclick="location.href='./index.html';">
+			<object data="./images/fraxinusinagale.svg" type="image/svg+xml" width="100%"></object><br>点击返回主页
+		</div>
+		<h1>Nebty 网页国际音标输入法</h1>
+		<div class="minorskip"></div>
+		<div id="inputterwrapper">
+			<div type="text" id="nebtyinput" contenteditable="true"></div>
+			<div id="refreshbutton" onclick="refreshParsedNebty()">转换</div>
+			<div class="ipa" id="nebtyoutput"></div>
+		</div>
+	</div>
+</body>
