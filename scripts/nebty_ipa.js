@@ -1,7 +1,7 @@
 function nebty(text, terminator = "\0") {
 
 	function getPrimary(rawChar) {
-		const TRIVIALS = "abcdefhijklmnopqrstuvwxyz-.=/#~"
+		const TRIVIALS = "abcdefhijklmnopqrstuvwxyz-.=/#~;"
 		const NONTRIVIALS = {
 			// "G" and "M" are reserved
 			"g": "ɡ",
@@ -385,6 +385,8 @@ function nebty(text, terminator = "\0") {
 			mergeNode()
 			nodeHeld = text[0]
 			text = text.slice(1)
+			applyOpSpate()
+			applyMul()
 		} else {
 			mergeNode()
 			nodeHeld = getPrimary(char)
