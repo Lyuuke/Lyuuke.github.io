@@ -1,7 +1,7 @@
 function nebty(text, terminator = "\0") {
 
 	function getPrimary(rawChar) {
-		const TRIVIALS = "abcdefhijklmnopqrstuvwxyz-.=/#"
+		const TRIVIALS = "abcdefhijklmnopqrstuvwxyz-.=/#~"
 		const NONTRIVIALS = {
 			// "G" and "M" are reserved
 			"g": "ɡ",
@@ -81,7 +81,7 @@ function nebty(text, terminator = "\0") {
 				"o": "ø"
 			},
 			".": {
-				"o": "ʘ", "ǀ": "ǃ"
+				"o": "ʘ", "ǀ": "ǃ", "ː": "ˑ"
 			},
 			"ǀ": {
 				"ǀ": "ǁ", ".": "¡"
@@ -115,6 +115,9 @@ function nebty(text, terminator = "\0") {
 			},
 			"b": {
 				"d": "ȸ"
+			},
+			"~": {
+				"l": "ɫ"
 			}
 		}
 		return (productTable[thatChar] || {})[thisChar] || ""
@@ -156,8 +159,8 @@ function nebty(text, terminator = "\0") {
 
 	function toNonFullSized(fs) {
 		const nonFullSizedTable = Object.fromEntries(
-			Array.from("hɦwjɥɣmɱnɳɲŋɴlɭʟʕʋɻʔʁœəɵɸfθsʃɕʂxꭓ=7").map(
-				(el, i) => [el, "ʰʱʷʲᶣˠᵐᶬⁿᶯᶮᵑᶰˡᶩᶫˤᶹʵˀʶꟹᵊᶱᶲᶠᶿˢᶴᶝᶳˣᵡ˭˹"[i]])
+			Array.from("hɦwjɥɣmɱnɳɲŋɴlɭʟʕʋɻʔʁœəɵɸβfθsʃɕʂxꭓ=7ˈ").map(
+				(el, i) => [el, "ʰʱʷʲᶣˠᵐᶬⁿᶯᶮᵑᶰˡᶩᶫˤᶹʵˀʶꟹᵊᶱᶲᵝᶠᶿˢᶴᶝᶳˣᵡ˭˹ʼ"[i]])
 		)
 		var buffer = ""
 		for (var i = 0; i < fs.length; ++i) {
@@ -213,6 +216,46 @@ function nebty(text, terminator = "\0") {
 				buffer += (combiningTable[token] || []).slice(choice)[0] || ""
 				choice = -1
 			}
+		}
+		return buffer
+	}
+
+	function toTone(tkn) {
+		const toneTable = {
+			"1": "˩",
+			"2": "˨",
+			"3": "˧",
+			"4": "˦",
+			"5": "˥"
+		}
+		const sandhiToneTable = {
+			"1": "꜖",
+			"2": "꜕",
+			"3": "꜔",
+			"4": "꜓",
+			"5": "꜒"
+		}
+		const otherRhythmicTable = {
+			"^": "ꜛ",
+			"v": "ꜜ",
+			"/": "↗",
+			"\\": "↘"
+		}
+		var buffer = ""
+		var useSandhiLetter = false
+		for (var i = 0; i < tkn.length; ++i) {
+			let token = tkn[i]
+			if (token == "|") {
+				useSandhiLetter = true
+			} else if ("12345".includes(token)){
+				if (useSandhiLetter) {
+					buffer += sandhiToneTable[token] || ""
+				} else {
+					buffer += toneTable[token] || ""
+				}
+			} else {
+				buffer += otherRhythmicTable[token] || ""
+			}			
 		}
 		return buffer
 	}
@@ -304,9 +347,14 @@ function nebty(text, terminator = "\0") {
 			textBuffer += toNonFullSized(fullSized)
 		} else if (char == "{") {
 			mergeNode()
-			nextClosingBrace = text.indexOf("}")
+			let nextClosingBrace = text.indexOf("}")
 			textBuffer += toCombining(text.slice(0, nextClosingBrace))
 			text = text.slice(nextClosingBrace + 1)
+		} else if (char == "<") {
+			mergeNode()
+			let nextClosingBracket = text.indexOf(">")
+			textBuffer += toTone(text.slice(0, nextClosingBracket))
+			text = text.slice(nextClosingBracket + 1)
 		} else if (char == terminator) {
 			// depends on which kind of brackets are these in
 			mergeNode()

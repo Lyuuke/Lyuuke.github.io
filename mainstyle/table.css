@@ -8,6 +8,10 @@ table.decl th, table.decl td, table.common th, table.common td {
 	width: 7em;
 }
 
+table.common td {
+	width: var(--cell-width);
+}
+
 table.decl th, table.common th {
 	background-color: var(--wheat-44);
 }

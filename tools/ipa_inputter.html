@@ -6,7 +6,15 @@
 	<base href="../">
 	<link rel="stylesheet" type="text/css" href="./mainstyle/background.css">
 	<link rel="stylesheet" type="text/css" href="./mainstyle/essence.css">
+	<link rel="stylesheet" type="text/css" href="./mainstyle/table.css">
 	<style type="text/css">
+		code {
+			background-color: var(--wheat-44);
+			padding: 0.2em;
+		}
+		th > code {
+			background-color: transparent;
+		}
 		#inputterwrapper {
 			display: flex;
 			flex-direction: column;
@@ -14,45 +22,62 @@
 		}
 		#nebtyinput {
 			width: 60%;
-			height: 8em;
-			padding: 1em;
+			height: 120pt;
+			padding: 10pt;
 			font-size: 120%;
+			text-align: left;
 			white-space: pre-wrap;
+			word-wrap: break-word;
 			overflow: auto;
 			font-family: monospace;
 			border: 0.1em dotted var(--vivid-purple);
 			background-color: var(--wheat-44);
+			background-image: repeating-linear-gradient(
+				135deg, transparent 0, transparent 1em,
+				#ffffff80 1em, #ffffff80 1.5em
+			);
 			color: var(--shadow-brown);
 		}
 
-		#refreshbutton {
+		#refreshbutton, #randombutton {
+			display: inline-block;
 			margin: 1em;
-			padding: 0.5em 1em;
+			padding: 0.25em 1em;
 			text-align: center;
-			width: 2em;
-			border-radius: 0.25em;
+			width: 3.5em;
+			border-radius: 0.3em;
 			font-size: 140%;
 			font-family: var(--sans-set);
 			font-weight: 600;
+			text-shadow: 0.1em 0.1em 0 var(--deep-purple);
 			color: white;
-			background-color: var(--deep-purple);
+			background-color: var(--vivid-purple);
+			border-style: solid;
+			border-width: 0.05em 0.1em 0.2em 0.1em;
+			border-color: var(--deep-purple);
 		}
 
-		#refreshbutton:hover {
-			background-color: var(--vivid-purple);
+		#randombutton {
+			width: 5.5em;
+		}
+
+		#refreshbutton:hover, #randombutton:hover {
+			text-shadow: 0.1em 0.1em 0 var(--auroral-red);
+			background-color: var(--ember-orange);
+			border-color: var(--auroral-red);
 		}
 
 		#nebtyoutput {
 			width: 60%;
-			height: 8em;
-			padding: 1em;
+			height: 120pt;
+			padding: 10pt;
 			font-size: 120%;
-			border: 0.1em solid var(--vivid-purple);
+			box-shadow: 3pt 3pt 0 var(--wheat);
+			border: 1pt solid var(--wheat);
 			background-color: var(--wheat-44);
 			color: var(--shadow-brown);
-			background-image: repeating-linear-gradient(
-				135deg, transparent 0, transparent .4em,
-				#ffffff80 .4em, #ffffff80 .6em);
+			background-image: radial-gradient(
+				circle at 40% 50%, #ffffff80 0, transparent 50%);
 		}
 	</style>
 	<script type="text/javascript" src="./scripts/nebty_ipa.js"></script>
@@ -60,16 +85,84 @@
 </head>
 
 <body>
-	<div id="main">
-		<div class="back_shell" onclick="location.href='./index.html';">
-			<object data="./images/fraxinusinagale.svg" type="image/svg+xml" width="100%"></object><br>点击返回主页
-		</div>
+	<div id="main" class="zh_text">
 		<h1>Nebty 网页国际音标输入法</h1>
 		<div class="minorskip"></div>
 		<div id="inputterwrapper">
 			<div type="text" id="nebtyinput" contenteditable="true"></div>
-			<div id="refreshbutton" onclick="refreshParsedNebty()">转换</div>
+			<table style="margin: 0; padding: 0;">
+				<tbody><tr>
+					<td><div id="refreshbutton" onclick="refreshParsedNebty()">▼ 转换</div></td>
+					<td><div id="randombutton" onclick="provideRandomExample(); refreshParsedNebty()">随机例子 ▲</div></td>
+				</tr></tbody>
+			</table>
 			<div class="ipa" id="nebtyoutput"></div>
 		</div>
+		<div class="minorskip"></div>
+		<center><span class="asterism"></span></center>
+		<div class="minorskip"></div>
+		<h2>简介</h2>
+		<p>本网页按照 <abbr title="个人作品，有待后续整理">Nebty 转写规范</abbr>，将 ASCII 文本（除标记为不转换的部分外）转换为国际音标文本。您可以在上方输入框中输入 Nebty，或点击<q>随机例子</q>按钮查看多语言国际音标转写的示例。</p>
+		<div class="minorskip"></div>
+		<h2>Nebty 转写规范：基本规则</h2>
+		<h3>重要的转换行为</h3>
+		<ul>
+			<li>将不需要转换的文本用 <code>`…`</code> 包围；其余部分只需使用 ASCII 字符。未能识别的字符或序列不会有任何输出。</li>
+			<li><code>`…`</code> 外的空格、制表符、换行符（<code>\n</code> 及 <code>\r</code>）会被忽略。</li>
+			<li>若要输入真正的空格，使用 <code>_</code>。<code>` `</code> 亦可。</li>
+			<li>多个连续下划线：两个下划线 <code>__</code> 输入连音符 <span class="ipa">‿</span>；更多的下划线则会转化为空格的序列，空格数量比下划线数量少 1。</li>
+		</ul>
+		<h3>一般符号</h3>
+		<ul>
+			<li>小写基本拉丁字母：除 <code>g</code> 会映射至单层版本的 <span class="ipa">&#x0261;</span>（国际音标规范）外，原样输出。</li>
+			<li>大写基本拉丁字母：按以下表格的映射输出。</li>
+			<table class="common" style="--cell-width: 1em;"><tbody>
+				<tr><th><code>A</code></th><th><code>B</code></th><th><code>C</code></th><th><code>D</code></th><th><code>E</code></th><th><code>F</code></th><th><code>H</code></th><th><code>I</code></th><th><code>J</code></th><th><code>K</code></th><th><code>L</code></th><th><code>N</code></th><th><code>O</code></th><th><code>P</code></th><th><code>Q</code></th><th><code>R</code></th><th><code>S</code></th><th><code>T</code></th><th><code>U</code></th><th><code>V</code></th><th><code>W</code></th><th><code>X</code></th><th><code>Y</code></th><th><code>Z</code></th></tr>
+				<tr><td>ɑ</td><td>β</td><td>ɕ</td><td>ð</td><td>ɛ</td><td>ɸ</td><td>ɦ</td><td>ɨ</td><td>ʑ</td><td>ꭓ</td><td>ɭ</td><td>ŋ</td><td>ɔ</td><td>ø</td><td>ʕ</td><td>ɾ</td><td>ʃ</td><td>θ</td><td>ʊ</td><td>ʋ</td><td>ɯ</td><td>ɣ</td><td>ɤ</td><td>ʒ</td></tr>
+			</tbody></table>
+			<li><code>@</code> 映射至中央元音 <span class="ipa">ə</span>、<code>?</code> 映射至声门塞音 <span class="ipa">ʔ</span>、<code>|</code> 映射至齿喌音 <span class="ipa">ǀ</span>、<code>:</code> 映射至长音标记 <span class="ipa">ː</span>、<code>'</code> 映射至主重音标记 <span class="ipa">ˈ</span>、<code>%</code> 映射至零 <span class="ipa">∅</span>。</li>
+			<li>用于书写塞擦音、协同发音及（有时）双元音的 tie bar 使用 <code>^</code> 输入。例如，<code>t^S k^p</code> = <span class="ipa">t͡ʃk͡p</span>。</li>
+		</ul>
+		<h3>符号的运算</h3>
+		<ul>
+			<li>一元运算符 <code>!</code> 表示将后方的符号旋转 180°。例如，<code>!a !m !v !f</code> = <span class="ipa">ɐɯʌɟ</span>。特别地，主重音标记 <span class="ipa">ˈ</span> 旋转后得到次重音标记 <span class="ipa">ˌ</span>。</li>
+			<li>一元运算符 <code>$</code> 表示将后方的符号左右翻转。例如，<code>$e $R $?</code> = <span class="ipa">ɘɿʕ</span>。</li>
+			<li>一元运算符 <code>+</code> 表示将后方的符号转换为对应的小型大写字母。例如，<code>+g +n +(o*e)</code> = <span class="ipa">ɢɴɶ</span>。</li>
+			<li>二元运算符 <code>*</code> 用于将两个符号转换为另一个符号，该符号在视觉上类似两个参数符号的组合。具体的情况包括：
+				<ul>
+					<li><code>R</code> (= <span class="ipa">ɾ</span>)、<code>L</code> (= <span class="ipa">ɭ</span>)、<code>j</code> 作为右值时，分别给左值符号加上上方的右钩、下方的右钩、下方的左钩。例如，<code>b*R t*L m*j</code> = <span class="ipa">ɓʈɱ</span>。</li>
+					<li><code>-=/.~</code> 等字符作为右值时，用于给左值符号加上横杠、双横杠、斜线、点、波浪线。例如，<code>u*- |*= o*/ o*. l*~</code> = <span class="ipa">ʉǂøʘɫ</span>。</li>
+					<li>显而易见的合字视为组成其的符号的组合。例如，<code>a*e f*N l*s</code> = <span class="ipa">æʩʪ</span>。</li>
+					<li>其他需要发挥想象力的情况。例如，<code>w*w c*$E c*Z</code> = <span class="ipa">ʬɞç</span>。</li>
+					<li>特别地，半长音标记如此输入：<code>:*.</code> = <span class="ipa">ˑ</span>。</li>
+				</ul>
+			</li>
+			<li>一元运算符比 <code>*</code> 优先。可使用圆括号改变运算次序。</li>
+			<li>显然，一些符号有不同的输入方式。例如，<span class="ipa">ɧ</span> 的可能输入方式包括了 <code>H*j</code>（视作 <span class="ipa">ɦ</span> 加上下方的左钩）、<code>N*R</code>（视作 <span class="ipa">ŋ</span> 加上上方的右钩）、<code>h*R*j</code>。</li>
+		</ul>
+		<h3>上标符号、进格修饰符号、声调与韵律符号</h3>
+		<ul>
+			<li>使用 <code>[…]</code> 包围应转换为上标的符号。方括号中的内容会先作为一般的 Nebty 文本解析，随后尝试将转换后的每个符号转换为对应的上标版本，因此运算符在方括号内均可用。例如，<code>[h w @ K $?]</code> = <span class="ipa">ʰʷᵊᵡˤ</span>。但需注意，并非所有符号都存在对应的上标版本。</li>
+			<li>特别地，喷音标记及不送气标记如此输入：<code>[']</code> = <span class="ipa">ʼ</span>；<code>[=]</code> = <span class="ipa">˭</span>。</li>
+			<li>使用 <code>{…}</code> 输入进格修饰符号。花括号中的内容不会作为 Nebty 文本解析，而是直接转换为指定的进格修饰符号。其中存在额外规则：
+				<ul>
+					<li>一般而言，除了 <code>`_</code> 两个字符，花括号中的每个字符可对应一个进格修饰符号，可参照以下表格（以符号 <span class="ipa">a</span> 为基座）。</li>
+					<table class="common" style="--cell-width: 1em;"><tbody>
+						<tr><th><code>o</code></th><th><code>v</code></th><th><code>^</code></th><th><code>:</code></th><th><code>~</code></th><th><code>|</code></th><th><code>[</code></th><th><code>]</code></th><th><code>u</code></th><th><code>n</code></th><th><code>7</code></th><th><code>3</code></th><th><code>-</code></th><th><code>+</code></th><th><code>T</code></th><th><code>L</code></th><th><code>4</code></th></tr>
+						<tr><td>ḁ</td><td>a̬</td><td>â</td><td>ä</td><td>ã</td><td>a̩</td><td>a̪</td><td>a̺</td><td>ă</td><td>a̯</td><td>a̚</td><td>ā</td><td>a̠</td><td>a̟</td><td>a̞</td><td>a̝</td><td>á</td></tr>
+						<tr><th><code>2</code></th><th><code>.</code></th><th><code>(</code></th><th><code>)</code></th><th><code>#</code></th><th><code>x</code></th><th><code>5</code></th><th><code>1</code></th><th><code>m</code></th><th><code>w</code></th><th><code><</code></th><th><code>></code></th><th><code>F</code></th><th><code>D</code></th><th><code>N</code></th><th><code>V</code></th><th><code>=</code></th></tr>
+						<tr><td>à</td><td>ạ</td><td>a̜</td><td>a̹</td><td>a̻</td><td>a̽</td><td>a̋</td><td>ȁ</td><td>a̼</td><td>a̫</td><td>a͔</td><td>a͕</td><td>a͈</td><td>a͊</td><td>a͋</td><td>a͌</td><td>a͇</td></tr>
+					</tbody></table>
+					<li>有时候，进格修饰符号可加在上方、也可加在下方，且可能有不同的含义。这种情况下，若代表其的字符前方为 <code>`</code>，则选择加在上方的版本；若前方为 <code>_</code>，则选择加在下方的版本；若前方没有这两个字符，则选择<q>默认</q>的版本。所谓<q>默认</q>版本，指的是两者中一般而言使用频率更高的一者。例如，加在上方和下方的波浪线（<code>a{`~} a{_~}</code> = <span class="ipa">ãa̰</span>）分别表示鼻化及嘎裂声，而前者一般更常用，故 <code>a{~}</code> 输出的是 <span class="ipa">ã</span>。</li>
+				</ul>
+			</li>
+			<li>使用 <code>&lt;…&gt;</code> 输入赵元任声调字母及部分韵律相关的符号。角括号中的内容不会作为 Nebty 文本解析，而是直接转换为指定的符号。其中存在额外规则：
+				<ul>
+					<li>数码 <code>1 2 3 4 5</code> 用于输入一般的声调字母，杆在右侧。<code>1</code> 为最低的声调（<span class="ipa">˩</span>）。</li>
+					<li>若上述数码紧接着 <code>|</code> 之后，则变成连读变调版本的声调字母，杆在左侧。例如，普通话<q>苟且</q>可转写为 <code>k[=]ow&lt;214|35&gt;_c^C[h]jE<214></code> = <span class="ipa">k˭ow˨˩˦꜔꜒ c͡ɕʰjɛ˨˩˦</span>。</li>
+					<li>角括号中的 <code>^ v / \</code> 分别用于输入韵律标记 <span class="ipa">ꜛꜜ↗↘</span>。</li>
+				</ul>
+			</li>
+		</ul>
 	</div>
 </body>
