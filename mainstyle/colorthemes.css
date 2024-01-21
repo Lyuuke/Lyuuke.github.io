@@ -7,3 +7,13 @@
 	--maincolor: #3b5f38;
 	--secondcolor: #e8d792;
 }
+
+[colortheme="nebty"] {
+	--maincolor: #ef6baf;
+	--secondcolor: #7ff5c4;
+}
+
+[colortheme="aux"] {
+	--maincolor: #6a7479;
+	--secondcolor: #d7d5cb;
+}
