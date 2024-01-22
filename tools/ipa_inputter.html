@@ -31,6 +31,7 @@
 			word-wrap: break-word;
 			overflow: auto;
 			font-family: "Sarasa Mono", "Fira Code", monospace;
+			font-variant-ligatures: none;
 			border: 0.1em dotted var(--vivid-purple);
 			background-color: var(--wheat-44);
 			background-image: repeating-linear-gradient(
@@ -119,7 +120,7 @@
 				<tr><td>ɑ</td><td>β</td><td>ɕ</td><td>ð</td><td>ɛ</td><td>ɸ</td><td>ɦ</td><td>ɨ</td><td>ʑ</td><td>ꭓ</td><td>ɭ</td><td>ŋ</td><td>ɔ</td><td>ø</td><td>ʕ</td><td>ɾ</td><td>ʃ</td><td>θ</td><td>ʊ</td><td>ʋ</td><td>ɯ</td><td>ɣ</td><td>ɤ</td><td>ʒ</td></tr>
 			</tbody></table>
 			<li><code>@</code> 映射至中央元音 <span class="ipa">ə</span>、<code>?</code> 映射至声门塞音 <span class="ipa">ʔ</span>、<code>|</code> 映射至齿喌音 <span class="ipa">ǀ</span>、<code>:</code> 映射至长音标记 <span class="ipa">ː</span>、<code>'</code> 映射至主重音标记 <span class="ipa">ˈ</span>、<code>%</code> 映射至零 <span class="ipa">∅</span>。</li>
-			<li>用于书写塞擦音、协同发音及（有时）双元音的 tie bar 使用 <code>^</code> 输入。例如，<code>t^S k^p</code> = <span class="ipa">t͡ʃk͡p</span>。</li>
+			<li>用于书写塞擦音、协同发音及（有时）双元音的 tie bar 使用 <code>^</code> 输入；书写在下方的 tie bar 则使用 <code>!^</code>。例如，<code>t^S k!^p</code> = <span class="ipa">t͡ʃk͜p</span>。</li>
 		</ul>
 		<h3>符号的运算</h3>
 		<ul>
@@ -141,7 +142,7 @@
 		<h3>上标符号、进格修饰符号、声调与韵律符号</h3>
 		<ul>
 			<li>使用 <code>[…]</code> 包围应转换为上标的符号。方括号中的内容会先作为一般的 Nebty 文本解析，随后尝试将转换后的每个符号转换为对应的上标版本，因此运算符在方括号内均可用。例如，<code>[h w @ K $?]</code> = <span class="ipa">ʰʷᵊᵡˤ</span>。但需注意，并非所有符号都存在对应的上标版本。</li>
-			<li>特别地，喷音标记及不送气标记如此输入：<code>[']</code> = <span class="ipa">ʼ</span>；<code>[=]</code> = <span class="ipa">˭</span>。</li>
+			<li>特别地，喷音标记、不送气标记、（非官方的）除阻标记如此输入：<code>[']</code> = <span class="ipa">ʼ</span>；<code>[=]</code> = <span class="ipa">˭</span>；<code>[/]</code> = <span class="ipa">˹</span></li>
 			<li>使用 <code>{…}</code> 输入进格修饰符号。花括号中的内容不会作为 Nebty 文本解析，而是直接转换为指定的进格修饰符号。其中存在额外规则：
 				<ul>
 					<li>一般而言，除了 <code>`_</code> 两个字符，花括号中的每个字符可对应一个进格修饰符号，可参照以下表格（以符号 <span class="ipa">a</span> 为基座）。</li>
@@ -150,6 +151,8 @@
 						<tr><td>ḁ</td><td>a̬</td><td>â</td><td>ä</td><td>ã</td><td>a̩</td><td>a̪</td><td>a̺</td><td>ă</td><td>a̯</td><td>a̚</td><td>ā</td><td>a̠</td><td>a̟</td><td>a̞</td><td>a̝</td><td>á</td></tr>
 						<tr><th><code>2</code></th><th><code>.</code></th><th><code>(</code></th><th><code>)</code></th><th><code>#</code></th><th><code>x</code></th><th><code>5</code></th><th><code>1</code></th><th><code>m</code></th><th><code>w</code></th><th><code><</code></th><th><code>></code></th><th><code>F</code></th><th><code>D</code></th><th><code>N</code></th><th><code>V</code></th><th><code>=</code></th></tr>
 						<tr><td>à</td><td>ạ</td><td>a̜</td><td>a̹</td><td>a̻</td><td>a̽</td><td>a̋</td><td>ȁ</td><td>a̼</td><td>a̫</td><td>a͔</td><td>a͕</td><td>a͈</td><td>a͊</td><td>a͋</td><td>a͌</td><td>a͇</td></tr>
+						<tr><th><code>A</code></th><th><code>R</code></th><th><code>d</code></th><th><code>r</code></th></tr>
+						<tr><td>a̘</td><td>a̙</td><td>a̴</td><td>a˞</td></tr>
 					</tbody></table>
 					<li>有时候，进格修饰符号可加在上方、也可加在下方，且可能有不同的含义。这种情况下，若代表其的字符前方为 <code>`</code>，则选择加在上方的版本；若前方为 <code>_</code>，则选择加在下方的版本；若前方没有这两个字符，则选择<q>默认</q>的版本。所谓<q>默认</q>版本，指的是两者中一般而言使用频率更高的一者。例如，加在上方和下方的波浪线（<code>a{`~} a{_~}</code> = <span class="ipa">ãa̰</span>）分别表示鼻化及嘎裂声，而前者一般更常用，故 <code>a{~}</code> 输出的是 <span class="ipa">ã</span>。</li>
 				</ul>
@@ -165,6 +168,7 @@
 		<h3>Nebty 文本中 <code>G</code> 与 <code>M</code> 的行为</h3>
 		<ul>
 			<li><code>G</code> 后方紧邻的字符会原样输出。但与 <code>`…`</code> 不同，该字符可用于运算。例如，<code>Gɹ*Gɭ</code> = <span class="ipa">ɻ</span>。</li>
+			<li><code>M</code> <i>待实现</i>。</li>
 		</ul>
 	</div>
 </body>

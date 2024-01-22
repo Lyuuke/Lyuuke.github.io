@@ -50,11 +50,14 @@ function nebty(text, terminator = "\0") {
 		const productTable = {
 			// thatChar -> thisChar -> <result>
 			"ɕ": {
-				"n": "ȵ", "z": "ʑ", "t": "ȶ", "d": "ȡ"
+				"n": "ȵ", "z": "ʑ", "t": "ȶ", "d": "ȡ",
+				"l": "ȴ", "t": "ʨ"
 			},
 			"ɾ": {
 				"h": "ɦ", "b": "ɓ", "d": "ɗ", "ɖ": "ᶑ",
 				"ɟ": "ʄ", "ɡ": "ɠ", "ɢ": "ʛ", "ŋ": "ɧ",
+				"p": "ƥ", "t": "ƭ", "c": "ƈ", "k": "ƙ",
+				"q": "ʠ"
 			},
 			"ɭ": {
 				"n": "ɳ", "t": "ʈ", "d": "ɖ", "ɹ": "ɻ",
@@ -72,7 +75,7 @@ function nebty(text, terminator = "\0") {
 				"u": "ʉ", "ɪ": "ᵻ", "ʊ": "ᵿ", "o": "ɵ"
 			},
 			"ʒ": {
-				"c": "ç", "l": "ɮ"
+				"c": "ç", "l": "ɮ", "d": "ʤ"
 			},
 			"=": {
 				"ǀ": "ǂ"
@@ -84,16 +87,16 @@ function nebty(text, terminator = "\0") {
 				"o": "ʘ", "ǀ": "ǃ", "ː": "ˑ"
 			},
 			"ǀ": {
-				"ǀ": "ǁ", ".": "¡"
+				"ǀ": "ǁ", ".": "¡", "r": "ɼ"
 			},
 			"ŋ": {
 				"f": "ʩ"
 			},
 			"s": {
-				"l": "ʪ"
+				"l": "ʪ", "t": "ʦ"
 			},
 			"z": {
-				"l": "ʫ"
+				"l": "ʫ", "d": "ʣ"
 			},
 			"w": {
 				"w": "ʬ"
@@ -116,6 +119,12 @@ function nebty(text, terminator = "\0") {
 			"b": {
 				"d": "ȸ"
 			},
+			"ʃ": {
+				"t": "ʧ"
+			},
+			"ʑ": {
+				"d": "ʥ"
+			},
 			"~": {
 				"l": "ɫ"
 			}
@@ -126,11 +135,11 @@ function nebty(text, terminator = "\0") {
 	function getTurned(char) {
 		const turnedTable = Object.assign(
 			Object.fromEntries(
-				Array.from("ɐqɔpəɟɓɥʞɯudɹʇnʌʍʎɒɜʖяˌ").map(
-					(el, i) => [el, "abcdefɡhkmnprtuvwyɑɛʕʁˈ"[i]])
+				Array.from("ɐqɔpəɟɓɥʞɯudɹʇnʌʍʎɒɜʖяˌ͜").map(
+					(el, i) => [el, "abcdefɡhkmnprtuvwyɑɛʕʁˈ͡"[i]])
 			), Object.fromEntries(
-				Array.from("abcdefɡhkmnprtuvwyɑɛʕʁˈ").map(
-					(el, i) => [el, "ɐqɔpəɟɓɥʞɯudɹʇnʌʍʎɒɜʖяˌ"[i]])
+				Array.from("abcdefɡhkmnprtuvwyɑɛʕʁˈ͡").map(
+					(el, i) => [el, "ɐqɔpəɟɓɥʞɯudɹʇnʌʍʎɒɜʖяˌ͜"[i]])
 			)
 		)
 		return turnedTable[char] || ""
@@ -159,7 +168,7 @@ function nebty(text, terminator = "\0") {
 
 	function toNonFullSized(fs) {
 		const nonFullSizedTable = Object.fromEntries(
-			Array.from("hɦwjɥɣmɱnɳɲŋɴlɭʟʕʋɻʔʁœəɵɸβfθsʃɕʂxꭓ=7ˈ").map(
+			Array.from("hɦwjɥɣmɱnɳɲŋɴlɭʟʕʋɻʔʁœəɵɸβfθsʃɕʂxꭓ=/ˈ").map(
 				(el, i) => [el, "ʰʱʷʲᶣˠᵐᶬⁿᶯᶮᵑᶰˡᶩᶫˤᶹʵˀʶꟹᵊᶱᶲᵝᶠᶿˢᶴᶝᶳˣᵡ˭˹ʼ"[i]])
 		)
 		var buffer = ""
@@ -187,6 +196,7 @@ function nebty(text, terminator = "\0") {
 			"+": ["̟", "̟", "̟"],
 			"T": ["̞", "̞", "̞"],
 			"L": ["̝", "̝", "̝"],
+			"r": ["˞", "˞", "˞"],
 			"4": ["́", "̗", "́"],
 			"2": ["̀", "̖", "̀"],
 			".": ["̇", "̣", "̣"],
@@ -198,12 +208,15 @@ function nebty(text, terminator = "\0") {
 			"1": ["̏", "̏", "̏"],
 			"m": ["̼", "̼", "̼"],
 			"w": ["̫", "̫", "̫"],
+			"A": ["̘", "̘", "̘"],
+			"R": ["̙", "̙", "̙"],
 			"<": ["͔", "͔", "͔"],
 			">": ["͕", "͕", "͕"],
 			"F": ["͈", "͈", "͈"],
 			"D": ["͊", "͊", "͊"],
 			"N": ["͋", "͋", "͋"],
 			"V": ["͌", "͌", "͌"],
+			"d": ["̴", "̴", "̴"],
 			"=": ["͇", "͇", "͇"]
 		}
 		var buffer = ""
