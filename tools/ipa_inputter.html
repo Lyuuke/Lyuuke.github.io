@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="./mainstyle/background.css">
 	<link rel="stylesheet" type="text/css" href="./mainstyle/essence.css">
 	<link rel="stylesheet" type="text/css" href="./mainstyle/table.css">
+	<link rel="stylesheet" type="text/css" href="./mainstyle/button.css">
 	<style type="text/css">
 		code {
 			background-color: var(--wheat-44);
@@ -29,7 +30,7 @@
 			white-space: pre-wrap;
 			word-wrap: break-word;
 			overflow: auto;
-			font-family: monospace;
+			font-family: "Sarasa Mono", "Fira Code", monospace;
 			border: 0.1em dotted var(--vivid-purple);
 			background-color: var(--wheat-44);
 			background-image: repeating-linear-gradient(
@@ -39,33 +40,28 @@
 			color: var(--shadow-brown);
 		}
 
-		#refreshbutton, #randombutton {
-			display: inline-block;
-			user-select: none;
-			margin: 1em;
-			padding: 0.25em 1em;
-			text-align: center;
-			width: 3.5em;
-			border-radius: 0.3em;
-			font-size: 140%;
-			font-family: var(--sans-set);
-			font-weight: 600;
-			text-shadow: 0.1em 0.1em 0 var(--deep-purple);
-			color: white;
-			background-color: var(--vivid-purple);
-			border-style: solid;
-			border-width: 0.05em 0.1em 0.2em 0.1em;
-			border-color: var(--deep-purple);
+		#copybutton {
+			position: relative;
+			width: 4.5em;
+		}
+
+		#copybutton:after {
+			visibility: var(--button-visible);
+			display: block;
+			position: absolute;
+			left: calc(50% - 2em);
+			top: calc(100% + 0.25em);
+			height: 0;
+			overflow: visible;
+			content: "复制完成";
+			font-size: calc(100% * 5 / 7);
+			font-weight: 400;
+			text-shadow: none;
+			color: var(--inactive-grey);
 		}
 
 		#randombutton {
 			width: 5.5em;
-		}
-
-		#refreshbutton:hover, #randombutton:hover {
-			text-shadow: 0.1em 0.1em 0 var(--auroral-red);
-			background-color: var(--ember-orange);
-			border-color: var(--auroral-red);
 		}
 
 		#nebtyoutput {
@@ -93,11 +89,12 @@
 			<div type="text" id="nebtyinput" contenteditable="true"></div>
 			<table style="margin: 0; padding: 0;">
 				<tbody><tr>
-					<td><div id="refreshbutton" onclick="refreshParsedNebty()">▼ 转换</div></td>
-					<td><div id="randombutton" onclick="provideRandomExample(); refreshParsedNebty()">随机例子 ▲</div></td>
+					<td><div class="simplebutton" id="refreshbutton" onclick="refreshParsedNebty()">▼ 转换</div></td>
+					<td><div class="simplebutton" id="randombutton" onclick="provideRandomExample(); refreshParsedNebty()">随机例子 ▲</div></td>
 				</tr></tbody>
 			</table>
 			<div class="ipa" id="nebtyoutput"></div>
+			<div class="simplebutton" id="copybutton" onclick="copyResult()" style="--button-visible: hidden;">复制结果</div>
 		</div>
 		<div class="minorskip"></div>
 		<center><span class="asterism"></span></center>
@@ -164,6 +161,10 @@
 					<li>角括号中的 <code>^ v / \</code> 分别用于输入韵律标记 <span class="ipa">ꜛꜜ↗↘</span>。</li>
 				</ul>
 			</li>
+		</ul>
+		<h3>Nebty 文本中 <code>G</code> 与 <code>M</code> 的行为</h3>
+		<ul>
+			<li><code>G</code> 后方紧邻的字符会原样输出。但与 <code>`…`</code> 不同，该字符可用于运算。例如，<code>Gɹ*Gɭ</code> = <span class="ipa">ɻ</span>。</li>
 		</ul>
 	</div>
 </body>

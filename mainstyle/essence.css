@@ -52,6 +52,10 @@ div#main {
 	margin: 0 .2em 0 .2em;
 }
 
+code {
+	font-family: "Iosevka", "Fira Code", "Monaco", "Consolas", monospace;
+}
+
 sup, sub {
 	line-height: 1em;
 }

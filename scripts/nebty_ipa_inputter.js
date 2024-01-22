@@ -27,3 +27,17 @@ function provideRandomExample() {
 	inputFrame.innerText = randomExamples[Math.floor(randomExamples.length * Math.random())]
 
 }
+
+
+function copyResult() {
+	var outputFrame = document.getElementById("nebtyoutput")
+	var copyButton = document.getElementById("copybutton")
+	navigator.clipboard.writeText(outputFrame.innerText).then(
+		() => {
+			copyButton.style.setProperty("--button-visible", "visible")
+			setTimeout(() => {
+				copyButton.style.setProperty("--button-visible", "hidden")
+			}, 1000)
+		} 
+	)
+}
