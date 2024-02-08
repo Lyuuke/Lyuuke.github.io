@@ -80,6 +80,7 @@
 	</style>
 	<script type="text/javascript" src="./scripts/nebty_ipa.js"></script>
 	<script type="text/javascript" src="./scripts/nebty_ipa_inputter.js"></script>
+	<script type="text/javascript" src="./scripts/nebty_ipa_preset_maps.js"></script>
 </head>
 
 <body>
@@ -165,10 +166,23 @@
 				</ul>
 			</li>
 		</ul>
-		<h3>Nebty 文本中 <code>G</code> 与 <code>M</code> 的行为</h3>
+		<h3>其他特殊序列的行为</h3>
 		<ul>
 			<li><code>G</code>（可视作 <u>G</u>lyph 的缩写）后方紧邻的字符会原样输出。但与 <code>`…`</code> 不同，该字符可用于运算。例如，<code>Gɹ*Gɭ</code> = <span class="ipa">ɻ</span>。</li>
-			<li><code>M</code>（可视作 <u>M</u>apping 的缩写） <i>待实现</i>。</li>
+			<li><code>\</code> 用于执行一条命令，具体的情况包括：
+				<ul>
+					<li><code>\命令名 "参数名"</code> 将参数传递给命令然后执行。</li>
+					<li><code>\命令名</code> 执行无参数的命令。</li>
+					<li><code>\命令名 ""</code> 与上一条作用相同，但可规避将别名（见下文）错误视为参数的情况。</li>
+				</ul>
+			</li>
+			<li>当前可使用的命令：
+				<ul>
+					<li><code>\use "预设名"</code> 导入预设的别名列表。若存在相同的别名，则后导入的会覆盖前导入的。</li>
+					<li><code>\useNone</code> 清除当前的别名列表。</li>
+					<li><code>\bye</code> 关闭此页面。</li>
+				</ul>
+			</li>
 		</ul>
 	</div>
 </body>

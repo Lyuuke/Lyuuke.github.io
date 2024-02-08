@@ -1,3 +1,5 @@
+var CUSTOM_IPA_MAP = {}
+
 function nebty(text, terminator = "\0") {
 
 	function getPrimary(rawChar) {
@@ -87,7 +89,7 @@ function nebty(text, terminator = "\0") {
 				"o": "ʘ", "ǀ": "ǃ", "ː": "ˑ"
 			},
 			"ǀ": {
-				"ǀ": "ǁ", ".": "¡", "r": "ɼ"
+				"ǀ": "ǁ", ".": "¡", "r": "ɼ", "ɯ": "ɰ"
 			},
 			"ŋ": {
 				"f": "ʩ"
@@ -273,6 +275,18 @@ function nebty(text, terminator = "\0") {
 		return buffer
 	}
 
+	function toMapped(tkn) {
+		var tokens = tkn.trim().split(" ")
+		var buffer = ""
+		for (var i = 0; i < tokens.length; ++i) {
+			let token = tokens[i]
+			buffer += CUSTOM_IPA_MAP[token] || ""
+			buffer += " "
+		}
+		return nebty(buffer, '"')[0]
+		// make '"' the terminator to prevent bad recursion
+	}
+
 	function applyUnaryOp(op, char) {
 		switch (op) {
 			case "!":
@@ -333,10 +347,28 @@ function nebty(text, terminator = "\0") {
 		}
 	}
 
+	function execCommand(command, parameter) {
+		switch (command) {
+			case "use":
+				CUSTOM_IPA_MAP = {...CUSTOM_IPA_MAP, ...presetMaps[parameter]}
+				break
+			case "useNone":
+				CUSTOM_IPA_MAP = {}
+				break
+			case "bye":
+				window.close()
+				break
+			case "relax":
+				break
+		}
+		return null
+	}
+
 	var nodeHeld = ""
 	var multiplierHeld = ""
 	var opsHeld = []
 	var textBuffer = ""
+	var quotationMarkSide = false
 
 	while (text) {
 		[char, text] = [text[0], text.slice(1)]
@@ -385,13 +417,35 @@ function nebty(text, terminator = "\0") {
 					continue
 				case 0:
 					textBuffer += "`"
-					var slicer = 1
 					break
 				default:
 					textBuffer += text.slice(0, nextBacktick)
-					var slicer = nextBacktick
 			}
 			text = text.slice(nextBacktick + 1)
+		} else if (char == "\\") {
+			// syntax: \commandname "parametername"
+			mergeNode()
+			let commandMatch = text.match(/^([a-zA-Z]+)\s*("[0-9a-zA-Z]*")?/)
+			if (commandMatch == null) {
+				continue
+			}
+			let command = commandMatch[1]
+			let par = commandMatch[2]
+			text = text.slice(commandMatch[0].length)
+			par = (par || "\"\"").slice(1, -1)
+			execCommand(command, par)
+		} else if (char == '"') {
+			// this must come after handling backslash
+			mergeNode()
+			nextQuotationMark = text.indexOf('"')
+			if (nextQuotationMark == -1) {
+				continue
+			} else if (nextQuotationMark == 0) {
+				textBuffer += "“”"[+quotationMarkSide]
+				quotationMarkSide = !quotationMarkSide
+			}
+			textBuffer += toMapped(text.slice(0, nextQuotationMark))
+			text = text.slice(nextQuotationMark + 1)
 		} else if (char == "G") {
 			// "G" + <raw char> -> make <raw char> unprocessed a node
 			// "G" stands for Glyph
