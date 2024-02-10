@@ -178,8 +178,9 @@
 			</li>
 			<li>当前可使用的命令：
 				<ul>
-					<li><code>\use "预设名"</code> 导入预设的别名列表。若存在相同的别名，则后导入的会覆盖前导入的。</li>
-					<li><code>\useNone</code> 清除当前的别名列表。</li>
+					<li><code>\use</code> 导入（一个或多个）预设的别名列表，参数格式为 <code>"别名列表1, 别名列表2, …"</code>。若存在相同的别名，则后导入的会覆盖前导入的。</li>
+					<li><code>\useNone</code> 清除当前的别名列表。无参数。</li>
+					<li><code>\replace</code> 将本条命令之前的、转换后的文本中的一个符号或序列替换为另一个符号或序列。参数格式为 <code>"替换前序列的 nebty 1, 替换后序列的 nebty 1; 替换前序列的 nebty 2, 替换后序列的 nebty 2; …"</code>。例如，要将转换后文本中的 <span class="ipa">ʃ</span> 全部替换为 <span class="ipa">ɕ</span>、并将 <span class="ipa">ɐ</span> 全部替换为 <span class="ipa">ä</span>，可在需替换的文本后方使用 <code>\replace "S, C; !a, a{:}"</code>。</li>
 					<li><code>\bye</code> 关闭此页面。</li>
 				</ul>
 			</li>

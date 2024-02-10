@@ -1,6 +1,15 @@
 var presetMaps = {
 	// '"' is not allow to occur in the keys
-	"StandardChinese": {
+	"devoicedEnglish": {
+		"b": "b{o}",
+		"v": "v{o}",
+		"D": "D{o}",
+		"d": "d{o}",
+		"z": "z{o}",
+		"dZ": "d{o}^Z{`o}",
+		"g": "g{`o}"
+	},
+	"standardChinese": {
 		"z": "t^s",
 		"c": "t^s[h]",
 		"j": "t^C",
@@ -20,7 +29,7 @@ var presetMaps = {
 		"3b": "<214|21>",
 		"4": "<51>"
 	},
-	"Kyoutsuugo": {
+	"kyoutsuugo": {
 		"u": "W{x}[B]",
 		"us": "I{x}[B]",
 		"w": "W*|[B]"

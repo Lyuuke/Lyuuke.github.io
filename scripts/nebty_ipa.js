@@ -350,15 +350,50 @@ function nebty(text, terminator = "\0") {
 	function execCommand(command, parameter) {
 		switch (command) {
 			case "use":
-				CUSTOM_IPA_MAP = {...CUSTOM_IPA_MAP, ...presetMaps[parameter]}
+				// use preset alias maps
+				// all available maps are defined in ./nebty_ipa_preset_maps.js
+				// parameter format: "presetname1, presetname2, ..."
+				let parNames = parameter.split(",")
+				for (var i = 0; i < parNames.length; ++i) {
+					let thisName = parNames[i].trim()
+					CUSTOM_IPA_MAP = {...CUSTOM_IPA_MAP, ...presetMaps[thisName]}
+				}
 				break
 			case "useNone":
+				// clear all aliases
 				CUSTOM_IPA_MAP = {}
+				break
+			case "replace":
+				// replace a sequence to another in the CURRENT text buffer
+				// parameter format: "before1, after1; before2, after2; ..."
+				let replacementPairs = parameter.split(";").map(
+					(pair) => {return pair.split(",")}
+				)
+				for (var i = 0; i < replacementPairs.length; ++i) {
+					let thisPair = replacementPairs[i]
+					let thisBefore = nebty(thisPair[0].trim())[0]
+					let thisAfter = nebty(thisPair[1].trim())[0]
+					textBuffer = textBuffer.replaceAll(thisBefore, thisAfter)
+				}
+				break
+			case "left":
+				enclosureStack.push([textBuffer.length, parameter])
+				break
+			case "right":
+				let enclosureData = enclosureStack.pop()
+				const enclosureTypes = {
+					"(": ["(", ")"], "[": ["[", "]"], "<": ["⟨", "⟩"],
+					"/": ["/", "/"], "{": ["{", "}"], "((": ["⸨", "⸩"],
+					"//": ["⫽", "⫽"], "|": ["|", "|"], "<<": ["⟪", "⟫"],
+					"||": ["‖", "‖"]
+				}
+				let left, right
+				[left, right] = enclosureTypes[enclosureData[1]]
+				textBuffer = textBuffer.slice(0, enclosureData[0]) + left
+					+ textBuffer.slice(enclosureData[0]) + right
 				break
 			case "bye":
 				window.close()
-				break
-			case "relax":
 				break
 		}
 		return null
@@ -369,6 +404,7 @@ function nebty(text, terminator = "\0") {
 	var opsHeld = []
 	var textBuffer = ""
 	var quotationMarkSide = false
+	var enclosureStack = []
 
 	while (text) {
 		[char, text] = [text[0], text.slice(1)]
@@ -425,7 +461,7 @@ function nebty(text, terminator = "\0") {
 		} else if (char == "\\") {
 			// syntax: \commandname "parametername"
 			mergeNode()
-			let commandMatch = text.match(/^([a-zA-Z]+)\s*("[0-9a-zA-Z]*")?/)
+			let commandMatch = text.match(/^([a-zA-Z]+)\s*("[^"]*")?/)
 			if (commandMatch == null) {
 				continue
 			}
