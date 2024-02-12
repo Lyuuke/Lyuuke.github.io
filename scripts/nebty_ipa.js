@@ -388,7 +388,7 @@ function nebty(text, terminator = "\0") {
 					"||": ["‖", "‖"]
 				}
 				let left, right
-				[left, right] = enclosureTypes[enclosureData[1]]
+				[left, right] = enclosureTypes[enclosureData[1]] || ["", ""]
 				textBuffer = textBuffer.slice(0, enclosureData[0]) + left
 					+ textBuffer.slice(enclosureData[0]) + right
 				break
