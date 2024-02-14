@@ -21,6 +21,9 @@ function provideRandomExample() {
 		// onwaññentse se twere tīkṣṇendryets
 		"`吠陀梵语\n*` !ag[H]nimi:L!aj _ pur!awhit!a{~} _ ja!fn*j!asj!a _ d!ajV!a{~} _ r{|}tVi:j!a{~} _`|`_ h!awta:r!a{~} _ r!atn!ad[H]a:t!am!am",
 		// aghnimīḷe purohitaṃ yajñasya devaṃ ṛtvījam | hotāraṃ ratnadhātamam
+		'`现代日语共通语 (使用预设)\n`\\use "kyoutsuugo"\nten*j{`+}d^Jo: _ kaNe_"w"a _ ka"w"aRanedo _`|`_ e:ko_"w"a _ "u"t^s"us"R"u" _ jo_no _ s"us"Nata',
+		'`普通话 (使用预设)\n`\\use "standardChinese"\nt[h]jEn"1"_Cja{:}"4" _ "j"jow"4" _ mEj"2"_jow"3b" _ ow"3b"_"r"an"2" _`|`_ na{:}"4" _ pu"4"<|35>_kwo"4" _ "sh ir 4" _ xwa{:}"4"_l@_"zh"wAN"1"_t@ _ taj"4"_l@_mjEn"4"_"j"y"4"_t@ _ pi"4"_"r"an"2"',
+		'`标准南不列颠英语 (使用预设)\n`\\use "devoicedEnglish"\nno:? _ mEj__+in\'"dZ"o: _ "b"!v? _ !\'mju*-wt@\'b+il@t+ij'
 	]
 
 	var inputFrame = document.getElementById("nebtyinput")
