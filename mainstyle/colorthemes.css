@@ -17,3 +17,8 @@
 	--maincolor: #6a7479;
 	--secondcolor: #d7d5cb;
 }
+
+[colortheme="phonetics"] {
+	--maincolor: #b5c4c1;
+	--secondcolor: #5a6767;
+}

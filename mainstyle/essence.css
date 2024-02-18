@@ -238,6 +238,7 @@ div.zh_text em {
 }
 
 div.zh_text u {
+	margin: 0 0.05em;
     text-decoration: none;
     border-bottom-color: inherit;
     border-bottom-style: solid;

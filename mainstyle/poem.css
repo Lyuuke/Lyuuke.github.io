@@ -1,0 +1,22 @@
+div.poem {
+	text-align: justify;
+	margin: 0 24% 0 calc(24% + 2em);
+	display: flex;
+	flex-direction: column;
+}
+
+div.poem > div {
+	margin: 0.6em 0;
+}
+
+div.poem p {
+	text-indent: -2em;
+	margin: 0;
+	padding: 0;
+	line-height: 1.6em;
+}
+
+div.poem .author {
+	margin: 0.5em 0;
+	text-align: right;
+}
