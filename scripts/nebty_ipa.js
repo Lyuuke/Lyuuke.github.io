@@ -53,7 +53,7 @@ function nebty(text, terminator = "\0") {
 			// thatChar -> thisChar -> <result>
 			"ɕ": {
 				"n": "ȵ", "z": "ʑ", "t": "ȶ", "d": "ȡ",
-				"l": "ȴ", "t": "ʨ"
+				"l": "ȴ", "t": "ʨ", "j": "ʝ"
 			},
 			"ɾ": {
 				"h": "ɦ", "b": "ɓ", "d": "ɗ", "ɖ": "ᶑ",
@@ -170,8 +170,13 @@ function nebty(text, terminator = "\0") {
 
 	function toNonFullSized(fs) {
 		const nonFullSizedTable = Object.fromEntries(
-			Array.from("hɦwjɥɣmɱnɳɲŋɴlɭʟʕʋɻʔʁœəɵɸβfθsʃɕʂxꭓ=/ˈ").map(
-				(el, i) => [el, "ʰʱʷʲᶣˠᵐᶬⁿᶯᶮᵑᶰˡᶩᶫˤᶹʵˀʶꟹᵊᶱᶲᵝᶠᶿˢᶴᶝᶳˣᵡ˭˹ʼ"[i]])
+			Array.from(
+				"hɦwjɥɣmɱnɳɲŋɴlɭʟʕʋɹɻʔʁœəɵɸβfθsʃɕʂxꭓ"
+				+ "vðzʒʐʝɰriyuɨʉɯ=/ˈ"
+			).map((el, i) => [el, (
+				"ʰʱʷʲᶣˠᵐᶬⁿᶯᶮᵑᶰˡᶩᶫˤᶹʴʵˀʶꟹᵊᶱᶲᵝᶠᶿˢᶴᶝᶳˣᵡ"
+				+ "ᵛᶞᶻᶾᶼᶨᶭʳⁱʸᵘᶤᶶᵚ˭˹ʼ"
+			)[i]])
 		)
 		var buffer = ""
 		for (var i = 0; i < fs.length; ++i) {
