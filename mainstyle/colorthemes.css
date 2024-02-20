@@ -1,3 +1,8 @@
+[colortheme="works"] {
+	--maincolor: #30404f;
+	--secondcolor: #f0f0f0;
+}
+
 [colortheme="roman"] {
 	--maincolor: #6a1943;
 	--secondcolor: #fbeaad;
