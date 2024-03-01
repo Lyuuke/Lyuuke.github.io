@@ -2,6 +2,7 @@ function refreshParsedNebty() {
 
 	var input = document.getElementById("nebtyinput").innerText
 	var outputFrame = document.getElementById("nebtyoutput")
+	CUSTOM_IPA_MAP = {}
 	outputFrame.innerText = nebty(input)[0]
 
 }
