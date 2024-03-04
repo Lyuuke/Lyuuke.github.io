@@ -67,7 +67,8 @@
 
 		#nebtyoutput {
 			width: 60%;
-			height: 120pt;
+			height: auto;
+			min-height: 120pt;
 			padding: 10pt;
 			font-size: 120%;
 			box-shadow: 3pt 3pt 0 var(--wheat);
@@ -120,7 +121,7 @@
 				<tr><th><code>A</code></th><th><code>B</code></th><th><code>C</code></th><th><code>D</code></th><th><code>E</code></th><th><code>F</code></th><th><code>H</code></th><th><code>I</code></th><th><code>J</code></th><th><code>K</code></th><th><code>L</code></th><th><code>N</code></th><th><code>O</code></th><th><code>P</code></th><th><code>Q</code></th><th><code>R</code></th><th><code>S</code></th><th><code>T</code></th><th><code>U</code></th><th><code>V</code></th><th><code>W</code></th><th><code>X</code></th><th><code>Y</code></th><th><code>Z</code></th></tr>
 				<tr><td>ɑ</td><td>β</td><td>ɕ</td><td>ð</td><td>ɛ</td><td>ɸ</td><td>ɦ</td><td>ɨ</td><td>ʑ</td><td>ꭓ</td><td>ɭ</td><td>ŋ</td><td>ɔ</td><td>ø</td><td>ʕ</td><td>ɾ</td><td>ʃ</td><td>θ</td><td>ʊ</td><td>ʋ</td><td>ɯ</td><td>ɣ</td><td>ɤ</td><td>ʒ</td></tr>
 			</tbody></table>
-			<li><code>@</code> 映射至中央元音 <span class="ipa">ə</span>、<code>?</code> 映射至声门塞音 <span class="ipa">ʔ</span>、<code>|</code> 映射至齿喌音 <span class="ipa">ǀ</span>、<code>:</code> 映射至长音标记 <span class="ipa">ː</span>、<code>'</code> 映射至主重音标记 <span class="ipa">ˈ</span>、<code>%</code> 映射至零 <span class="ipa">∅</span>。</li>
+			<li><code>@</code> 映射至中央元音 <span class="ipa">ə</span>、<code>?</code> 映射至声门爆音 <span class="ipa">ʔ</span>、<code>|</code> 映射至齿喌音 <span class="ipa">ǀ</span>、<code>:</code> 映射至长音标记 <span class="ipa">ː</span>、<code>'</code> 映射至主重音标记 <span class="ipa">ˈ</span>、<code>%</code> 映射至零 <span class="ipa">∅</span>。</li>
 			<li>用于书写塞擦音、协同发音及（有时）双元音的 tie bar 使用 <code>^</code> 输入；书写在下方的 tie bar 则使用 <code>!^</code>。例如，<code>t^S k!^p</code> = <span class="ipa">t͡ʃk͜p</span>。</li>
 		</ul>
 		<h3>符号的运算</h3>
@@ -188,6 +189,14 @@
 						<tr><td>(…)</td><td>[…]</td><td>/…/</td><td>{…}</td><td>⟨…⟩</td><td>||</td><td>⸨…⸩</td><td>⟪…⟫</td><td>⫽…⫽</td><td>‖…‖</td></tr>
 					</tbody></table>
 					<li><code>\bye</code> 关闭此页面。</li>
+				</ul>
+			</li>
+			<li><code>"…"</code> 不作为命令参数（即不直接位于命令的后方）时，表示其中的内容为一个或一系列别名（别名间用空格分隔），将逐一从当前使用的别名列表（一般需预先使用 <code>\use</code> 命令导入）中检索并转化为对应的符号序列。例如，若当前别名列表中存在从 <code>zh</code> 到 <code>t*L^s*L</code> 的映射，则 <code>"zh"</code> 将被转换为 <span class="ipa">ʈ͡ʂ</span>。</li>
+			<li>当前，本网页输入法内置的别名列表（名称可作为 <code>\use</code> 的参数）：
+				<ul>
+					<li><code>standardChinese</code>：定义了转写普通话常用的序列，如 <code>"zh"</code> → <span class="ipa">ʈ͡ʂ</span>、<code>"ir"</code> → <span class="ipa">ɻ̍</span>、<code>"3a"</code> → <span class="ipa">˨˩˦꜔꜒</span> 等。使用此别名列表，则诸如<q>耻辱</q>的转写 <span class="ipa">ʈ͡ʂʰɻ˨˩˦꜔꜒ ɻu˨˩˦</span> 可通过 <code>"ch ir 3a"_"r" u "3"</code> 输入（若不使用，则等价的输入方法为 <code>t*L^s*L[h]!r*L[`|]<214|35>_!r*Lu<214></code>）。所有可用的别名：<code>z c j q zh ch sh r er iz ir uf 1 2 3 3a 3b 4</code></li>
+					<li><code>devoicedEnglish</code>：定义了英语中的浊爆音加上清化符号的版本。所有可用的别名：<code>b v D d z dZ g</code></li>
+					<li><code>kyoutsuugo</code>：定义了转写日语共通语常用的序列。所有可用的别名：<code>u us w</code></li>
 				</ul>
 			</li>
 		</ul>
