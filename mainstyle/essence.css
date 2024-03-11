@@ -237,7 +237,7 @@ div.zh_text em {
     -webkit-text-emphasis-position: under;
 }
 
-div.zh_text u {
+div.zh_text u:not(.noskip) {
 	margin: 0 0.05em;
 	text-decoration-thickness: 1pt;
     /* text-decoration: none;
