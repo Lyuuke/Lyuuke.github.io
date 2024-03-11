@@ -239,10 +239,11 @@ div.zh_text em {
 
 div.zh_text u {
 	margin: 0 0.05em;
-    text-decoration: none;
+	text-decoration-thickness: 1pt;
+    /* text-decoration: none;
     border-bottom-color: inherit;
     border-bottom-style: solid;
-    border-bottom-width: 1px;
+    border-bottom-width: 1px; */
 }
 
 div.zh_text span.lit {
