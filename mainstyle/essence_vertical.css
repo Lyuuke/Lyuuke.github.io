@@ -1,0 +1,218 @@
+:root {
+	--deep-purple: #4b3552;
+	--vivid-purple: #804058;
+	--auroral-red: #ab3627;
+	--ember-orange: #d77632;
+	--inactive-grey: #726469;
+	--wheat: #dbac7d;
+	--wheat-44: rgba(219, 172, 125, .2656);
+	--shadow-brown: #46372d;
+	--shadow-brown-80: rgba(70, 55, 45, .5);
+	--shadow-brown-30: rgba(70, 55, 45, .1875);
+	--cyan-green: #377954;
+	--leaf-gold: #b8841f;
+	--serif-set: "Liberation Serif", "Palatino Linotype",
+		"Palatino", "Source Han Serif SC", "Noto Serif CJK SC",
+		"STZhongSong", "FZShuSong-Z01S", "FZSong", "STSong", serif;
+	--serif-set-jp: "Liberation Serif", "Palatino Linotype",
+		"Palatino", "Noto Serif CJK JP", "Noto Serif JP", serif;
+	--sans-set: "Myriad Pro", "Segoe UI", "Source Han Sans SC",
+		"Noto Sans CJK SC", "Lantinghei SC", "PingFang SC",
+		"Microsoft YaHei", sans-serif;
+}
+
+body {
+	background-color: var(--wheat);
+}
+
+div#main, h1, h2 {
+	font-family: var(--serif-set);
+}
+
+[lang=ja] {
+	font-family: var(--serif-set-jp)
+}
+
+h3, h5, a, b, div.back_shell, div.warningheader,
+div.severewarningheader, div.noticeheader,
+div.contentblock > .content, figcaption {
+	font-family: var(--sans-set);
+}
+
+div#main {
+	position: relative;
+	writing-mode: vertical-rl;
+	line-height: 2em;
+	background-color: #f8f0e0;
+	font-weight: 500;
+	height: 40em;
+	margin: auto;
+	padding: 3em 5em 3em 5em;
+	box-shadow: .2em .2em .8em var(--shadow-brown-80);
+	text-align: justify;
+}
+
+span.com {
+	text-combine-upright: all;
+}
+
+sup, sub {
+	line-height: 1em;
+}
+
+div.minorskip {
+	/* a separating horizontal space */
+	min-width: 2.5em;
+}
+
+div.majorskip {
+	/* a wider separating horizontal space */
+	min-width: 5em;
+}
+
+div.back_shell {
+	display: inline-block;
+	writing-mode: horizontal-tb;
+	width: 8em;
+	height: 10em;
+	padding: 1em;
+	overflow: hidden;
+	position: absolute;
+	right: 1em;
+	bottom: 1em;
+	cursor: pointer;
+	text-align: center;
+	color: var(--vivid-purple);
+}
+
+h1 {
+	font-weight: 600;
+	text-align: left;
+	font-size: 240%;
+	margin: 0.5em 1em;
+}
+
+h2 {
+	font-weight: 600;
+	text-align: left;
+	font-size: 180%;
+	margin: 0.5em 0.5em;
+}
+
+h3 {
+	font-weight: 600;
+	font-size: 140%;
+	color: var(--deep-purple);
+	margin-left: 0.5em;
+}
+
+div.asterism {
+	margin: 14em 3em;
+	border-left: 0.1em solid var(--vivid-purple);
+}
+
+b {
+	font-weight: 700;
+}
+
+b.plain {
+	font-weight: inherit;
+}
+
+div.text q:before {
+	content: "「"
+}
+
+div.text q:after {
+	content: "」";
+}
+
+div.text em {
+	position: relative;
+	font-weight: inherit;
+	font-style: normal;
+	line-height: inherit;
+	text-emphasis-style: filled dot;
+	text-emphasis-position: under;
+	-webkit-text-emphasis-position: under;
+}
+
+div.text u:not(.noskip) {
+	margin: 0 0.05em;
+	text-decoration-thickness: 0.8pt;
+	text-underline-offset: 0.15em;
+}
+
+div.text span.lit {
+    text-decoration: underline wavy;
+    text-decoration-thickness: 0.8pt;
+    text-underline-offset: 0.125em;
+}
+
+div.text p {
+	text-indent: 2em;
+}
+
+div.text p.noindent {
+	text-indent: 0;
+}
+
+div.text span.punct {
+	/* punctuation */
+	display: inline-block;
+	position: relative;
+	left: -0.25em;
+	top: 0.15em;
+	width: 0;
+	overflow: visible;
+	color: var(--vivid-purple);
+}
+
+div.text blockquote {
+	margin: 4em 0;
+	padding: 0 0.75em;
+	color: var(--vivid-purple);
+	text-shadow: 0 0 0.1em var(--wheat-44);
+}
+
+div.text blockquote div.author {
+	position: relative;
+	left: 1.25em;
+	line-height: 1em;
+	text-align: right;
+	font-size: 85%;
+}
+
+div.contentblock {
+	text-align: justify;
+	background-color: var(--wheat-44);
+	padding: .6em 1em .6em 1em;
+	margin: .5em 0 .5em 0;
+}
+
+div.contentblock > .content {
+	font-size: 90%;
+	line-height: 1.4em;
+	text-indent: 2em;
+}
+
+div.shortintro {
+	text-align: center;
+	font-size: 120%;
+	letter-spacing: 0.2em;
+	line-height: 1.8em;
+	max-width: 70%;
+	margin: auto;
+}
+
+div.shortintro > p {
+	text-align: justify;
+	font-size: 90%;
+	letter-spacing: 0.1em;
+	line-height: 1.8em;
+	margin: 0.25em 0;
+}
+
+div.shortintro .nospacing {
+	letter-spacing: 0;
+}

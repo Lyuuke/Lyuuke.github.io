@@ -239,16 +239,14 @@ div.zh_text em {
 
 div.zh_text u:not(.noskip) {
 	margin: 0 0.05em;
-	text-decoration-thickness: 1pt;
-    /* text-decoration: none;
-    border-bottom-color: inherit;
-    border-bottom-style: solid;
-    border-bottom-width: 1px; */
+	text-decoration-thickness: 0.8pt;
+	text-underline-offset: 0.15em;
 }
 
 div.zh_text span.lit {
     text-decoration: underline wavy;
     text-decoration-thickness: 0.8pt;
+    text-underline-offset: 0.125em;
 }
 
 div.zh_text p {
