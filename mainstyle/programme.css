@@ -1,0 +1,83 @@
+:root {
+	--hl-op: var(--auroral-red);
+	--hl-kw: var(--ember-orange);
+	--hl-lt: var(--cyan-green);
+	--hl-fn: #3971bf;
+	--hl-nm: var(--vivid-purple);
+	--hl-cm: #8c8683;
+	--monospace-set: "Noto Mono", "Consolas", monospace;
+}
+
+pre, code {
+	background-color: #ffffff80;
+	box-shadow: 5px 5px 0 var(--wheat-44);
+	font-size: 90%;
+	font-family: var(--monospace-set);
+}
+
+pre {
+	padding: 2em;
+	margin: 0.5em auto;
+	width: 79ch;
+	tab-size: 4;
+	line-height: 1.2em;
+	overflow: auto;
+}
+
+pre.repr {
+	background-image: radial-gradient(circle, var(--wheat), var(--shadow-brown-80));
+	color: white;
+	text-shadow: 0 0 0.2em var(--shadow-brown);
+	font-weight: bold;
+}
+
+pre.repr:before {
+	display: block;
+	height: 0;
+	position: relative;
+	top: -1.6em;
+	left: -1.6em;
+	content: "输出>";
+	color: var(--shadow-brown);
+	text-shadow: none;
+}
+
+code {
+	padding: 0.1em 0.25em;
+	box-shadow: none;
+}
+
+pre span.cm {
+	/* comments and docstrings */
+	color: var(--hl-cm);
+}
+
+pre span.kw {
+	/* keywords */
+	color: var(--hl-kw);
+}
+
+pre span.nm {
+	/* names */
+	color: var(--hl-nm);
+}
+
+pre span.fn {
+	/* (called) functions and methods */
+	color: var(--hl-fn);
+	font-style: italic;
+}
+
+pre span.lt {
+	/* literals */
+	color: var(--hl-lt);
+}
+
+pre span.op {
+	/* operators */
+	color: var(--hl-op);
+}
+
+pre span.em {
+	background-color: var(--wheat-44);
+}

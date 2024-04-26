@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>鳞性相的像素画创作辅助：准备工作</title>
+	<meta charset="utf-8">
+	<base href="../">
+	<link rel="stylesheet" type="text/css" href="./mainstyle/background.css">
+	<link rel="stylesheet" type="text/css" href="./mainstyle/essence.css">
+	<link rel="stylesheet" type="text/css" href="./mainstyle/programme.css">
+	<script type="text/javascript" src="./scripts/python_highlight.js"></script>
+</head>
+
+<body>
+	<div id="main" class="zh_text">
+		<te>mainpage_portal</te>
+		<h2>鳞性相的像素画创作辅助：准备工作</h2>
+		<div class="minorskip"></div>
+
+		<h3>加载图像文件</h3>
+		<p>在做所有事情之前，当然需要加载像素画文件。如果您要处理的所有作品中至少有一张图像使用了透明度，则最好将图像模式统一为 RGBA：</p>
+		<pre class="python-code">IMAGE_DIR = "./test.png" # 图像路径
+image: im.Image = im.open(IMAGE_DIR).convert("RGBA")</pre>
+		<figure class="centered">
+			<img src="./images/py_pixel/tutor_example_image_01.png" class="pixel" style="width: 64px; height: 64px;">
+			<figcaption><code>./test.png</code></figcaption>
+		</figure>
+		<p><code>im.open</code> 将图像文件加载为一个 <code>im.Image</code> 对象。与处理照片等类型的图像不同，处理像素画经常涉及到<b>像素层面</b>的操作。所以，Pillow 提供的各种变换、通道操作、滤镜等能够应用的场合甚少。对于操作像素而言，虽然可使用 <code>im.Image.putpixel</code> 方法，但遍历所有像素有时太慢了。</p>
+		<p>既然如此，考虑将图片转化为 NumPy 数组：</p>
+		<pre class="python-code">image_matrix: np.ndarray = np.asarray(image)
+image_matrix = np.require(image_matrix, requirements="W")
+# 转换得到的数组是只读的; 此行使其可写</pre>
+		<p>打印一下这个数组的基本信息：</p>
+		<pre class="python-code">print(image_matrix.dtype)
+print(image_matrix.shape)</pre>
+		<pre class="repr">uint8
+(32, 32, 4)</pre>
+		<p>由于每个通道的位深度是 8 b，故数组的元素类型是 <code>uint8</code>。这是个三维数组，前两个维度为像素的<abbr title="左上角为 (0, 0)">横纵坐标</abbr>，第三个维度则是四个通道（R、G、B、A）：也就是说，数组的最内层代表的是单个像素的 RGBA 值。这不是很理想——因为大部分情况下，我们并不希望将各通道与像素的坐标等同对待，而是希望将一个像素中四个通道的值作为一个整体看待。为此，需将此 <code>uint8</code> 数组转换为一个<b>结构体数组</b>：</p>
+		<pre class="python-code">RGBA_TYPE: np.dtype = np.dtype(
+	[("R", np.uint8), ("G", np.uint8), ("B", np.uint8), ("A", np.uint8)]
+)
+# 定义了一个结构体类型:
+# 四个在内存中相邻的 uint8, 分别命名为 "R", "G", "B", "A"
+image_matrix.dtype = RGBA_TYPE</pre>
+		<p>再次打印一下数组的基本信息：</p>
+		<pre class="python-code">print(image_matrix.dtype)
+print(image_matrix.shape)</pre>
+		<pre class="repr">[('R', 'u1'), ('G', 'u1'), ('B', 'u1'), ('A', 'u1')]
+(32, 32, 1)</pre>
+		<p>可以看见，数组的元素类型修改为上述定义的 <code>RGBA_TYPE</code> 后，原先最内层的四个 <code>uint8</code> 被重新解释为了一个 <code>RGBA_TYPE</code> 结构体。不过，数组本身仍是三维的，只不过第三个维度的长度变成了 1——这变成了冗余维度，所以我们用 <code>np.ndarray.squeeze</code> 去掉他：</p>
+		<pre class="python-code">image_matrix = image_matrix.squeeze()</pre>
+		<p>由此，我们将图像转化为了二维数组，数组中的每个元素是包含 R、G、B、A 四个通道值的结构体。后续的大部分图像操作都建立在对此类数组的操作的基础上。</p>
+
+		<h3>编辑像素的 RGBA 值</h3>
+		<p>上述得到的二维数组可以直接通过某个像素的横纵坐标获取该像素的 RGBA 值，也可赋其以新的 RGBA 值。</p>
+		<pre class="python-code">print(image_matrix[0,0])
+# 获取左上角像素的 RGBA 值
+image_matrix[0,0] = ?em:(102, 153, 51, 255)??
+# 将左上角像素设置为一种不透明的绿色
+# rgb(102, 153, 51) 即 #669933
+print(image_matrix[0,0])</pre>
+		<pre class="repr">(255, 255, 255, 0)
+(102, 153, 51, 255)</pre>
+		<p>注意用阴影标注的部分：虽然上述数组的元素是结构体，但赋值时使用了一个一般的元组。这个操作是 NumPy 允许的，并且不会改变数组元素的类型。使用 <code>RGBA_TYPE</code> 结构体赋值自然也可以，不过如何创建这种结构体的实例将在后续博文中介绍。</p>
+		<p>当然，还可以对一整个切片中的所有像素赋以相同的值：</p>
+		<pre class="python-code">image_matrix[::2,:10] = (102, 153, 51, 255)
+# 将前十列的偶数行像素设置为不透明的绿色</pre>
+
+		<h3>预览图像</h3>
+		<p>我们对图像做了一些修改：理论上图像的前十列偶数行像素应该变成了<span style="background-color: #669933; padding: 0 0.3em; border-radius: 0.2em; color: white;">这种绿色</span>。不过如何直观地预览其效果呢？<code>im.Image</code> 的 <code>show</code> 方法是最直接的——他会生成一个临时图像文件，并用您电脑上的默认图像查看器打开。不过，鉴于我们已经把图像转换成了结构体数组，仍需先将其转换回 <code>im.Image</code> 对象：</p>
+		<pre class="python-code">image_matrix = image_matrix.reshape((*image_matrix.shape, 1))
+# 修改为三维数组 (相当于上述 np.ndarray.squeeze 的逆操作)
+image_matrix.dtype = np.uint8
+# 将数组元素的类型改回 uint8
+image: im.Image = im.fromarray(image_matrix)
+# 转换回 im.Image 对象
+image.show()</pre>
+		<p>现在您的屏幕上应该弹出了图像查看器的窗口，可以看见修改确实生效了：</p>
+		<figure class="centered">
+			<img src="./images/py_pixel/tutor_example_image_02.png" class="pixel" style="width: 64px; height: 64px;">
+			<figcaption>预览</figcaption>
+		</figure>
+		<p>这种预览图像的方法看起来很迂回，但对我来说至少是<b>可接受</b>的。这主要是因为预览图像本身在大部分情况下只是临时的需求：只有在编写脚本时，为了确认处理的效果，才会预览少数的测试图像。对于大部分由脚本处理的图像而言，您大可在程序终止之后从输出文件夹中打开查看，而不需要频繁在数组及 <code>im.Image</code> 对象之间转换。</p>
+
+		<h3>封装</h3>
+		<p>我们可以将上述操作封装成一个类，以方便后续的频繁使用：</p>
+		<pre class="python-code">class PixelMatrix:
+
+	RGBA_TYPE: np.dtype = np.dtype(
+		[("R", np.uint8), ("G", np.uint8), ("B", np.uint8), ("A", np.uint8)]
+	)
+	
+	def __init__(self, dir: str) -> None:
+		image: im.Image = im.open(dir).convert("RGBA")
+		image_matrix: np.ndarray = np.asarray(image)
+		image_matrix = np.require(image_matrix, requirements="W")
+		image_matrix.dtype = self.RGBA_TYPE
+		self.data: np.ndarray = image_matrix.squeeze()
+		# self.data 即读取自图像的结构数组
+
+	def to_image(self) -> im.Image:
+		'''转换为 im.Image 对象
+		'''
+		image_matrix = self.data.reshape((*self.data.shape, 1))
+		image_matrix.dtype = np.uint8
+		return im.fromarray(image_matrix)
+
+	def show(self) -> None:
+		'''预览图像
+		'''
+		self.to_image().show()</pre>
+		<p>在后续的本系列博文中，将根据需求编写处理此 <code>PixelMatrix</code> 类对象的相应函数或方法。</p>
+	</div>
+</body>
+
+</html>

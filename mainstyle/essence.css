@@ -320,3 +320,11 @@ div.severewarningheader:before {
 div.noticeheader:before {
 	content: "🚩 ";
 }
+
+img.pixel {
+	image-rendering: pixelated;
+}
+
+.centered {
+	text-align: center;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>鳞性相的像素画创作辅助：目录</title>
+	<meta charset="utf-8">
+	<base href="../">
+	<link rel="stylesheet" type="text/css" href="./mainstyle/background.css">
+	<link rel="stylesheet" type="text/css" href="./mainstyle/essence.css">
+	<link rel="stylesheet" type="text/css" href="./mainstyle/programme.css">
+	<link rel="stylesheet" type="text/css" href="./mainstyle/art.css">
+	<link rel="stylesheet" type="text/css" href="./mainstyle/colorthemes.css">
+	<script type="text/javascript" src="./scripts/python_highlight.js"></script>
+</head>
+
+<body>
+	<div id="main" class="zh_text">
+		<te>mainpage_portal</te>
+		<div class="contentblock">
+			<div class="noticeheader">时效性</div>
+			<div class="content">截至目前，该系列博文<b>仍在更新</b>。最近一次的更新时间为格里高利历 2024 年 4 月 26 日，亦即夏历子辰年三月十八（UTC+8）。</div>
+		</div>
+		<h1>鳞性相的像素画创作辅助：目录</h1>
+		<div class="division" style="--boxthemecolor: var(--inactive-grey);">
+			<div class="divisiontitle">目录</div>
+			<div class="divisionbody">
+				<table>
+					<tr>
+						<td>
+							<div colortheme="pitta-red">A01</div>
+						</td>
+						<td>
+							<a href="./confabulation/pixel_art_with_python_a01_prep.html" target="_blank">准备工作</a>
+						</td>
+						<td>’24.04.26</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="minorskip"></div>
+		<h2>简介</h2>
+		<div class="minorskip"></div>
+		<p>这是个索引页面，您可以在上面的目录检索所有《鳞性相的像素画创作辅助》系列博文。</p>
+		<p>本系列是个人在像素画创作中使用 Python 辅助创作的经验分享。所谓<q>辅助创作</q>，最常见的包括替色、提取调色板、检查风格的一致性及视觉效果、生成展示图片等。这些工作一般相当重复、有时繁琐，能交由脚本完成自然最好。如果您也和我一样只是出于兴趣创作像素画（尤其是作为游戏资源的小画布像素画）、且可用于此的时间并不多的话，大抵也能体会被一些重复工作无谓占用时间的苦恼。</p>
+		<p>当然，如果您可供创作的时间很多，也不妨碍阅读这些博文；毕竟少做任何一项重复工作都是预防早发性痴呆的好实践<sup>[来源请求]</sup>。不过，<b>本系列博文假定读者已有一定的语言基础</b>——如果您没有，可以先去学习一些基础的语法，以便能够看懂简单的 Python 代码：这一般不需要太长时间。</p>
+		<p>本系列博文会经常使用 <b>NumPy</b> 和 <b>Pillow</b> 两个第三方库。所以请默认在所有代码片段中，他们已经导入过了：</p>
+		<pre class="python-code">import numpy as np
+from PIL import Image as im</pre>
+		<p>我会对函数的参数及返回值进行类型标注，因此会暴力导入标准库 <code>typing</code> 以及一些其他东西。这些并不是必要的：</p>
+		<pre class="python-code">from numbers import Real
+from typing import *</pre>
+		<p>最后，撰写本系列博文时，使用的 Python 版本为 3.8.8，但相关代码一般能向高版本兼容。</p>
+	</div>
+</body>
+
+</html>

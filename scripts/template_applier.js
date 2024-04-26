@@ -1,7 +1,7 @@
 document.addEventListener(
 	"DOMContentLoaded",
 
-	function () {
+	() => {
 
 		var entries = document.getElementsByTagName("te")
 		var finalEntries = []

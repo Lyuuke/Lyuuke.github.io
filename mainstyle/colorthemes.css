@@ -27,3 +27,8 @@
 	--maincolor: #b5c4c1;
 	--secondcolor: #5a6767;
 }
+
+[colortheme="pitta-red"] {
+	--maincolor: #882233;
+	--secondcolor: #f0f0f0;
+}
