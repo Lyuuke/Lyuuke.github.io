@@ -4,7 +4,7 @@ function parseManualHighlight(scr) {
 	var PATTERNS = new Map([
 		["comment-like", /^(#.*(?=\n|$)|"""[\s\S]*?"""|'''[\s\S]*?''')/],
 		["operator", /^((\+|-&gt;|-|\*|\/{1,2}|&|\||\^|%|@|&gt;|&lt;|=|>>|<<)=?|(!=|~)|(and|or|not|is not|is|in)\b)/],
-		["literal", /^([fru]?".*?"|[fru]?'.*?'|[0-9](\.[0-9]*)?(\+[0-9]*(\.[0-9]*)?j)?|True|False|None|\.\.\.|Ellipsis|NotImplemented)/],
+		["literal", /^([fru]?".*?"|[fru]?'.*?'|[0-9]+(\.[0-9]*)?(\+[0-9]+(\.[0-9]*)?j)?|True|False|None|\.\.\.|Ellipsis|NotImplemented)/],
 		["keyword", /^(as|assert|async|await|break|class|continue|def|del|elif|else|except|finally|for|from|global|if|import|lambda|nonlocal|pass|raise|return|try|while|with|yield)\b/],
 		["function", /^[a-zA-Z_][\w]*(?=\()/],
 		["name", /^[a-zA-Z_][\w]*/]
