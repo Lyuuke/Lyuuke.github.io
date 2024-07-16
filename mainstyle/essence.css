@@ -249,7 +249,7 @@ div.zh_text span.lit {
     text-underline-offset: 0.125em;
 }
 
-div.zh_text p {
+div.zh_text p, p.zh_text {
 	text-indent: 2em;
 }
 

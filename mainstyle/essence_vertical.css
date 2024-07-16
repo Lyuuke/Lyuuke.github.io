@@ -19,6 +19,8 @@
 	--sans-set: "Myriad Pro", "Segoe UI", "Source Han Sans SC",
 		"Noto Sans CJK SC", "Lantinghei SC", "PingFang SC",
 		"Microsoft YaHei", sans-serif;
+	--cal-set: "Book Antiqua", "Constantia",
+		"Adobe Kaiti Std", "KaiTi", "STKaiti", cursive;
 }
 
 body {
@@ -45,9 +47,9 @@ div#main {
 	line-height: 2em;
 	background-color: #f8f0e0;
 	font-weight: 500;
-	height: 40em;
+	height: calc(40em);
 	margin: auto;
-	padding: 3em 5em 3em 5em;
+	padding: 5em 5em 5em 5em;
 	box-shadow: .2em .2em .8em var(--shadow-brown-80);
 	text-align: justify;
 }
@@ -119,12 +121,14 @@ b.plain {
 	font-weight: inherit;
 }
 
-div.text q:before {
-	content: "「"
+div.text q {
+	font-family: var(--cal-set);
+	font-style: italic;
+	font-synthesis: none;
 }
 
-div.text q:after {
-	content: "」";
+div.text q:before, div.text q:after {
+	content: "";
 }
 
 div.text em {
@@ -153,6 +157,10 @@ div.text p {
 	text-indent: 2em;
 }
 
+div.text > p {
+	font-size: 1.2rem;
+}
+
 div.text p.noindent {
 	text-indent: 0;
 }
@@ -169,6 +177,7 @@ div.text span.punct {
 }
 
 div.text blockquote {
+	font-size: 1rem;
 	margin: 4em 0;
 	padding: 0 0.75em;
 	color: var(--vivid-purple);

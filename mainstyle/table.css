@@ -1,23 +1,38 @@
+.notes {
+	font-size: 90%;
+	line-height: 1.2em;
+}
+
 table.decl, table.common {
 	border-spacing: .2em;
 	color: var(--deep-purple);
 }
 
-table.decl th, table.decl td, table.common th, table.common td {
+table.decl th, table.decl td, table.common th, table.common td,
+table.textcols th {
 	text-align: center;
 	width: 7em;
 }
 
-table.common td {
+table.common td, table.textcols td {
 	width: var(--cell-width);
 }
 
-table.decl th, table.common th {
+table.decl th, table.common th, table.textcols th {
 	background-color: var(--wheat-44);
 }
 
+table.textcols td {
+	vertical-align: top;
+	border-bottom: .1em solid var(--wheat-44);
+}
+
+table.textcols td:not(.hold) {
+	text-align: center;
+}
+
 table.decl td, table.common td {
-	font-family: "Myriad Pro", "Segoe UI", sans-serif;
+	font-family: var(--sans-set);
 	border-bottom: .1em solid var(--wheat-44);
 }
 
