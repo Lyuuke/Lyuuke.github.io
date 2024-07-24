@@ -44,6 +44,8 @@ div.contentblock > .content, figcaption {
 div#main {
 	position: relative;
 	writing-mode: vertical-rl;
+	max-width: 80%;
+	overflow: auto;
 	line-height: 2em;
 	background-color: #f8f0e0;
 	font-weight: 500;
@@ -155,6 +157,7 @@ div.text span.lit {
 
 div.text p {
 	text-indent: 2em;
+	letter-spacing: 0.075em;
 }
 
 div.text > p {
@@ -222,6 +225,6 @@ div.shortintro > p {
 	margin: 0.25em 0;
 }
 
-div.shortintro .nospacing {
+.nospacing {
 	letter-spacing: 0;
 }

@@ -32,3 +32,8 @@
 	--maincolor: #882233;
 	--secondcolor: #f0f0f0;
 }
+
+[colortheme="world-building"] {
+	--maincolor: #338591;
+	--secondcolor: #f8edda;
+}
