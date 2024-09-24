@@ -1,0 +1,32 @@
+:root {
+    --bgcolor: #;
+    --serif-set: "Liberation Serif", "Palatino Linotype",
+		"Palatino", "Source Han Serif SC", "Noto Serif CJK SC",
+		"STZhongSong", "FZShuSong-Z01S", "FZSong", "STSong", serif;
+    --sans-set: "Myriad Pro", "Segoe UI", "Noto Sans CJK SC",
+        "Source Han Sans SC", "Lantinghei SC", "PingFang SC",
+        "Microsoft YaHei", sans-serif;
+    --monospace-set: "Noto Mono", "Fira Code", "Consolas",
+        monospace;
+}
+
+
+body {
+    background-color: var(--bgcolor)
+}
+
+
+#main {
+    display: flex;
+    flex-direction: row;
+}
+
+
+#screen {
+
+}
+
+
+#display_area {
+
+}

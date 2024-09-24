@@ -81,3 +81,15 @@ pre span.op {
 pre span.em {
 	background-color: var(--wheat-44);
 }
+
+pre span.context {
+	background-image: linear-gradient(115deg, transparent 0em, transparent 0.5em, var(--wheat) 0.5em,
+		var(--wheat) calc(100% - 0.5em), transparent calc(100% - 0.5em), transparent 100%);
+	padding: 0 1em 0 1em;
+	color: white;
+	user-select: none;
+}
+
+pre span.context span {
+	color: white;
+}

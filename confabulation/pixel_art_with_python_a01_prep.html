@@ -35,7 +35,7 @@ image_matrix = np.require(image_matrix, requirements="W")
 print(image_matrix.shape)</pre>
 		<pre class="repr">uint8
 (32, 32, 4)</pre>
-		<p>由于每个通道的位深度是 8 b，故数组的元素类型是 <code>uint8</code>。这是个三维数组，前两个维度为像素的<abbr title="左上角为 (0, 0)">横纵坐标</abbr>，第三个维度则是四个通道（R、G、B、A）：也就是说，数组的最内层代表的是单个像素的 RGBA 值。这不是很理想——因为大部分情况下，我们并不希望将各通道与像素的坐标等同对待，而是希望将一个像素中四个通道的值作为一个整体看待。为此，需将此 <code>uint8</code> 数组转换为一个<b>结构体数组</b>：</p>
+		<p>由于图像的位深度是 8 b（依 Photoshop 的用语习惯，指每个通道的位深度为 8 b），故数组的元素类型是 <code>uint8</code>。这是个三维数组，前两个维度为像素的<abbr title="左上角为 (0, 0)">横纵坐标</abbr>，第三个维度则是四个通道（R、G、B、A）：也就是说，数组的最内层代表的是单个像素的 RGBA 值。这不是很理想——因为大部分情况下，我们并不希望将各通道与像素的坐标等同对待，而是希望将一个像素中四个通道的值作为一个整体看待。为此，需将此 <code>uint8</code> 数组转换为一个<b>结构体数组</b>：</p>
 		<pre class="python-code">RGBA_TYPE: np.dtype = np.dtype(
 	[("R", np.uint8), ("G", np.uint8), ("B", np.uint8), ("A", np.uint8)]
 )

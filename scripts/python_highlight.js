@@ -3,7 +3,7 @@ function parseManualHighlight(scr) {
 	var buffer = ""
 	var PATTERNS = new Map([
 		["comment-like", /^(#.*(?=\n|$)|"""[\s\S]*?"""|'''[\s\S]*?''')/],
-		["operator", /^((\+|-&gt;|-|\*|\/{1,2}|&|\||\^|%|@|&gt;|&lt;|=|>>|<<)=?|(!=|~)|(and|or|not|is not|is|in)\b)/],
+		["operator", /^((\+|->|-|\*|\/{1,2}|&|\||\^|%|@|>|<|=|>>|<<)=?|(!=|~)|(and|or|not|is not|is|in)\b)/],
 		["literal", /^([fru]?".*?"|[fru]?'.*?'|[0-9]+(\.[0-9]*)?(\+[0-9]+(\.[0-9]*)?j)?|True|False|None|\.\.\.|Ellipsis|NotImplemented)/],
 		["keyword", /^(as|assert|async|await|break|class|continue|def|del|elif|else|except|finally|for|from|global|if|import|lambda|nonlocal|pass|raise|return|try|while|with|yield)\b/],
 		["function", /^[a-zA-Z_][\w]*(?=\()/],
@@ -89,7 +89,7 @@ document.addEventListener(
 		var pythonBlocks = document.getElementsByClassName("python-code")
 		for (var i = 0; i < pythonBlocks.length; ++i) {
 			let pyBlock = pythonBlocks[i]
-			pyBlock.innerHTML = parseManualHighlight(pyBlock.innerHTML)
+			pyBlock.innerHTML = parseManualHighlight(pyBlock.innerText)
 		}
 	}
 )

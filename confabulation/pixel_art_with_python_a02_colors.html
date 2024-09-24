@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>鳞性相的像素画创作辅助：准备工作</title>
+	<meta charset="utf-8">
+	<base href="../">
+	<link rel="stylesheet" type="text/css" href="./mainstyle/background.css">
+	<link rel="stylesheet" type="text/css" href="./mainstyle/essence.css">
+	<link rel="stylesheet" type="text/css" href="./mainstyle/programme.css">
+	<script type="text/javascript" src="./scripts/template_applier.js"></script>
+	<script type="text/javascript" src="./scripts/python_highlight.js"></script>
+</head>
+
+<body>
+	<div id="main" class="zh_text">
+		<te>mainpage_portal</te>
+		<h2>鳞性相的像素画创作辅助：颜色与调色板</h2>
+		<div class="minorskip"></div>
+
+		<h3>颜色类</h3>
+		<p>我们已经确立了使用类型为 <code>RGBA_TYPE</code> 的结构体保存单个像素的颜色值（也可以看作保存颜色本身）的规则。对于大部分风格的像素画而言，同一种颜色的复用率通常很高，同时很多操作（如批量替色）也依赖基于颜色的操作。因此，未来会经常需要将（十六进制的）整数（如 <code>0x479decff</code>）、字符串（如 <code>"#479decff"</code>）或元组（如 <code>(71, 157, 236, 255)</code>）形式的颜色转换为 <code>RGBA_TYPE</code> 结构体。我们不妨将相关操作也封装为一个类。</p>
+		<p>将整数转换为结构体非常直接。例如，对于输入值 <code>0x479decff</code>，只需将其视为一个 <code>uint32</code>，并将其<b>按照大端字节序</b>转化为字节序列 <code>b'\x47\x9d\xec\xff'</code>，随后用 <code>np.frombuffer</code> 函数即可转换为结构体数组。得到的数组只有一个元素，取出即得到结构体类型的颜色：</p>
+		<pre class="python-code">def hex_integer_to_structured_rgba(val: Integral) -> np.void:
+			
+	#  ↓ 注意此逗号: 用于解包右侧仅有一个元素的 np.ndarray
+	val?em:,?? = np.frombuffer(val.to_bytes(4, "big"),
+		dtype=PixelMatrix.RGBA_TYPE)
+	return val</pre>
+		<p>对于字符串形式的颜色，则有更多事要考虑。首先，颜色字面量通常以 <code>#</code> 开头。其次，对于每个通道的两个十六进制数码都分别相同的情况（如 <code>#996633ff</code>），通常允许简写为每个通道只有一位数码的形式（<code>#963f</code>）。最后是使用习惯的考量：在像素画创作中只有少数场合可能产生半透明像素，因而指定颜色时通常默认 alpha 通道的值为 255，即完全不透明。这就要求允许 RGB 形式的输入（如 <code>#963</code> 或 <code>#996633</code>），并自动在后面附上 alpha 通道的 <code>f</code> 或 <code>ff</code>。</p>
+		<p>我们采取以下流程处理字符串形式的颜色：去掉起首的 <code>#</code>（如果有）；将剩余的十六进制数码部分按上述等价关系转换为规则的 <code>rrggbbaa</code> 形式；将此形式转换为整数，输入上方编写的处理整数形式颜色的函数中。函数如下：</p>
+		<pre class="python-code"># from functools import reduce
+
+def string_to_structured_rgba(self, val: str) -> np.void:
+
+	_PROCESSORS = {
+		# 根据去掉起首 '#' 的 `val` 长度选择不同的处理方法,
+		# 目的是将 `val` 统一处理为 "rrggbbaa" 的格式,
+		# 以方便后续转换为整数处理.
+		# 对于更高的 Python 版本, 可使用 match-case 语法简化.
+		3: lambda s: reduce(lambda x, y: x + y*2 if len(x) != 1
+			else x*2 + y*2, s) + "ff",
+		4: lambda s: reduce(lambda x, y: x + y*2 if len(x) != 1
+			else x*2 + y*2, s),
+		6: lambda s: s + "ff",
+		8: lambda s: s
+	}
+
+	if val.startswith("#"):
+		# 字符串以 '#' 开头的情况，去掉 '#'
+		val = val[1:]
+	if (digit_count := len(val)) not in _PROCESSORS:
+		raise ValueError(f"Illicit hex notation for color: `{val}`")
+	else:
+		val = _PROCESSORS[digit_count](val)
+
+	return hex_integer_to_structured_rgba(int(val, base=16))
+	# 转换为整数后, 调用 hex_integer_to_structured_rgba 转换为结构体</pre>
+		<p>最后，处理元组形式的颜色最简单，且后续的使用场合可能较少，在此先不写。我们将上面的两个函数注册至 <code>Color</code> 类的单分派（<code>@functools.singledispatchmethod</code>）构造方法下，即可通过整数或字符串形式的颜色创建 <code>Color</code> 实例。除此之外，还增加了一个将现有的 <code>RGBA_TYPE</code> 结构体打包为 <code>Color</code> 实例的构造方法（高亮部分）。<code>__repr__</code> 方法使 <code>Color</code> 实例能够打印出来，或在 shell 中查看其内容。类的代码编写如下：</p>
+		<pre class="python-code"># from functools import (reduce, singledispatchmethod)
+
+class Color:
+	'''颜色类, 表示各通道位深度为 8 b 的 RGBA 颜色.
+	'''
+
+	@singledispatchmethod
+	def __init__(self, val: Any) -> NoReturn:
+		'''构造方法, 根据 `val` 的类型 (允许为整数或字符串)
+			分派至具体实现
+		'''
+		raise ValueError("Unsupported parameter type.")
+
+	@__init__.register
+	def _(self, val: Integral) -> None:
+		val, = np.frombuffer(val.to_bytes(4, "big"),
+			dtype=PixelMatrix.RGBA_TYPE)
+		self.data: np.void = val
+
+	@__init__.register
+	def _(self, val: str) -> None:
+		_PROCESSORS = {
+			3: lambda s: reduce(lambda x, y: x + y*2 if len(x) != 1
+				else x*2 + y*2, s) + "ff",
+			4: lambda s: reduce(lambda x, y: x + y*2 if len(x) != 1
+				else x*2 + y*2, s),
+			6: lambda s: s + "ff",
+			8: lambda s: s
+		}
+		if val.startswith("#"):
+			val = val[1:]
+		if (digit_count := len(val)) not in _PROCESSORS:
+			raise ValueError(f"Illicit hex notation for color: `{val}`")
+		else:
+			val = _PROCESSORS[digit_count](val)
+		self.__init__(int(val, base=16))
+
+	@__init__.register
+	def ?em:_(self, val: np.void)?? -> None:
+		if val.dtype != PixelMatrix.RGBA_TYPE:
+			raise ValueError("This data type is not supported.")
+		self.data: np.void = val
+
+	def __repr__(self) -> str:
+		return "rgba" + self.data.__repr__()
+		</pre>
+
+		<h3>调色板</h3>
+		<p>调色板（palette）在本教程中指的是一个图像文件用到的所有颜色组成的集合，而非索引图像中由颜色编号到颜色的映射。获取图像的调色板后，就可以批量操作图像中所有相同颜色的像素，而不需要显式遍历每个像素。</p>
+		<p>获取调色板，实际上是获取图像对应的结构体数组中的不重复元素，这可直接通过 <code>np.unique</code> 实现，不过仍可能存在一些问题。首先，RGBA 模式下，只要 alpha 通道为 0，则无论 R、G、B 通道值为何，均表现为全透明像素。绝大多数情况下，我们并不希望将不同 RGBA 值的全透明像素算作不同<q>颜色</q>。其次，若存在仅有透明度差异的不同像素（如 <code>#3080a080</code> 和 <code>#30a080ff</code>），是否应视他们具有不同颜色？</p>
+		<p>上述问题在实际应用上或许没有统一的答案。因此，我们为 <code>PixelMatrix</code> 类编写 <code>get_palette</code> 方法时，预留更改确定调色板方法的余地：</p>
+		<pre class="python-code">?context:in class PixelMatrix:??
+def get_palette(self, policy: str = "opaque") -> np.ndarray:
+	'''获取图像的调色板
+	# # #
+	`policy`: 如何确定哪些 RGBA 值包含在调色板中. 允许的值:
+		"opaque": 仅 alpha == 255 的值 (不透明)
+		"translucent": alpha > 0 的值 (不透明和半透明)
+		"all": 所有值
+		默认为 "opaque".
+	'''
+	raw_palette = np.unique(self.data)
+	if policy.lower() == "opaque":
+		return raw_palette[raw_palette["A"] == 255]
+	elif policy.lower() == "translucent":
+		return raw_palette[raw_palette["A"] > 0]
+	elif policy.lower() == "all":
+		return raw_palette
+	raise ValueError(f"Invalid policy `{policy}`. Valid options: "
+		'"opaque", "translucent", "all".')</pre>
+
+		<p>以下用一个例子说明目前从图像文件中提取调色板并展示的过程。原始图像是这张石燧的像素画：</p>
+		<figure class="centered">
+			<img src="./images/py_pixel/tutor_a02_01.png" class="pixel" style="width: 64px; height: 64px;">
+			<figcaption><code>./flint_and_pyrite.png</code></figcaption>
+		</figure>
+		<p>编写代码：</p>
+		<pre class="python-code">image = PixelMatrix(r"./flint_and_pyrite.png")
+palette = image.get_palette("opaque")
+# 读取图像并获取其调色板
+
+matrix = np.zeros((4, 5 * len(palette) - 1), dtype=PixelMatrix.RGBA_TYPE)
+# 创建一个空的结构体数组, 用来画调色板的色样.
+# 每种颜色的色样占据 4×4 像素的画布区域, 并间隔 1 像素 (4 + 1 = 5).
+
+for i, color in enumerate(palette):
+	matrix[:, 5*i : 5*i + 4] = color.data
+
+# 下方三行的意义可参照 A01 博文
+matrix = matrix.reshape((*matrix.shape, 1))
+matrix.dtype = np.uint8
+im.fromarray(matrix).save("./flint_and_pyrite_palette.png")</pre>
+		<p>执行后，即可找到生成的图像文件，可看见 <code>./flint_and_pyrite.png</code> 中包含的 18 种颜色：</p>
+		<figure class="centered">
+			<img src="./images/py_pixel/tutor_a02_02.png" class="pixel" style="width: 360px; height: 16px; filter: drop-shadow(0 0 3px var(--wheat-44));">
+			<figcaption><code>./flint_and_pyrite_palette.png</code></figcaption>
+		</figure>
+	</div>
+</body>
+
+</html>
