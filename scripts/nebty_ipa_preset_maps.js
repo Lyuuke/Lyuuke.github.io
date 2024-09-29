@@ -1,5 +1,9 @@
 var presetMaps = {
 	// '"' is not allow to occur in the keys
+	"pipes": {
+		"|": "_`|`_",
+		"||": "_`‖`_"
+	},
 	"devoicedEnglish": {
 		"b": "b{o}",
 		"v": "v{o}",

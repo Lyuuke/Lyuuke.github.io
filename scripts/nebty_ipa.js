@@ -38,7 +38,7 @@ function nebty(text, terminator = "\0") {
 			"%": "∅",
 			":": "ː",
 			"'": "ˈ",
-			"&": "\n"
+			"&": "\r\n"
 		}
 		if (TRIVIALS.includes(rawChar)) {
 			return rawChar
