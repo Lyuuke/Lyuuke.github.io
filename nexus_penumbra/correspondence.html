@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<base href="../">
+	<link rel="stylesheet" type="text/css" href="./archstyle/rhodinie.css">
+	<script type="text/javascript" src="./scripts/rhodinie_commons.js"></script>
+</head>
+
+<body>
+	<div id="main">
+		<div id="infosheets" focus="1" newest="1" recommended="1">
+			<div class="infosheet formatted" label="BEI-En#01">
+				<h1>纳米机器人集群简史</h1>
+				<h2>形态学</h2>
+				<h3>“匍匐集群”</h3>
+				<figure>
+					<img class="texture16 display" src="./images/nexus_penumbra/textures/nanocluster_creeping.gif" name="灰浆" desc="部分失活匍匐集群的残余物质。">
+				</figure>
+				<p>几乎可以认为黏浆状的“匍匐集群”是大部分原型系列采取的集群形态，除了那时的纳米机器人集群还不似现在这样黏。</p>
+				<p>早期设计中的“匍匐集群”可以轻松爬上陡峭的洞穴壁，让有机基质中的纳米机器人个体吸收并分解其中的矿物，进而储存在基质中，或用于自我增殖。基质通常有导电性，因而个体间能通过电信号协调。</p>
+				<p>✕✕世纪末看似意外的化石燃料产业复兴，本质上是由“匍匐集群”的技术革新所推动。在✕✕✕✕公司发现某一型号的纳米机器人消化原油产生的<em>二茂铁</em>在基质中能够支持集群活动后，这些含铁的“深层石化产品”即藉由一些不见得光彩的手段突入市场。他们的生意一直延续到那场丑闻发生。</p>
+				<h3>“蔓生集群”</h3>
+				<figure>
+					<img class="texture16 display" src="./images/nexus_penumbra/textures/nanocluster_climbing.gif" name="灰浆绞结" desc="部分失活蔓生集群的残余物质。">
+				</figure>
+				<p>称为“蔓生集群”的衍生形态部分算是自然造物。人类向炎热的地壳深处高歌猛进时，一些“匍匐集群”的基质成分开始自发形成链状高聚物，严重降低集群的机动性。由于此现象一般发生在相比设计工作温度更高的温度区间，没有任何纳米机器人企业愿意赔偿矿业集团因此产生的损失。这倒是无可厚非。</p>
+				<p>不过，受此启发，✕✕✕公司首先于✕✕✕✕年调整了分子装配子集群的设计，使纳米机器人制造的基质成分形成更有序的高聚物纤维。这些纤维不仅不再阻碍集群移动，还提升了其物理搬运能力。这对开采锆石等地壳深层的化学稳定矿物尤为有效。</p>
+				<h3>“悬浮集群”</h3>
+				<figure>
+					<img class="texture16 display" src="./images/nexus_penumbra/textures/nanocluster_levitated.gif" name="灰黯粉尘" desc="粉尘状的悬浮集群，失活落地。">
+				</figure>
+				<p>“悬浮集群”的形态设计早在纳米机器人技术探索的最初阶段就已提出，但因“匍匐集群”的成功而一度淡出视线。直至人类终于接近莫霍面，采取“悬浮集群”的产品才真正商业化。</p>
+				<p>不像其他集群形态，“悬浮集群”外观上类似早年科幻作品中的纳米机器人“蜂群”，这可能正是此设计被构思出来的原因。可惜文学作品难以指导工程学。</p>
+				<p>地壳上层的氧化性气氛会显著缩减悬浮个体的寿命；同时，公众对活性纳米粉尘的健康影响提出十分的关切。各种因素最终让“悬浮集群”的应用场合限定在地壳下层，正好填补因基质有机物热解隐患而难以正常工作的“匍匐集群”及“蔓生集群”的空缺。</p>
+				<p>由于不存在基质，“悬浮集群”的个体间协调通常依赖电磁感应。在下层地壳洞穴的热风吹拂下，移动的静电场发生子集群有时可制造危险的静电风暴。</p>
+			</div>
+			<div class="infosheet formatted">
+				<h2>Access denied.</h2>
+			</div>
+			<div class="infosheet formatted">
+				<h2>Access denied.</h2>
+			</div>
+			<div class="infosheet formatted">
+				<h2>Access denied.</h2>
+			</div>
+			<div class="infosheet formatted">
+				<h2>Access denied.</h2>
+			</div>
+
+			<div id="iconsection">
+				<div class="captionbutton bigicon" id="controller">
+					<img src="E:\GitHubIO\Lyuuke.github.io\images\nexus_penumbra\icons\ringed-planet.svg">
+					<div style="position: relative; top: -10px;">点击/滚轮</div>
+				</div>
+				<div class="captionbutton mediumicon" onclick="jumpToSheet(2)">
+					<img src="E:\GitHubIO\Lyuuke.github.io\images\nexus_penumbra\icons\gyroscope.svg">
+					<div>简介</div>
+				</div>
+				<div class="captionbutton mediumicon" onclick="jumpToSheet(+document.getElementById('infosheets').getAttribute('newest'))">
+					<img src="E:\GitHubIO\Lyuuke.github.io\images\nexus_penumbra\icons\orbital-rays.svg">
+					<div>最新</div>
+				</div>
+				<div class="captionbutton mediumicon" onclick="jumpToSheet(+document.getElementById('infosheets').getAttribute('recommended'))">
+					<img src="E:\GitHubIO\Lyuuke.github.io\images\nexus_penumbra\icons\raven.svg">
+					<div>推荐</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="detailpanel">
+			<div id="detailicon-wrapper">
+				<img id="detailicon" src="">
+			</div>
+			<div id="detailinfo" class="formatted">
+				<h1></h1>
+				<p></p>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">initialize(); refreshSheets()</script>
+</body>
+
+</html>
