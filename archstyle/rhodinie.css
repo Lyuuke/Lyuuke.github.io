@@ -252,6 +252,7 @@ figure > img {
 
 #detailpanel {
 	width: 240px;
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -261,9 +262,10 @@ figure > img {
 #detailicon-wrapper {
 	width: 128px;
 	height: 128px;
-	border: 30px solid var(--obsidian);
-	padding: 8px;
+	border: 24px solid var(--obsidian);
+	padding: 16px;
 	background-color: var(--shale);
+	border-radius: 50%;
 }
 
 #detailicon {
@@ -271,11 +273,17 @@ figure > img {
 	height: 100%;
 	box-sizing: content-box;
 	image-rendering: pixelated;
+	opacity: 1;
+	transition: opacity 0.3s;
 }
 
-#detailicon[src=""] {
-	display: none;
+#detailicon.muted {
+	opacity: 0;
 }
+
+/*#detailicon[src=""] {
+	display: none;
+}*/
 
 #detailinfo {
 	width: 100%;
@@ -299,4 +307,26 @@ figure > img {
 	text-align: center;
 	text-indent: 0;
 	margin: 0;
+}
+
+#detailforget {
+	width: 1.6em;
+	height: 1.6em;
+	overflow: hidden;
+	color: white;
+	background-color: var(--neon-red);
+	background-image: linear-gradient(45deg, transparent 0%, transparent calc(50% - 0.1em),
+		white calc(50% - 0.05em), white calc(50% + 0.05em),
+		transparent calc(50% + 0.1em), transparent 100%),
+		linear-gradient(-45deg, transparent 0%, transparent calc(50% - 0.1em),
+		white calc(50% - 0.05em), white calc(50% + 0.05em),
+		transparent calc(50% + 0.1em), transparent 100%);
+	border-radius: 50%;
+	border: 0.2em solid var(--neon-red);
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	line-height: 1em;
+	text-align: center;
+	cursor: pointer;
 }

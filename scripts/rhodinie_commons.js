@@ -9,6 +9,7 @@ function initialize() {
 	detailIcon = document.getElementById("detailicon")
 	detailInfoTitle = document.querySelector("#detailinfo > h1")
 	detailInfoContent = document.querySelector("#detailinfo > p")
+	detailCache = null
 
 	for (var i = infoSheets.length - 1; i >= 0; --i) {
 		thisSheet = infoSheets[i]
@@ -55,6 +56,7 @@ function initialize() {
 	icons.forEach((el) => {
 		el.addEventListener("click", () => {
 			viewIconDetail(el)
+			detailCache = el
 		})
 
 		el.addEventListener("pointerenter", () => {
@@ -114,6 +116,12 @@ function jumpToSheet(num) {
 
 
 function viewIconDetail(iconNode) {
+	if (detailIcon.src == iconNode.src) {
+		return
+	}
+	if (detailIcon.classList.contains("muted")) {
+		detailIcon.classList.remove("muted")
+	}
 	detailIcon.src = iconNode.src
 	detailInfoTitle.innerText = iconNode.getAttribute("name") || ""
 	detailInfoContent.innerText = iconNode.getAttribute("desc") || ""
@@ -121,7 +129,26 @@ function viewIconDetail(iconNode) {
 
 
 function clearDetail() {
-	detailIcon.src = ""
-	detailInfoTitle.innerText = ""
-	detailInfoContent.innerText = ""
+	if (detailCache) {
+		if (detailCache.src == detailIcon.src) { return }
+		detailIcon.classList.add("muted")
+		setTimeout(() => {
+			detailIcon.src = detailCache.src
+			detailInfoTitle.innerText = detailCache.getAttribute("name") || ""
+			detailInfoContent.innerText = detailCache.getAttribute("desc") || ""
+			detailIcon.classList.remove("muted")},
+		500)
+	} else {
+		detailIcon.classList.add("muted")
+		detailInfoTitle.innerText = ""
+		detailInfoContent.innerText = ""
+		setTimeout(() => {
+			detailIcon.src = "./images/nexus_penumbra/_.png"
+		}, 500)
+	}
+}
+
+
+function forget() {
+	detailCache = null
 }
