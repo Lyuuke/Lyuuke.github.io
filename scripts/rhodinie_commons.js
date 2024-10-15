@@ -143,7 +143,7 @@ function clearDetail() {
 		detailInfoTitle.innerText = ""
 		detailInfoContent.innerText = ""
 		setTimeout(() => {
-			detailIcon.src = "./images/nexus_penumbra/_.png"
+			detailIcon.src = "./images/nexus_penumbra/transparent_16.png"
 		}, 500)
 	}
 }
