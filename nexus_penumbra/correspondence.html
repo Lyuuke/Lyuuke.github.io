@@ -11,6 +11,13 @@
 <body>
 	<div id="main">
 		<div id="infosheets" focus="1" newest="1" recommended="1">
+			<div class="infosheet formatted">
+				<div id="coverimage">
+					<img src="./images/nexus_penumbra/crashed_crate_cover.png">
+				</div>
+				<h1>罗迪尼亚通讯</h1>
+				<span style="color: var(--shale)">播出时间横跨“地球事件”始末的广播节目。<br>某位史学家通过该节目的整理稿复原了“地球事件”的诸多细节，<br>并留下一句评价：<br><q>一个年轻太空种族的故乡发生了悲剧；<br>不过在此世，怀乡已是稀有的情愫。</q></span>
+			</div>
 			<div class="infosheet formatted" label="BEI-En#01">
 				<h1>纳米机器人集群简史</h1>
 				<h2>形态学</h2>
@@ -48,13 +55,31 @@
 			<div class="infosheet formatted">
 				<h2>Access denied.</h2>
 			</div>
+			<div class="infosheet formatted" label="*meta#01">
+				<h1>系列简介</h1>
+				<h2>作品性质</h2>
+				<p>“罗迪尼亚通讯”是基于 Minecraft 整合包《冬季救援》<em>历史世界观</em>的<em>二次创作</em>图文系列。其中请尤其注意：</p>
+				<h3>“历史世界观”</h3>
+				<p>所基于的世界观约在 2022 年前后指导该整合包的叙事。在那之后，《冬季救援》的世界观几经修改。因此，“罗迪尼亚通讯”的相关设定可能与今日及未来的《冬季救援》存在偏离。</p>
+				<h3>“二次创作”</h3>
+				<p>虽然创作者与《冬季救援》开发团队有关，但只应将“罗迪尼亚通讯”视作非官方的二次创作。</p>
+				<h2>授权</h2>
+				<h3>美术</h3>
+				<p>本系列中使用的美术作品，若在任何时间点已藉由《冬季救援》整合包发布，则其使用协议与该整合包的相关协议一致。否则，创作者保留一切权利。</p>
+				<h3>文本</h3>
+				<p>遵循 CC-BY 4.0 协议。</p>
+				<h3>网页设计</h3>
+				<p>保留一切权利。</p>
+				<h3></h3>
+				</ul>
+			</div>
 
 			<div id="iconsection">
 				<div class="captionbutton bigicon" id="controller">
 					<img src="./images/nexus_penumbra/icons/ringed-planet.svg">
 					<div style="position: relative; top: -10px;">点击/滚轮</div>
 				</div>
-				<div class="captionbutton mediumicon" onclick="jumpToSheet(2)">
+				<div class="captionbutton mediumicon" onclick="jumpToSheet(numInfoSheets)">
 					<img src="./images/nexus_penumbra/icons/gyroscope.svg">
 					<div>简介</div>
 				</div>
@@ -71,7 +96,7 @@
 
 		<div id="detailpanel">
 			<div id="detailicon-wrapper">
-				<img id="detailicon" src="./images/nexus_penumbra/_.png" class="muted">
+				<img id="detailicon" src="./images/nexus_penumbra/transparent_16.png" class="muted">
 			</div>
 			<div id="detailforget" onclick="forget(); clearDetail()"></div>
 			<div id="detailinfo" class="formatted">
