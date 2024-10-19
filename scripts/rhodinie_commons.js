@@ -119,9 +119,7 @@ function viewIconDetail(iconNode) {
 	if (detailIcon.src == iconNode.src) {
 		return
 	}
-	if (detailIcon.classList.contains("muted")) {
-		detailIcon.classList.remove("muted")
-	}
+	detailIcon.classList.remove("muted")
 	detailIcon.src = iconNode.src
 	detailInfoTitle.innerText = iconNode.getAttribute("name") || ""
 	detailInfoContent.innerText = iconNode.getAttribute("desc") || ""
@@ -132,19 +130,15 @@ function clearDetail() {
 	if (detailCache) {
 		if (detailCache.src == detailIcon.src) { return }
 		detailIcon.classList.add("muted")
-		setTimeout(() => {
-			detailIcon.src = detailCache.src
-			detailInfoTitle.innerText = detailCache.getAttribute("name") || ""
-			detailInfoContent.innerText = detailCache.getAttribute("desc") || ""
-			detailIcon.classList.remove("muted")},
-		500)
+		detailIcon.src = detailCache.src
+		detailInfoTitle.innerText = detailCache.getAttribute("name") || ""
+		detailInfoContent.innerText = detailCache.getAttribute("desc") || ""
+		detailIcon.classList.remove("muted")
 	} else {
 		detailIcon.classList.add("muted")
 		detailInfoTitle.innerText = ""
 		detailInfoContent.innerText = ""
-		setTimeout(() => {
-			detailIcon.src = "./images/nexus_penumbra/transparent_16.png"
-		}, 500)
+		detailIcon.src = "./images/nexus_penumbra/transparent_16.png"
 	}
 }
 

@@ -286,7 +286,7 @@ figure > img {
 	box-sizing: content-box;
 	image-rendering: pixelated;
 	opacity: 1;
-	transition: opacity 0.3s;
+/*	transition: opacity 0.3s;*/
 }
 
 #detailicon.muted {

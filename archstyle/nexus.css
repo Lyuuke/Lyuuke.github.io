@@ -26,6 +26,9 @@ body {
 			transparent 1em, var(--bg-color-2) 1em, var(--bg-color-2) 1.2em, transparent 1.2em),
 		repeating-linear-gradient(20deg, transparent 0em,
 			transparent 1em, var(--bg-color-2) 1em, var(--bg-color-2) 1.2em, transparent 1.2em);
+	user-select: none;
+	user-drag: none;
+	-webkit-user-drag: none;
 }
 
 #main {
