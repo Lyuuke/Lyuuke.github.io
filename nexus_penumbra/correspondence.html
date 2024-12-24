@@ -10,7 +10,7 @@
 
 <body>
 	<div id="main">
-		<div id="infosheets" focus="1" newest="3" recommended="4">
+		<div id="infosheets" focus="1" newest="BEI-[archive]Ar#01" recommended="BEI-En#01">
 			<div class="infosheet formatted">
 				<div id="coverimage">
 					<img src="./images/nexus_penumbra/crashed_crate_cover.png">
@@ -123,11 +123,11 @@
 					<img src="./images/nexus_penumbra/icons/gyroscope.svg">
 					<div>简介</div>
 				</div>
-				<div class="captionbutton mediumicon" onclick="jumpToSheet(+document.getElementById('infosheets').getAttribute('newest'))">
+				<div class="captionbutton mediumicon" onclick="jumpToSheet(document.getElementById('infosheets').getAttribute('newest'))">
 					<img src="./images/nexus_penumbra/icons/orbital-rays.svg">
 					<div>最新</div>
 				</div>
-				<div class="captionbutton mediumicon" onclick="jumpToSheet(+document.getElementById('infosheets').getAttribute('recommended'))">
+				<div class="captionbutton mediumicon" onclick="jumpToSheet(document.getElementById('infosheets').getAttribute('recommended'))">
 					<img src="./images/nexus_penumbra/icons/raven.svg">
 					<div>推荐</div>
 				</div>

@@ -6,12 +6,14 @@ function initialize() {
 	focus = +document.getElementById("infosheets").getAttribute("focus") - 1
 	// the index of the element in focus in `infoSheets`
 	numInfoSheets = infoSheets.length
+	pageNumByLabel = {}
+	// store the label - page number associations
 	detailIcon = document.getElementById("detailicon")
 	detailInfoTitle = document.querySelector("#detailinfo > h1")
 	detailInfoContent = document.querySelector("#detailinfo > p")
 	detailCache = null
 
-	for (var i = infoSheets.length - 1; i >= 0; --i) {
+	for (var i = numInfoSheets - 1; i >= 0; --i) {
 		thisSheet = infoSheets[i]
 		sheetLabel = thisSheet.getAttribute("label")
 		if (sheetLabel) {
@@ -19,6 +21,7 @@ function initialize() {
 			thisLabel.classList.add("sheetlabel")
 			thisLabel.innerText = sheetLabel
 			thisSheet.appendChild(thisLabel)
+			pageNumByLabel[sheetLabel] = i
 		}
 	}
 
@@ -110,7 +113,12 @@ function rotateSheets(count = 1) {
 
 function jumpToSheet(num) {
 	// jump to the `num`-th (index in `infoSheets` is `num - 1`) info sheet
-	focus = num - 1
+	let parsedNum = +num - 1
+	if (isNaN(parsedNum)) {
+		focus = pageNumByLabel[num]
+	} else {
+		focus = parsedNum
+	}
 	refreshSheets()
 }
 
