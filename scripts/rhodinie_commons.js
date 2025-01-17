@@ -1,4 +1,4 @@
-console.log("CREDITS: the icons used here are from game-icons.net")
+console.log("CREDITS: the vector icons used here are from game-icons.net")
 
 
 function initialize() {
