@@ -185,8 +185,16 @@ div.entry > span {
 	text-shadow: 0 0 .2em var(--shadow-brown-80);
 }
 
-table.contents {
+/*table.contents {
 	margin: auto;
+}*/
+
+div.contents {
+	display: flex;
+	grid-row-gap: 1em;
+	column-gap: 1em;
+	justify-content: center;
+	flex-wrap: wrap;
 }
 
 abbr {
