@@ -1,0 +1,16 @@
+:root {
+	--bgcolor: #6d7670;
+	--quenched: #606a68;
+	--lit: #9feeaf;
+}
+
+body {
+	background-color: var(--bgcolor);
+}
+
+#segdisplaycontainer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}

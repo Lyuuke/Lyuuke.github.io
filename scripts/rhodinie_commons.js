@@ -103,8 +103,14 @@ function refreshSheets() {
 }
 
 
+function scrollFocusToTop() {
+	document.querySelector('.infosheet[order="0"]').scrollTo({"top": 0, "behavior": "smooth"})
+}
+
+
 function rotateSheets(count = 1) {
 	// rotate the sheets by `count`, negative `count` indicates a backward rotation
+	scrollFocusToTop()
 	focus = (focus + count) % numInfoSheets
 	focus += focus < 0 ? numInfoSheets : 0
 	refreshSheets()

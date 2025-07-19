@@ -86,8 +86,12 @@ q:before, q:after {
 }
 
 .infosheet[order="0"] {
-	opacity: 1.0;
+	opacity: 0.95;
 	z-index: 5;
+}
+
+.infosheet[order="0"]:hover {
+	opacity: 1.0;
 }
 
 .infosheet[order="-1"] {
