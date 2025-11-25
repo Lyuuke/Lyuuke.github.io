@@ -90,7 +90,12 @@ function nebty(text, terminator = "\0") {
 				"o": "ʘ", "ǀ": "ǃ", "ː": "ˑ"
 			},
 			"ǀ": {
+				// this is the click letter
 				"ǀ": "ǁ", ".": "¡", "r": "ɼ", "ɯ": "ɰ"
+			},
+			"|": {
+				// this is the vertical line (= minor group symbol)
+				"|": "‖"
 			},
 			"ŋ": {
 				"f": "ʩ"
@@ -138,11 +143,11 @@ function nebty(text, terminator = "\0") {
 	function getTurned(char) {
 		const turnedTable = Object.assign(
 			Object.fromEntries(
-				Array.from("ɐqɔpəɟɓɥʞɯudɹʇnʌʍʎɒɜʖяˌ͜").map(
-					(el, i) => [el, "abcdefɡhkmnprtuvwyɑɛʕʁˈ͡"[i]])
+				Array.from("ɐqɔpəɟɓɥʞɯuodɹʇnʌʍxʎɒɜʖяȹˌ͜").map(
+					(el, i) => [el, "abcdefɡhkmnoprtuvwxyɑɛʕʁȸˈ͡"[i]])
 			), Object.fromEntries(
-				Array.from("abcdefɡhkmnprtuvwyɑɛʕʁˈ͡").map(
-					(el, i) => [el, "ɐqɔpəɟɓɥʞɯudɹʇnʌʍʎɒɜʖяˌ͜"[i]])
+				Array.from("abcdefɡhkmnoprtuvwxyɑɛʕʁȸˈ͡").map(
+					(el, i) => [el, "ɐqɔpəɟɓɥʞɯuodɹʇnʌʍxʎɒɜʖяȹˌ͜"[i]])
 			)
 		)
 		return turnedTable[char] || ""
@@ -169,14 +174,22 @@ function nebty(text, terminator = "\0") {
 		return smallCapTable[char] || ""
 	}
 
+	function getVariant(char) {
+		const smallCapTable = Object.fromEntries(
+			Array.from("ǀǁꭓ").map(
+				(el, i) => [el, "|‖χ"[i]])
+		)
+		return smallCapTable[char] || ""
+	}
+
 	function toNonFullSized(fs) {
 		const nonFullSizedTable = Object.fromEntries(
 			Array.from(
 				"hɦwjɥɣmɱnɳɲŋɴlɭʟʕʋɹɻʔʁœəɵɸβfθsʃɕʂxꭓ"
-				+ "vðzʒʐʝɰriyuɨʉɯ=/ˈ"
+				+ "χvðzʒʐʝɰriyuɨʉɯ=/ˈ"
 			).map((el, i) => [el, (
 				"ʰʱʷʲᶣˠᵐᶬⁿᶯᶮᵑᶰˡᶩᶫˤᶹʴʵˀʶꟹᵊᶱᶲᵝᶠᶿˢᶴᶝᶳˣᵡ"
-				+ "ᵛᶞᶻᶾᶼᶨᶭʳⁱʸᵘᶤᶶᵚ˭˹ʼ"
+				+ "ᵡᵛᶞᶻᶾᶼᶨᶭʳⁱʸᵘᶤᶶᵚ˭˹ʼ"
 			)[i]])
 		)
 		var buffer = ""
@@ -301,6 +314,8 @@ function nebty(text, terminator = "\0") {
 				return getMirrored(char)
 			case "+":
 				return getSmallCap(char)
+			case "M":
+				return getVariant(char)
 			default:
 				return ""
 		}
@@ -417,8 +432,8 @@ function nebty(text, terminator = "\0") {
 		if (" \t\n\r".includes(char)) {
 			continue
 		}
-		if ("!$+".includes(char)) {
-			// "!" == turned, "$" == mirrored, "+" == small-cap
+		if ("!$+M".includes(char)) {
+			// "!" == turned, "$" == mirrored, "+" == small-cap, "M" = variant
 			opsHeld.push(char)
 		} else if (char == "*") {
 			[multiplierHeld, nodeHeld] = [nodeHeld, ""]

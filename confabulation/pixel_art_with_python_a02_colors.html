@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>鳞性相的像素画创作辅助：准备工作</title>
+	<title>鳞性相的像素画创作辅助：颜色与调色板</title>
 	<meta charset="utf-8">
 	<base href="../">
 	<link rel="stylesheet" type="text/css" href="./mainstyle/background.css">
@@ -108,7 +108,7 @@ class Color:
 		<p>获取调色板，实际上是获取图像对应的结构体数组中的不重复元素，这可直接通过 <code>np.unique</code> 实现，不过仍可能存在一些问题。首先，RGBA 模式下，只要 alpha 通道为 0，则无论 R、G、B 通道值为何，均表现为全透明像素。绝大多数情况下，我们并不希望将不同 RGBA 值的全透明像素算作不同<q>颜色</q>。其次，若存在仅有透明度差异的不同像素（如 <code>#3080a080</code> 和 <code>#30a080ff</code>），是否应视他们具有不同颜色？</p>
 		<p>上述问题在实际应用上或许没有统一的答案。因此，我们为 <code>PixelMatrix</code> 类编写 <code>get_palette</code> 方法时，预留更改确定调色板方法的余地：</p>
 		<pre class="python-code">?context:in class PixelMatrix:??
-def get_palette(self, policy: str = "opaque") -> np.ndarray:
+def get_palette(self, policy: str = "opaque") -> List[Self]:
 	'''获取图像的调色板
 	# # #
 	`policy`: 如何确定哪些 RGBA 值包含在调色板中. 允许的值:
@@ -118,15 +118,16 @@ def get_palette(self, policy: str = "opaque") -> np.ndarray:
 		默认为 "opaque".
 	'''
 	raw_palette = np.unique(self.data)
-	if policy.lower() == "opaque":
-		palette = raw_palette[raw_palette["A"] == 255]
-	elif policy.lower() == "translucent":
-		palette = raw_palette[raw_palette["A"] > 0]
-	elif policy.lower() == "all":
-		palette = raw_palette
-	else:
-		raise ValueError(f"Invalid policy `{policy}`. Valid options: "
-			'"opaque", "translucent", "all".')
+	match policy.lower():
+		case "opaque":
+			palette = raw_palette[raw_palette["A"] == 255]
+		case "translucent":
+			palette = raw_palette[raw_palette["A"] > 0]
+		case "all":
+			palette = raw_palette
+		case _:
+			raise ValueError(f"Invalid policy `{policy}`. Valid options: "
+				'"opaque", "translucent", "all".')
 	return [Color(color) for color in palette]</pre>
 
 		<p>以下用一个例子说明目前从图像文件中提取调色板并展示的过程。原始图像是这张石燧的像素画：</p>
