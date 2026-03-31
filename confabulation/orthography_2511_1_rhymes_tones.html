@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>东汉汉语罗马字—韵（八）</title>
+    <meta charset="utf-8">
+    <base href="../">
+    <link rel="stylesheet" type="text/css" href="./mainstyle/background_nival.css">
+    <link rel="stylesheet" type="text/css" href="./mainstyle/essence_nival.css">
+    <style type="text/css">
+        var {
+            font-family: "Segoe UI", "Arial", "Calibri", sans-serif;
+            font-weight: 500;
+            font-style: normal;
+            text-decoration: none;
+            color: #3d7baf;
+        }
+        var > b {
+            color: #2caeea;
+        }
+        table {
+            width: 100%;
+            font-family: var(--sans-set);
+            text-align: center;
+        }
+        table.inventory th, table.inventory td {
+            width: calc(100% / var(--colnum));
+            padding: 0.25em;
+        }
+        table.inventory th {
+            background-color: var(--wheat-44);
+        }
+        table.inventory td {
+            border-bottom: 0.15em solid var(--wheat-44);
+        }
+        table.inventory-legend {
+            margin: auto;
+            width: 80%;
+        }
+        table.inventory-legend td{
+            width: 50%;
+            border: 1px solid var(--shadow-brown-80);
+        }
+        table.alphabet td {
+            width: calc(100% / 6);
+        }
+        sub {
+            font-family: var(--serif-set);
+            font-size: 60%;
+        }
+        .literal {
+            font-variant: small-caps;
+        }
+        span.squeezed {
+            display: inline-block;
+            text-indent: 0;
+            width: 1em;
+            overflow: visible;
+            letter-spacing: -0.6em;
+            transform: scaleX(0.714285);
+            transform-origin: left;
+        }
+        span.cc {
+            color: #85384c;
+        }
+    </style>
+    <script type="text/javascript" src="./scripts/template_applier.js"></script>
+    <script type="text/javascript" src="./scripts/nebty_ipa.js"></script>
+    <script type="text/javascript" src="./scripts/nebty_ipa_applier.js"></script>
+</head>
+
+<body>
+    <div id="main" class="zh_text">
+        <te>mainpage_portal</te>
+        <h3>韵（八）</h3>
+        <h4><q>声调</q></h4>
+        <p>对于东<u>汉</u><u>汉</u>语不含 <var>p t k hj</var> 韵尾的音节可识别出两个特殊的<q>声调</q>：来自古典时期后置辅音<ipa class="cc">\left"/"`*`-?\right</ipa>的<q>上声</q>、来自古典时期后置辅音<ipa class="cc">\left"/"`*`-h\right</ipa>的<q>去声</q>；<var>p t k hj</var> 韵尾的音节没有<q>声调</q>对立。<q>声调</q>使用辅音字母标注在拼式的末尾。此外，中古声调还存在韵尾来源，一并如下表所示。</p>
+        <div style="overflow: auto;"><table class="inventory" style="--colnum: 5; width: 100%;"><tbody>
+            <tr>
+                <th>古典汉语来源</th>
+                <th>对应中古汉语声调</th>
+                <th>东汉汉语<q>声调</q></th>
+                <th>拼写</th>
+                <th>例字</th>
+            </tr>
+            <tr>
+                <td><ipa class="cc">\left"/"`*`-%\right</ipa></td>
+                <td>平</td>
+                <td>/</td>
+                <td><var><span style="color: #b0b0b0;">-∅</span></var></td>
+                <td>奚 <var>ge</var><br><ipa>\left"["`*`gE\right</ipa></td>
+            </tr>
+            <tr>
+                <td><ipa class="cc">\left"/"`*`-?\right</ipa></td>
+                <td>上</td>
+                <td><q>上</q></td>
+                <td><var>-q</var></td>
+                <td>氏<sub>氏族</sub> <var>ge<b>q</b></var><br><ipa>\left"["`*`gE{F}\right</ipa></td>
+            </tr>
+            <tr>
+                <td><ipa class="cc">\left"/"`*`-h\right</ipa></td>
+                <td rowspan="2">去</td>
+                <td><q>去</q></td>
+                <td><var>-h</var></td>
+                <td>繫<sub>连接</sub> <var>ge<b>h</b></var><br><ipa>\left"["`*`gE{_:}\right</ipa></td>
+            </tr>
+            <tr>
+                <td><ipa class="cc">\left"/"`*`-s\right</ipa></td>
+                <td>/</td>
+                <td><var>-hj</var>*</td>
+                <td>契<sub>刻</sub> <var>khehj</var><br><ipa>\left"["`*`k[h]Ec*Z\right</ipa></td>
+            </tr>
+            <tr>
+                <td><ipa class="cc">\left"/"`*`-p_-t_-k\right</ipa></td>
+                <td rowspan="2">入</td>
+                <td>/</td>
+                <td><var>-p -t -k</var>*</td>
+                <td>潔 <var>ket</var><br><ipa>\left"["`*`kEt\right</ipa></td>
+            </tr>
+        </tbody></table></div>
+        <p>*注：<var>-hj -p -t -k</var> 视为韵尾，而非<q>声调</q>的符号。</p>
+        <p></p>
+    </div>
+</body>

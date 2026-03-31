@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>东汉汉语罗马字—音首</title>
+    <meta charset="utf-8">
+    <base href="../">
+    <link rel="stylesheet" type="text/css" href="./mainstyle/background_nival.css">
+    <link rel="stylesheet" type="text/css" href="./mainstyle/essence_nival.css">
+    <style type="text/css">
+        var {
+            font-family: "Segoe UI", "Arial", "Calibri", sans-serif;
+            font-weight: 500;
+            font-style: normal;
+            text-decoration: none;
+            color: #3d7baf;
+        }
+        var > b {
+            color: #2caeea;
+        }
+        table {
+            width: 100%;
+            font-family: var(--sans-set);
+            text-align: center;
+        }
+        table.inventory th, table.inventory td {
+            width: calc(100% / var(--colnum));
+            padding: 0.25em;
+        }
+        table.inventory th {
+            background-color: var(--wheat-44);
+        }
+        table.inventory td {
+            border-bottom: 0.15em solid var(--wheat-44);
+        }
+        table.inventory td[series="P"] {
+            background-image: radial-gradient(circle at 50% calc(50% - 0.5em), #bbdee8 0%, #bbdee8 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="M"] {
+            background-image: radial-gradient(circle at 50% calc(50% - 0.5em), #c3ebef 0%, #c3ebef 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="T"] {
+            background-image: radial-gradient(circle at 50% calc(50% - 0.5em), #e8c1c5 0%, #e8c1c5 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="N"] {
+            background-image: radial-gradient(circle at 50% calc(50% - 0.5em), #ebd4ec 0%, #ebd4ec 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="Ts"] {
+            background-image: radial-gradient(circle at 50% calc(50% - 0.5em), #d9c6bb 0%, #d9c6bb 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="K"] {
+            background-image: radial-gradient(circle at 50% calc(50% - 0.5em), #aedfc3 0%, #aedfc3 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="Gn"] {
+            background-image: radial-gradient(circle at 50% calc(50% - 0.5em), #ceeac2 0%, #ceeac2 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="Q"] {
+            background-image: radial-gradient(circle at 50% calc(50% - 0.5em), #d6ee9b 0%, #d6ee9b 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="J"] {
+            background-image: radial-gradient(circle at 50% calc(50% - 0.5em), #dad3e5 0%, #dad3e5 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="T&J"] {
+            background-image: radial-gradient(circle at calc(50% - 0.3em) calc(50% - 0.7em), #e8c1c5 0%, #e8c1c5 0.65em, transparent 0.65em, transparent 100%),
+            radial-gradient(circle at calc(50% + 0.3em) calc(50% - 0.3em), #dad3e5 0%, #dad3e5 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="K&J"] {
+            background-image: radial-gradient(circle at calc(50% - 0.3em) calc(50% - 0.7em), #aedfc3 0%, #aedfc3 0.65em, transparent 0.65em, transparent 100%),
+            radial-gradient(circle at calc(50% + 0.3em) calc(50% - 0.3em), #dad3e5 0%, #dad3e5 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="L"] {
+            background-image: radial-gradient(circle at 50% calc(50% - 0.5em), #f3e4a0 0%, #f3e4a0 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="T&L"] {
+            background-image: radial-gradient(circle at calc(50% - 0.3em) calc(50% - 0.7em), #e8c1c5 0%, #e8c1c5 0.65em, transparent 0.65em, transparent 100%),
+            radial-gradient(circle at calc(50% + 0.3em) calc(50% - 0.3em), #f3e4a0 0%, #f3e4a0 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="J&N"] {
+            background-image: radial-gradient(circle at calc(50% - 0.3em) calc(50% - 0.7em), #dad3e5 0%, #dad3e5 0.65em, transparent 0.65em, transparent 100%),
+            radial-gradient(circle at calc(50% + 0.3em) calc(50% - 0.3em), #ebd4ec 0%, #ebd4ec 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="K&M&Gn"] {
+            background-image: radial-gradient(circle at calc(50% - 0.6em) calc(50% - 0.7em), #aedfc3 0%, #aedfc3 0.65em, transparent 0.65em, transparent 100%),
+            radial-gradient(circle at 50% calc(50% - 0.3em), #c3ebef 0%, #c3ebef 0.65em, transparent 0.65em, transparent 100%),
+            radial-gradient(circle at calc(50% + 0.6em) calc(50% - 0.7em), #ceeac2 0%, #ceeac2 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory-legend {
+            margin: auto;
+            width: 80%;
+        }
+        table.inventory-legend td{
+            width: 50%;
+            border: 1px solid var(--shadow-brown-80);
+        }
+        table.alphabet td {
+            width: calc(100% / 6);
+        }
+        sub {
+            font-family: var(--serif-set);
+            font-size: 60%;
+        }
+        .literal {
+            font-variant: small-caps;
+        }
+        span.squeezed {
+            display: inline-block;
+            text-indent: 0;
+            width: 1em;
+            overflow: visible;
+            letter-spacing: -0.6em;
+            transform: scaleX(0.714285);
+            transform-origin: left;
+        }
+        span.cc {
+            color: #85384c;
+        }
+    </style>
+    <script type="text/javascript" src="./scripts/template_applier.js"></script>
+    <script type="text/javascript" src="./scripts/nebty_ipa.js"></script>
+    <script type="text/javascript" src="./scripts/nebty_ipa_applier.js"></script>
+</head>
+
+<body>
+    <div id="main" class="zh_text">
+        <te>mainpage_portal</te>
+        <h3>音首</h3>
+        <p>音首共37个（包括零形式），如下表所示。</p>
+        <table class="inventory" style="--colnum: 8;"><tbody>
+            <tr>
+                <td series="P">布<br><var>p</var></td>
+                <td series="T">都<br><var>t</var></td>
+                <td series="T">者<br><var>tj</var></td>
+                <td series="T">豬<br><var>rt</var></td>
+                <td series="Ts">祖<br><var>c</var></td>
+                <td series="Ts">俎<br><var>rc</var></td>
+                <td series="K">古<br><var>k</var></td>
+                <td series="Q">烏<br><var>q</var></td>
+            </tr>
+            <tr>
+                <td series="P">普<br><var>ph</var></td>
+                <td series="T&J">土<br><var>th</var></td>
+                <td series="T&J">車<br><var>thj</var></td>
+                <td series="T&L">辵<br><var>rth</var></td>
+                <td series="Ts">麤<br><var>ch</var></td>
+                <td series="Ts">初<br><var>rch</var></td>
+                <td series="K">苦<br><var>kh</var></td>
+                <td style="visibility: hidden;"></td>
+            </tr>
+            <tr>
+                <td series="P">釜<br><var>b</var></td>
+                <td series="T&J">圖<br><var>d</var></td>
+                <td series="T">署<br><var>dj</var></td>
+                <td series="T">儲<br><var>rd</var></td>
+                <td series="Ts">殂<br><var>z</var></td>
+                <td series="Ts">助<br><var>rz</var></td>
+                <td series="K">戶<br><var>g</var></td>
+                <td style="visibility: hidden;"></td>
+            </tr>
+            <tr>
+                <td series="M">巫<br><var>m</var></td>
+                <td series="N">奴<br><var>n</var></td>
+                <td series="N">如<br><var>nj</var></td>
+                <td series="N">女<br><var>rn</var></td>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
+                <td series="Gn">吾<br><var>gn</var></td>
+                <td style="visibility: hidden;"></td>
+            </tr>
+            <tr>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
+                <td series="J&N">舍<br><var>hj</var></td>
+                <td style="visibility: hidden;"></td>
+                <td series="Ts">素<br><var>s</var></td>
+                <td series="Ts">所<br><var>rs</var></td>
+                <td style="visibility: hidden;"></td>
+                <td series="K&M&Gn">許<br><var>h</var></td>
+            </tr>
+            <tr>
+                <td series="K">于<br><var>w</var></td>
+                <td series="J">野<br><var>j</var></td>
+                <td series="J">蝕<br><var>xj</var></td>
+                <td series="L">盧<br><var>l</var></td>
+                <td series="K&J">徐<br><var>x</var></td>
+                <td style="visibility: hidden;"></td>
+                <td style="visibility: hidden;"></td>
+                <td>乎<br><var>&nbsp;</var></td>
+            </tr>
+        </tbody></table>
+        <div class="minorskip"></div>
+        <table class="inventory-legend"><tbody>
+            <tr>
+                <td style="background-color: #bbdee8;">来自古典时期<ipa class="cc">`*`GP</ipa>类音首</td>
+                <td style="background-color: #e8c1c5;">来自古典时期<ipa class="cc">`*`GT</ipa>类音首</td>
+            </tr>
+            <tr>
+                <td style="background-color: #d9c6bb;">来自古典时期<ipa class="cc">`*`GT^GS</ipa>类音首</td>
+                <td style="background-color: #aedfc3;">来自古典时期<ipa class="cc">`*`GK</ipa>或<ipa class="cc">`*`GK[w]</ipa>类音首</td>
+            </tr>
+            <tr>
+                <td style="background-color: #c3ebef;">来自古典时期<ipa class="cc">`*`GM</ipa>类音首</td>
+                <td style="background-color: #ebd4ec;">来自古典时期<ipa class="cc">`*`GN</ipa>类音首</td>
+            </tr>
+            <tr>
+                <td style="background-color: #ceeac2;">来自古典时期<ipa class="cc">`*`GŊ</ipa>类音首</td>
+                <td style="background-color: #dad3e5;">来自古典时期<ipa class="cc">`*`GL</ipa>或<ipa class="cc">`*`GJ</ipa>类音首</td>
+            </tr>
+            <tr>
+                <td style="background-color: #f3e4a0;">来自古典时期<ipa class="cc">`*`GR</ipa>类音首</td>
+                <td style="background-color: #d6ee9b;">来自古典时期<ipa class="cc">`*`GɁ</ipa>类音首</td>
+            </tr>
+        </tbody></table>
+    </div>
+</body>

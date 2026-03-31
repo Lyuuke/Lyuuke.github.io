@@ -1,16 +1,16 @@
 :root {
-    --deep-purple: #4b3552;
-    --vivid-purple: #804058;
-    --auroral-red: #ab3627;
-    --ember-orange: #d77632;
-    --inactive-grey: #726469;
-    --wheat: #dbac7d;
-    --wheat-44: rgba(219, 172, 125, .2656);
-    --shadow-brown: #46372d;
-    --shadow-brown-80: rgba(70, 55, 45, .5);
-    --shadow-brown-30: rgba(70, 55, 45, .1875);
-    --cyan-green: #377954;
-    --leaf-gold: #b8841f;
+    --deep-purple: #466395;
+    --vivid-purple: #4885af;
+    --auroral-red: #41a6bf;
+    --ember-orange: #35cec1;
+    --inactive-grey: #7f8381;
+    --wheat: #9ea5ba;
+    --wheat-44: rgba(158, 165, 186, .2656);
+    --shadow-brown: #5a5964;
+    --shadow-brown-80: rgba(90, 89, 100, .5);
+    --shadow-brown-30: rgba(90, 89, 100, .1875);
+    --cyan-green: #678139;
+    --leaf-gold: #9d7e3a;
     --serif-set: "Liberation Serif", "Palatino Linotype",
 		"Palatino", "Source Han Serif SC", "Noto Serif CJK SC",
 		"STZhongSong", "FZShuSong-Z01S", "FZSong", "STSong", serif;
@@ -36,7 +36,7 @@ div.contentblock > .content, figcaption {
 div#main {
 	line-height: 1.6em;
 	/*letter-spacing: 0.2em;*/
-	background-color: #f8f0e0;
+	background-color: #f2f2f2;
 	font-weight: 500;
 	width: 48em;
 	margin: auto;

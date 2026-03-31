@@ -26,16 +26,10 @@ div.zh_text em {
     position: relative;
     font-weight: inherit;
     font-style: normal;
-}
-
-div.zh_text em:after {
-    position: absolute;
-    top: .65em;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    content: "・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・";
+    line-height: inherit;
+    text-emphasis-style: filled dot;
+    text-emphasis-position: under;
+    -webkit-text-emphasis-position: under;
 }
 
 div.cotext {

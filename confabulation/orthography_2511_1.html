@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>东汉汉语罗马字</title>
+    <meta charset="utf-8">
+    <base href="../">
+    <link rel="stylesheet" type="text/css" href="./mainstyle/background_nival.css">
+    <link rel="stylesheet" type="text/css" href="./mainstyle/essence_nival.css">
+    <link rel="stylesheet" type="text/css" href="./mainstyle/art.css">
+    <link rel="stylesheet" type="text/css" href="./mainstyle/colorthemes.css">
+    <style type="text/css">
+        var {
+            font-family: "Segoe UI", "Arial", "Calibri", sans-serif;
+            font-weight: 500;
+            font-style: normal;
+            text-decoration: none;
+            color: #3d7baf;
+        }
+        var > b {
+            color: #2caeea;
+        }
+        table {
+            width: 100%;
+            font-family: var(--sans-set);
+            text-align: center;
+        }
+        table.inventory th, table.inventory td {
+            width: calc(100% / var(--colnum));
+            padding: 0.25em;
+        }
+        table.inventory th {
+            background-color: var(--wheat-44);
+        }
+        table.inventory td {
+            border-bottom: 0.15em solid var(--wheat-44);
+        }
+        table.inventory td[series="P"] {
+            background-image: radial-gradient(circle at 50% calc(50% - 0.5em), #bbdee8 0%, #bbdee8 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="M"] {
+            background-image: radial-gradient(circle at 50% calc(50% - 0.5em), #c3ebef 0%, #c3ebef 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="T"] {
+            background-image: radial-gradient(circle at 50% calc(50% - 0.5em), #e8c1c5 0%, #e8c1c5 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="N"] {
+            background-image: radial-gradient(circle at 50% calc(50% - 0.5em), #ebd4ec 0%, #ebd4ec 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="Ts"] {
+            background-image: radial-gradient(circle at 50% calc(50% - 0.5em), #d9c6bb 0%, #d9c6bb 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="K"] {
+            background-image: radial-gradient(circle at 50% calc(50% - 0.5em), #aedfc3 0%, #aedfc3 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="Gn"] {
+            background-image: radial-gradient(circle at 50% calc(50% - 0.5em), #ceeac2 0%, #ceeac2 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="Q"] {
+            background-image: radial-gradient(circle at 50% calc(50% - 0.5em), #d6ee9b 0%, #d6ee9b 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="J"] {
+            background-image: radial-gradient(circle at 50% calc(50% - 0.5em), #dad3e5 0%, #dad3e5 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="T&J"] {
+            background-image: radial-gradient(circle at calc(50% - 0.3em) calc(50% - 0.7em), #e8c1c5 0%, #e8c1c5 0.65em, transparent 0.65em, transparent 100%),
+            radial-gradient(circle at calc(50% + 0.3em) calc(50% - 0.3em), #dad3e5 0%, #dad3e5 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="K&J"] {
+            background-image: radial-gradient(circle at calc(50% - 0.3em) calc(50% - 0.7em), #aedfc3 0%, #aedfc3 0.65em, transparent 0.65em, transparent 100%),
+            radial-gradient(circle at calc(50% + 0.3em) calc(50% - 0.3em), #dad3e5 0%, #dad3e5 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="L"] {
+            background-image: radial-gradient(circle at 50% calc(50% - 0.5em), #f3e4a0 0%, #f3e4a0 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="T&L"] {
+            background-image: radial-gradient(circle at calc(50% - 0.3em) calc(50% - 0.7em), #e8c1c5 0%, #e8c1c5 0.65em, transparent 0.65em, transparent 100%),
+            radial-gradient(circle at calc(50% + 0.3em) calc(50% - 0.3em), #f3e4a0 0%, #f3e4a0 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="J&N"] {
+            background-image: radial-gradient(circle at calc(50% - 0.3em) calc(50% - 0.7em), #dad3e5 0%, #dad3e5 0.65em, transparent 0.65em, transparent 100%),
+            radial-gradient(circle at calc(50% + 0.3em) calc(50% - 0.3em), #ebd4ec 0%, #ebd4ec 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory td[series="K&M&Gn"] {
+            background-image: radial-gradient(circle at calc(50% - 0.6em) calc(50% - 0.7em), #aedfc3 0%, #aedfc3 0.65em, transparent 0.65em, transparent 100%),
+            radial-gradient(circle at 50% calc(50% - 0.3em), #c3ebef 0%, #c3ebef 0.65em, transparent 0.65em, transparent 100%),
+            radial-gradient(circle at calc(50% + 0.6em) calc(50% - 0.7em), #ceeac2 0%, #ceeac2 0.65em, transparent 0.65em, transparent 100%);
+        }
+        table.inventory-legend {
+            margin: auto;
+            width: 80%;
+        }
+        table.inventory-legend td{
+            width: 50%;
+            border: 1px solid var(--shadow-brown-80);
+        }
+        table.alphabet td {
+            width: calc(100% / 6);
+        }
+        sub {
+            font-family: var(--serif-set);
+            font-size: 60%;
+        }
+        .literal {
+            font-variant: small-caps;
+        }
+        span.squeezed {
+            display: inline-block;
+            text-indent: 0;
+            width: 1em;
+            overflow: visible;
+            letter-spacing: -0.6em;
+            transform: scaleX(0.714285);
+            transform-origin: left;
+        }
+        span.cc {
+            color: #85384c;
+        }
+    </style>
+    <script type="text/javascript" src="./scripts/template_applier.js"></script>
+    <script type="text/javascript" src="./scripts/nebty_ipa.js"></script>
+    <script type="text/javascript" src="./scripts/nebty_ipa_applier.js"></script>
+</head>
+
+<body>
+    <div id="main" class="zh_text">
+        <te>mainpage_portal</te>
+        <h2>东汉汉语<ruby>娄<rt>罗</rt></ruby><ruby>武<rt>马</rt></ruby>字 (<var>Togn-Hånh Hånh-gnaq Lo-muåq-Zɩh</var>)</h2>
+        <div class="minorskip"></div>
+        <h3>介绍</h3>
+        <p><u>东汉</u><u>汉</u>语是上古<u>汉</u>语至中古<u>汉</u>语的过渡阶段。语文学证据（押韵，见<u>罗常培</u>、<u>周祖谟</u><span class="lit">汉魏晋南北朝韵部演变研究</span>）及对音（梵汉对音见<u>俞敏</u><span class="lit">后汉三国梵汉对音谱</span>）显示该时期的<u>汉</u>语音系已初具中古<u>汉</u>语的一些重要特征；同韵部三等及非三等音节在押韵上开始分离，魚陽鐸三部的部分字主元音前移，卷舌音产生，清响音音首完全消失。<u>斯塔罗斯京</u>及<u>许思莱</u>在他们的著作中分别描述及构拟了<u>东汉</u><u>汉</u>语的音系。</p>
+        <p>此处，基于<u>许思莱</u>（2009）<span class="lit">Minimal Old Chinese and Later Han Chinese: A Companion to <i>Grammata Serica Recensa</i></span> 所载的<u>东汉</u><u>汉</u>语音系制定了一套转写<u>东汉</u><u>汉</u>语的<u>罗马</u>化方案。</p>
+        <h3>与<u>许思莱</u>（2009）系统的差异</h3>
+        <p>
+            本系统的参考音系虽然基于<u>许思莱</u>（2009），但存在一些差异。这些差异基本不影响音系的总体结构，但与正字法的设计相关：
+            <ul>
+                <li>古典时期的<ipa class="cc">\left"/"`*`g_w\right</ipa>在非三等音节中尚未擦化产生<ipa>\left"["`*`X\right</ipa>。</li>
+                <li>析<u>许思莱</u>的<ipa>\left"/"`*`H\right</ipa>音首入<ipa>\left"/"`*`g\right</ipa>或零形式。具体而言，<q>乎</q>与特字<q>矣焉兮</q>的音首在参考音系中为零形式；<u>许思莱</u>的其余<ipa>\left"/"`*`H\right</ipa>音首字在参考音系中属<ipa>\left"/"`*`g\right</ipa>音首。</li>
+                <li>视古典时期复杂音首中的<ipa class="cc">\left"/"`*`r\right</ipa>均已脱落，并导致非三等R性音节染上超音段的 R-色彩。</li>
+                <li>将<u>许思莱</u>的三等韵前过渡段<ipa>\left"/"`*`y\right_=_\left"/"`*`Iu\right</ipa>与锐音及唇音音首后的前过渡段<ipa>\left"/"`*`u\right</ipa>同等对待（转写为 <var>u</var>），但与非三等音节中来源于古典时期的唇化软腭音首及圆唇元音裂化产生的前过渡段<ipa>\left"/"`*`u\right</ipa>（转写为 <var>w</var>）不同。</li>
+                <li><u>许思莱</u>将古典<u>汉</u>语元音<ipa class="cc">\left"/"`*`@\right</ipa>（即之部主元音）视作非高元音，因此构拟的演化路径与其他非高元音相仿。参考音系将其视为高元音<ipa>\left"["`*`I\right</ipa>，与其他古典时期的高元音（<ipa class="cc">\left"/"`*`i_u\right</ipa>）有相似的演化路径，即在三等音节中基本维持<ipa>\left"["`*`I\right</ipa>、非三等非R性音节中降低或裂化。</li>
+                <li>歌部的高元音性韵尾已弱化，但未完全单元音化。</li>
+                <li>将祭部、質物部次入声音节的韵尾视为<ipa>\left"["`*`c*Z\right</ipa>，并与古典时期清响音音首<ipa class="cc">\left"/"`*`l{o}_n{o}\right</ipa>的腭化结果（对应中古書母）视作具有同一音值（均转写为 <var>hj</var>）。</li>
+                <li>三等及非三等音节的主要区别特征已由古典时期的<abbr title="存疑">喉部特征</abbr>转化为元音对立。</li>
+            </ul>
+        </p>
+        <h3>方案</h3>
+        <p>请点击下方条目查看。</p>
+        <div class="division" style="--boxthemecolor: var(--cyan-green);">
+            <div class="divisiontitle">重要附录</div>
+            <div class="divisionbody">
+                <table>
+                    <tr>
+                        <td><div colortheme="phonetics">G01</div></td>
+                        <td>
+                            <a href="./confabulation/orthography_2511_1_glossary.html" target="_blank">术语一览</a>
+                        </td>
+                        <td>’26.02.26</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="division" style="--boxthemecolor: var(--vivid-purple);">
+            <div class="divisiontitle">拼写</div>
+            <div class="divisionbody">
+                <table>
+                    <tr>
+                        <td><div colortheme="phonetics">O01</div></td>
+                        <td>
+                            <a href="./confabulation/orthography_2511_1_onsets.html" target="_blank">音首</a>
+                        </td>
+                        <td>’26.01.22</td>
+                    </tr>
+                    <tr>
+                        <td><div colortheme="phonetics">R01</div></td>
+                        <td>
+                            <a href="./confabulation/orthography_2511_1_rhymes_a.html" target="_blank">韵（一）：主元音 å a æ</a>
+                        </td>
+                        <td>’26.02.02</td>
+                    </tr>
+                    <tr>
+                        <td><div colortheme="phonetics">R02</div></td>
+                        <td>
+                            <a href="./confabulation/orthography_2511_1_rhymes_e.html" target="_blank">韵（二）：主元音 e</a>
+                        </td>
+                        <td>’26.02.05</td>
+                    </tr>
+                    <tr>
+                        <td><div colortheme="phonetics">R03</div></td>
+                        <td>
+                            <a href="./confabulation/orthography_2511_1_rhymes_o.html" target="_blank">韵（三）：主元音 o</a>
+                        </td>
+                        <td>’26.02.25</td>
+                    </tr>
+                    <tr>
+                        <td><div colortheme="phonetics">R04</div></td>
+                        <td>
+                            <a href="./confabulation/orthography_2511_1_rhymes_eo.html" target="_blank">韵（四）：主元音 ⱶ</a>
+                        </td>
+                        <td>’26.02.25</td>
+                    </tr>
+                    <tr>
+                        <td><div colortheme="phonetics">R05</div></td>
+                        <td>
+                            <a href="./confabulation/orthography_2511_1_rhymes_i.html" target="_blank">韵（五）：主元音 i</a>
+                        </td>
+                        <td>’26.02.27</td>
+                    </tr>
+                    <tr>
+                        <td><div colortheme="phonetics">R06</div></td>
+                        <td>
+                            <a href="./confabulation/orthography_2511_1_rhymes_u.html" target="_blank">韵（六）：主元音 u</a>
+                        </td>
+                        <td>’26.02.27</td>
+                    </tr>
+                    <tr>
+                        <td><div colortheme="phonetics">R07</div></td>
+                        <td>
+                            <a href="./confabulation/orthography_2511_1_rhymes_y.html" target="_blank">韵（七）：主元音 ɩ</a>
+                        </td>
+                        <td>’26.02.27</td>
+                    </tr>
+                    <tr>
+                        <td><div colortheme="phonetics">R08</div></td>
+                        <td>
+                            <a href="./confabulation/orthography_2511_1_rhymes_tones.html" target="_blank">韵（八）：<q>声调</q></a>
+                        </td>
+                        <td>’26.02.27</td>
+                    </tr>
+                    <tr>
+                        <td><div colortheme="phonetics">S01</div></td>
+                        <td>
+                            <a href="./confabulation/orthography_2511_1_spelling_rules.html" target="_blank">拼写规则</a>
+                        </td>
+                        <td>’26.02.02</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="division" style="--boxthemecolor: var(--leaf-gold);">
+            <div class="divisiontitle">例文</div>
+            <div class="divisionbody">
+                <table>
+                    <tr>
+                        <td><div colortheme="phonetics">X01</div></td>
+                        <td>
+                            （待补充）
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>

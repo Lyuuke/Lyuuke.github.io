@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>东汉汉语罗马字—拼写规则</title>
+    <meta charset="utf-8">
+    <base href="../">
+    <link rel="stylesheet" type="text/css" href="./mainstyle/background_nival.css">
+    <link rel="stylesheet" type="text/css" href="./mainstyle/essence_nival.css">
+    <style type="text/css">
+        var {
+            font-family: "Segoe UI", "Arial", "Calibri", sans-serif;
+            font-weight: 500;
+            font-style: normal;
+            text-decoration: none;
+            color: #3d7baf;
+        }
+        var > b {
+            color: #2caeea;
+        }
+        table {
+            width: 100%;
+            font-family: var(--sans-set);
+            text-align: center;
+        }
+        table.inventory th, table.inventory td {
+            width: calc(100% / var(--colnum));
+            padding: 0.25em;
+        }
+        table.inventory th {
+            background-color: var(--wheat-44);
+        }
+        table.inventory td {
+            border-bottom: 0.15em solid var(--wheat-44);
+        }
+        table.inventory-legend {
+            margin: auto;
+            width: 80%;
+        }
+        table.inventory-legend td{
+            width: 50%;
+            border: 1px solid var(--shadow-brown-80);
+        }
+        table.alphabet td {
+            width: calc(100% / 6);
+        }
+        sub {
+            font-family: var(--serif-set);
+            font-size: 60%;
+        }
+        .literal {
+            font-variant: small-caps;
+        }
+        span.squeezed {
+            display: inline-block;
+            text-indent: 0;
+            width: 1em;
+            overflow: visible;
+            letter-spacing: -0.6em;
+            transform: scaleX(0.714285);
+            transform-origin: left;
+        }
+        span.cc {
+            color: #85384c;
+        }
+        .illegalform {
+        	text-decoration: line-through #e52e6b;
+        }
+        .illegalform:before {
+        	content: "*";
+        	color: #e52e6b;
+        }
+        table.spelling-example {
+            width: 70%;
+            margin: 1em auto;
+            border: 0.2em solid var(--wheat);
+            box-shadow: 0.3em 0.3em 0 var(--wheat-44);
+        }
+        table.spelling-example th {
+            width: calc(100% / 3);
+            background-color: var(--wheat-44);
+        }
+        table.spelling-example th, table.spelling-example td {
+            height: 2em;
+        }
+        table.spelling-example .spelling-result {
+            background-image: repeating-linear-gradient(135deg, transparent 0%, transparent 0.5em, var(--wheat-44) 0.5em, var(--wheat-44) 1em);
+        }
+    </style>
+    <script type="text/javascript" src="./scripts/template_applier.js"></script>
+    <script type="text/javascript" src="./scripts/nebty_ipa.js"></script>
+    <script type="text/javascript" src="./scripts/nebty_ipa_applier.js"></script>
+</head>
+
+<body>
+    <div id="main" class="zh_text">
+        <te>mainpage_portal</te>
+        <h3>拼写规则</h3>
+        <p>一个音节的拼式由音首和韵的拼式拼合而成。</p>
+        <table class="spelling-example"><tbody>
+            <tr>
+                <th>音首</th>
+                <th>韵（不含<q>声调</q>）</th>
+                <th><q>声调</q></th>
+            </tr>
+            <tr>
+                <td><ipa>`*`?-</ipa><br><var>q</var></td>
+                <td><ipa>`*`-!m*|{:}!vt</ipa><br><var>ɩåt</var></td>
+                <td><ipa>`*`%</ipa><br><span style="color: #b0b0b0;">∅</span></td>
+            </tr>
+            <tr>
+                <td colspan="3" class="spelling-result">謁 <var>qɩåt</var><ipa>\left"["`*`?!m*|{:}!vt\right</ipa></td>
+            </tr>
+        </tbody></table>
+        <table class="spelling-example"><tbody>
+            <tr>
+                <th>音首</th>
+                <th>韵（不含<q>声调</q>）</th>
+                <th><q>声调</q></th>
+            </tr>
+            <tr>
+                <td><ipa>`*`L-</ipa><br><var>l</var></td>
+                <td><ipa>`*`-ju</ipa><br><var>iu</var></td>
+                <td><ipa>`*`G◌{F}</ipa><br><var>q</var></td>
+            </tr>
+            <tr>
+                <td colspan="3" class="spelling-result">柳 <var>liuq</var><ipa>\left"["`*`Lju{F}\right</ipa></td>
+            </tr>
+        </tbody></table>
+    	<p>以 <var>j</var> 结尾的音首（<var>tj thj dj nj hj xj j</var>）与以前过渡段 <var>i</var> 开头的韵相拼时，省略 <var>i</var>。<ul>
+                <li>如果开头的 <var>i</var> 不是前过渡段，而是主元音，则不省略 <var>i</var>。例如失 <var>hjit</var><ipa>\left"["`*`c*Zit\right</ipa>不拼作 <var class="illegalform">hjt</var>。<ul>
+                    <li>但是，如果开头的 <var>i</var> 是主元音，且音首是 <var>j</var>，则省略 <var>j</var>。例如逸 <var>it</var><ipa>\left"["`*`jit\right</ipa>不拼作 <var class="illegalform">jit</var>。</li>
+                </ul></li>
+                <li>大部分 <var>tj thj dj nj</var> 可视为 <var>t th d n</var> 被 <var>i</var> 腭化的产物，且 <var>t th d n</var> 从不接 <var>i</var>。</li>
+                <li>不同的是，<var>hj xj j</var> 音首并非 <var>h x <span style="color: #b0b0b0;">∅</span></var> 的腭化产物。因此需注意区分訾<sub>过失</sub> <var>xie</var><ipa>\left"["`*`zjE\right</ipa>与舓 <var>xjeq</var><ipa>\left"["`*`j*CjE{F}\right</ipa>——但这种情况极罕见。</li>
+            </ul>
+        </p>
+        <table class="spelling-example"><tbody>
+            <tr>
+                <th>音首</th>
+                <th>韵（不含<q>声调</q>）</th>
+                <th><q>声调</q></th>
+            </tr>
+            <tr>
+                <td><ipa>`*`n*j-</ipa><br><var>nj</var></td>
+                <td><ipa>`*`-jE</ipa><br><var>ie</var></td>
+                <td><ipa>`*`%</ipa><br><span style="color: #b0b0b0;">∅</span></td>
+            </tr>
+            <tr>
+                <td colspan="3" class="spelling-result">兒 <var>nje</var> ← <var class="illegalform">njie</var><ipa>\left"["`*`n*jjE\right</ipa></td>
+            </tr>
+        </tbody></table>
+        <p>音首与 <var>r–*</var> 形式的韵相拼时，音首的拼式插入韵的拼式中<q><var>–</var></q>的位置。但以 <var>r</var> 开头的音首（<var>rt rth rd rn rc rch rz rs</var>）与含 <var>r</var> 的韵相拼时，只写一个 <var>r</var>。</p>
+        <table class="spelling-example"><tbody>
+            <tr>
+                <th>音首</th>
+                <th>韵（不含<q>声调</q>）</th>
+                <th><q>声调</q></th>
+            </tr>
+            <tr>
+                <td><ipa>`*`g-</ipa><br><var>g</var></td>
+                <td><ipa>`*`-!E{r}m</ipa><br><var>r–em</var></td>
+                <td><ipa>`*`G◌{_:}</ipa><br><var>h</var></td>
+            </tr>
+            <tr>
+                <td colspan="3" class="spelling-result">陷 <var>rgemh</var><ipa>\left"["`*`g!E{_:r}m\right</ipa></td>
+            </tr>
+        </tbody></table>
+        <table class="spelling-example"><tbody>
+            <tr>
+                <th>音首</th>
+                <th>韵（不含<q>声调</q>）</th>
+                <th><q>声调</q></th>
+            </tr>
+            <tr>
+                <td><ipa>`*`t*L^s*L[h]-</ipa><br><var>rch</var></td>
+                <td><ipa>`*`-a{r}e{n}</ipa><br><var>r–æ</var></td>
+                <td><ipa>`*`%</ipa><br><span style="color: #b0b0b0;">∅</span></td>
+            </tr>
+            <tr>
+                <td colspan="3" class="spelling-result">差<sub>差异</sub> <var>rchæ</var> ← <var class="illegalform">rrchæ</var><ipa>\left"["`*`t*L^s*L[h]a{r}e{n}\right</ipa></td>
+            </tr>
+        </tbody></table>
+        <p><var>w</var> 音首与含 <var>w</var> 的韵相拼时，只写一个 <var>w</var>。</p>
+        <table class="spelling-example"><tbody>
+            <tr>
+                <th>音首</th>
+                <th>韵（不含<q>声调</q>）</th>
+                <th><q>声调</q></th>
+            </tr>
+            <tr>
+                <td><ipa>`*`w-</ipa><br><var>w</var></td>
+                <td><ipa>`*`-w!vN</ipa><br><var>wågn</var></td>
+                <td><ipa>`*`%</ipa><br><span style="color: #b0b0b0;">∅</span></td>
+            </tr>
+            <tr>
+                <td colspan="3" class="spelling-result">王 <var>wågn</var> ← <var class="illegalform">wwågn</var><ipa>\left"["`*`w!vN\right</ipa></td>
+            </tr>
+        </tbody></table>
+        <p><var>w</var> 音首与以 <var>u</var> 开头的韵相拼时，省略 <var>w</var>。</p>
+        <table class="spelling-example"><tbody>
+            <tr>
+                <th>音首</th>
+                <th>韵（不含<q>声调</q>）</th>
+                <th><q>声调</q></th>
+            </tr>
+            <tr>
+                <td><ipa>`*`w-</ipa><br><var>w</var></td>
+                <td><ipa>`*`-u*-n</ipa><br><var>un</var></td>
+                <td><ipa>`*`%</ipa><br><span style="color: #b0b0b0;">∅</span></td>
+            </tr>
+            <tr>
+                <td colspan="3" class="spelling-result">雲 <var>un</var> ← <var class="illegalform">wun</var><ipa>\left"["`*`w{:}u*-n\right</ipa></td>
+            </tr>
+        </tbody></table>
+        <h3>通过拼式识别音节类型</h3>
+        <p>
+            <ul>
+                <li>若拼式中出现字母 <var>i ɩ u</var>，则此音节一定是三等音节。反之，不含字母 <var>i ɩ u</var> 的一定是非三等音节。</li>
+                <li>若拼式中出现字母 <var>r</var>，则此音节一定是非三等带 R 音节。</li>
+            </ul>
+        </p>
+        <h3>最长/最短拼式</h3>
+        <p>本方案可能出现的最长/最短拼式为：
+            <ul>
+                <li><b>最短</b>：1个字符，如夷 <var>i</var><ipa>\left"["`*`ji\right</ipa>、尤 <var>u</var><ipa>\left"["`*`w{:}u*-\right</ipa>、乎 <var>å</var><ipa>\left"["`*`!v\right</ipa>。</li>
+                <li><b>最长</b>：理论上为8个字符，可能的拼式包括 <var>rkhwagnq rkhwegnh rkhowgnh</var> 等。但上述音节均不存在，因此实际存在的最长拼式为7个字符，如降 <var>rgowgnh</var><ipa>\left"["`*`gc*!E{_:r}wN\right</ipa>、獷 <var>rkwagnq</var><ipa>\left"["`*`kwa{Fr}N\right</ipa>、聵 <var>rgnwehj</var><ipa>\left"["`*`Nw!E{r}c*Z\right</ipa>。</li>
+            </ul></p>
+        <h3>字母表</h3>
+        <p>本方案共使用29个<u>拉丁</u>字母。</p>
+        <table class="alphabet">
+            <tr>
+                <th>Aa</th><th>Åå</th><th>Ææ</th><th>Bb</th><th>Cc</th><th>Dd</th>
+            </tr>
+            <tr>
+                <td><var>qa</var></td><td><var>nwⱶhj-qa</var></td><td><var>liu-qa</var></td><td><var>be</var></td><td><var>ce</var></td><td><var>de</var></td>
+            </tr>
+            <tr>
+                <th>Ee</th><th>Ff</th><th>Gg</th><th>Hh</th><th>Ii</th><th>Ɩɩ</th>
+            </tr>
+            <tr>
+                <td><var>qe</var></td><td><var>fe</var></td><td><var>ge</var></td><td><var>hå</var></td><td><var>kwågn-i</var></td><td><var>kwågn-qɩ</var></td>
+            </tr>
+            <tr>
+                <th>Jj</th><th>Kk</th><th>Ll</th><th>Mm</th><th>Nn</th><th>Oo</th>
+            </tr>
+            <tr>
+                <td><var>rgep-i</var></td><td><var>kå</var></td><td><var>le</var></td><td><var>me</var></td><td><var>ne</var></td><td><var>qo</var></td>
+            </tr>
+            <tr>
+                <th>Pp</th><th>Qq</th><td>Rr</td><th>Ss</th><th>Tt</th><th>Uu</th>
+            </tr>
+            <tr>
+                <td><var>pe</var></td><td><var>liamq</var></td><td><var>rtuanq</var></td><td><var>se</var></td><td><var>te</var></td><td><var>kwågn-u</var></td>
+            </tr>
+            <tr>
+                <th>Ⱶⱶ</th><th>Ww</th><th>Xx</th><th>Yy</th><th>Zz</th>
+            </tr>
+            <tr>
+                <td><var>qⱶy</var></td><td><var>rgep-u</var></td><td><var>xe</var></td><td><var>rgep-qɩ</var></td><td><var>ze</var></td>
+            </tr>
+        </table>
+        <h3>大写规则</h3>
+        <p>本方案没有强制的大写规则，但以下情况可选择大写：</p>
+        <ul>
+            <li>专名中每个<b>语素</b>的首字母。</li>
+            <li>句子的首字母。</li>
+            <li>标题中每个<b>词</b>的首字母。</li>
+            <li>首字母缩写（但几乎不可能出现在文献的转写中）。</li>
+            <li>表示字母本身时（但不可能出现在文献的转写中）。</li>
+        </ul>
+        <h3>代用式</h3>
+        <p>本方案的标准拼写使用了若干非 ASCII 字母，即 <var>å æ ɩ ⱶ</var>。为方便输入及使用支持性较差的字体显示，拼写时上述字母可替换为代用式，如下表所示。</p>
+        <table class="inventory" style="--colnum: 3;"><tbody>
+            <tr>
+                <th>字母</th>
+                <th>码位</th>
+                <th>代用式</th>
+            </tr>
+            <tr>
+                <td><var>Å å</var></td>
+                <td><code>U+00C5 U+00E5</code></td>
+                <td><var>AO ao</var></td>
+            </tr>
+            <tr>
+                <td><var>Æ æ</var></td>
+                <td><code>U+00C6 U+00E6</code></td>
+                <td><var>AE ae</var></td>
+            </tr>
+            <tr>
+                <td><var>Ɩ ɩ</var></td>
+                <td><code>U+0196 U+0269</code></td>
+                <td><var>Y y</var></td>
+            </tr>
+            <tr>
+                <td><var>Ⱶ ⱶ</var></td>
+                <td><code>U+2C75 U+2C76</code></td>
+                <td><var>EO eo</var></td>
+            </tr>
+        </tbody></table>
+        <p>注意：字母 <var>Y y</var> 同时作为<q>韵基</q><var>ey ⱶy</var> 中韵尾的标准拼写以及字母 <var>Ɩ ɩ</var> 的代用式。本方案将 <var>I i</var> 与 <var>J j</var>、<var>U u</var> 与 <var>W w</var>、<var>Ɩ ɩ</var> 与 <var>Y y</var> 视为三对元音及对应的半元音。在标准拼写中，元音与对应的半元音使用不同字母拼写，以明确将前过渡段/主元音与音首/韵尾区分开；但在代用式中，受制于可用字母数量，只得放弃这一分别。</p>
+        <h3>符号</h3>
+        <h4>分隔符</h4>
+        <p>在词的内部用连字符（<var>-</var>，<code>U+002D</code>）分隔音节；使用空格（<var><span style="color: #b0b0b0;">␣</span></var>，<code>U+0020</code>）分隔词。</p>
+        <h4>标点符号</h4>
+        <p>本方案采取两套并行的标点符号使用规范，称为<q>句读式</q>和<q>现代式</q>：
+            <ul>
+                <li><b>句读式</b>只使用中点（<var>·</var>，<code>U+00B7</code>）标注停顿，充当句读的作用；除此之外，不使用其他标点。</li>
+                <li><b>现代式</b>使用逗号（<var>,</var>，<code>U+002C</code>）、句号（<var>.</var>，<code>U+002E</code>）、分号（<var>;</var>，<code>U+003B</code>）、冒号（<var>:</var>，<code>U+003A</code>）、问号（<var>?</var>，<code>U+003F</code>）、感叹号（<var>!</var>，<code>U+0021</code>）、引号（<var>“‘’”</var>，<code>U+201C U+2018 U+2019 U+201D</code>）、省略号（<var>…</var>，<code>U+2026</code>）、连接号（<var>–</var>，<code>U+2013</code>）、破折号（<var>—</var>，<code>U+2014</code>）、括号（<var>( )</var>，<code>U+0028 U+0029</code>）。上述各标点符号的使用参考<u>英</u>文中的习惯。</li>
+            </ul>
+        </p>
+        <h4>文献学符号</h4>
+        <p>转写文献时可能用到下列符号：
+            <ul>
+                <li><b>重文号</b>转写为 <var>²</var>（<code>U+00B2</code>）。</li>
+                <li>原始文献存在<b>阙文</b>时，每个脱漏的字用1个 <var>*</var>（<code>U+002A</code>）标注，并用空格隔开。别论：<ul>
+                    <li>若原始文献使用阙文号（如□），可将阙文号直接逐一转写为 <var>*</var> 。</li>
+                    <li>多于1个字的连续缺字可用 <var>*</var> + 下标<u>印度</u>—<u>阿拉伯</u>数字表示的字数标注，如 <var>*₃</var> 表示缺失连续的3个字。</li>
+                    <li>若无法确定脱漏的字数，可用 <var>***</var> 标注。</li>
+                </ul></li>
+                <li>出土文献因残断、残泐导致文本部分缺失，但通过对照传世文献等方法重建的情况，则重建部分转写时需用 <var>[ ]</var>（<code>U+005B U+005D</code>）括注。</li>
+            </ul>
+        </p>
+    </div>
+</body>
